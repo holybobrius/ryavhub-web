@@ -1,0 +1,30 @@
+.home {
+    display: flex;
+    flex-direction: row;
+}
+.half {
+    height: 100%; width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.meme-card {
+    width: 350px;
+    height: 450px;
+
+    /* meme possibility */
+    display: flex;
+    flex-direction: column;
+}
+.blue { height: 50%; background-color: blue; }
+.yellow { height: 50%; background-color: yellow; }
+
+.bio-card {
+    color: #669335;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.bio-card--title {
+    font-size: 5rem;
+}
