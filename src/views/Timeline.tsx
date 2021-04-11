@@ -1,5 +1,5 @@
-export default function GameSaves() {
+export default function Timeline() {
     return (
-        <div/>
+        <div>таймлайнич)</div>
     );
 }

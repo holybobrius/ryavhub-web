@@ -16,21 +16,15 @@ import './styles/App.css';
 function App() {
   return (
     <Router>
-      <Navbar></Navbar>
-      <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
-        <Route path="/quotes">
-          <Quotes />
-        </Route>
-        <Route path="/timeline">
-          <Timeline />
-        </Route>
-        <Route path="/gamesaves">
-          <GameSaves />
-        </Route>
-      </Switch>
+      <div className="app">
+        <Navbar></Navbar>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/quotes" component={Quotes} />
+          <Route path="/timeline" component={Timeline} />
+          <Route path="/gamesaves" component={GameSaves} />
+        </Switch>
+      </div>
     </Router>
   );
 }

@@ -1,5 +1,5 @@
 export default function GameSaves() {
     return (
-        <div/>
+        <div>квотес)</div>
     );
 }
