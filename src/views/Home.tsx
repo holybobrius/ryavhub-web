@@ -1,20 +1,67 @@
 import '../styles/Home.css';
+import styled from 'styled-components'
+
+// Styles
+const HomeContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+const Half = styled.div`
+    height: 100%; width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const MemeCard = styled.div`
+    width: 350px;
+    height: 450px;
+    /* meme possibility */
+    display: flex;
+    flex-direction: column;
+`;
+
+const Blue = styled.div`
+    height: 50%; 
+    background-color: blue;
+`;
+
+const Yellow = styled.div`
+    height: 50%; 
+    background-color: yellow;
+`;
+
+const BioCard = styled.div`
+    color: #669335;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    flex-direction: column;
+`;
+
+const BioCardTitle = styled.div`
+    font-size: 5rem;
+`;
+
+const BioCardText = styled.div`
+
+`;
 
 export default function Home() {
     return (
-        <div className="home">
-            <div className="half">
-                <div className="meme-card">
-                    <div className="blue"></div>
-                    <div className="yellow"></div>
-                </div>
-            </div>
-            <div className="half">
-                <div className="bio-card">
-                    <div className="bio-card--title">
+        <HomeContainer>
+            <Half>
+                <MemeCard>
+                    <Blue />
+                    <Yellow />
+                </MemeCard>
+            </Half>
+            <Half>
+                <BioCard>
+                    <BioCardTitle>
                         РявХаб
-                    </div>
-                    <div className="bio-card--text">
+                    </BioCardTitle>
+                    <BioCardText>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla iaculis justo a mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
                         </p>
@@ -24,9 +71,9 @@ export default function Home() {
                         <p>
                             Vestibulum a interdum urna. Cras luctus ligula tincidunt nulla pellentesque auctor. Quisque vehicula venenatis tortor vel efficitur.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </BioCardText>
+                </BioCard>
+            </Half>
+        </HomeContainer>
     );
 }
