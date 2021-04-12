@@ -42,7 +42,7 @@ export default function Navbar() {
                     <Button type="link" size="large">Сейвы)</Button>
                 </Link>
             </NavbarButtons>
-            <Button type="primary" className="login">Login</Button>
+            <Button type="primary" shape="round" size="large" className="login">Login</Button>
         </Nav>
     )
 }

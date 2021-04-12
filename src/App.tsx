@@ -9,7 +9,7 @@ import {
 import Navbar from './components/Navbar';
 import Home from './views/Home';
 import Quotes from './views/Quotes';
-import Timeline from "./views/Timeline";
+import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
 import './styles/App.css';
 
@@ -22,7 +22,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/quotes" component={Quotes} />
-            <Route path="/timeline" component={Timeline} />
+            <Route path="/timeline" component={TimelinePage} />
             <Route path="/gamesaves" component={GameSaves} />
           </Switch>
         </main>
