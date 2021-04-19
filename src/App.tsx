@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,13 +11,18 @@ import Home from './views/Home';
 import Quotes from './views/Quotes';
 import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
+import LoginModal from './components/LoginModal';
 import './styles/App.css';
 
-function App() {
+const App: FC = () => {
+
+  const onClick = (): void => {
+    console.log('пидорасы уебки')
+  }
   return (
     <Router>
       <div className="app">
-        <Navbar></Navbar>
+        <Navbar onClick={onClick}></Navbar>
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -26,9 +31,10 @@ function App() {
             <Route path="/gamesaves" component={GameSaves} />
           </Switch>
         </main>
+        <LoginModal/>
       </div>
     </Router>
   );
 }
 
-export default App;
+export default App

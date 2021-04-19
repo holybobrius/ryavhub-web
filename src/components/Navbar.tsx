@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import '../styles/Navbar.css';
 import logo from '../assets/img/logotext.svg'
 import styled from 'styled-components'
+import React from 'react'
 
 // Styles
 const Nav = styled.nav`
@@ -26,7 +27,11 @@ const NavbarButtons = styled.div`
     gap: 10px;
 `;
 
-export default function Navbar() {
+interface Props {
+    onClick: any;
+}
+
+const Navbar: React.FC<Props> = (props: Props) => {
     //<Link className="navbar-buttons--button" ></Link>
     return (
         <Nav>
@@ -42,7 +47,8 @@ export default function Navbar() {
                     <Button type="link" size="large">Сейвы)</Button>
                 </Link>
             </NavbarButtons>
-            <Button type="primary" shape="round" size="large" className="login">Login</Button>
+            <Button type="primary" shape="round" size="large" className="login" onClick={props.onClick}>Login</Button>
         </Nav>
-    )
+    );
 }
+export default Navbar;
