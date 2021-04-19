@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import Navbar from './components/Navbar';
@@ -13,16 +12,17 @@ import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
 import LoginModal from './components/LoginModal';
 import './styles/App.css';
+import './theme.css'; //ant precompiled theme
 
 const App: FC = () => {
-
   const onClick = (): void => {
     console.log('пидорасы уебки')
   }
+
   return (
     <Router>
       <div className="app">
-        <Navbar onClick={onClick}></Navbar>
+        <Navbar onClick={onClick}/>
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -36,5 +36,4 @@ const App: FC = () => {
     </Router>
   );
 }
-
 export default App

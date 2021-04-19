@@ -1,3 +1,4 @@
+import {FC} from "react";
 import '../styles/Home.css';
 import styled from 'styled-components'
 
@@ -47,7 +48,7 @@ const BioCardText = styled.div`
 
 `;
 
-export default function Home() {
+const Home: FC = () => {
     return (
         <HomeContainer>
             <Half>
@@ -63,7 +64,7 @@ export default function Home() {
                     </BioCardTitle>
                     <BioCardText>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla iaculis justo a mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla iaculis justo a mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
                         </p>
                         <p>
                             Duis lacinia accumsan ullamcorper. Vivamus a sapien fringilla sapien convallis vestibulum sed non sapien. Praesent auctor, est nec dignissim rhoncus, mauris ex scelerisque est, eu vestibulum nulla tellus quis dolor.
@@ -77,3 +78,4 @@ export default function Home() {
         </HomeContainer>
     );
 }
+export default Home

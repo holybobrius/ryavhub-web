@@ -1,7 +1,9 @@
+import {FC} from "react";
 import { GoogleLogin } from 'react-google-login'
 
-export default function LoginModal() {
-    return(
+const LoginModal: FC = () => {
+    return (
         <div/>
     );
 }
+export default LoginModal

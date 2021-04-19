@@ -27,12 +27,7 @@ const NavbarButtons = styled.div`
     gap: 10px;
 `;
 
-interface Props {
-    onClick: any;
-}
-
-const Navbar: React.FC<Props> = (props: Props) => {
-    //<Link className="navbar-buttons--button" ></Link>
+const Navbar: React.FC<{ onClick: () => void }> = (props) => {
     return (
         <Nav>
             <Link to="/"><Logo /></Link>
@@ -41,7 +36,7 @@ const Navbar: React.FC<Props> = (props: Props) => {
                     <Button type="link" size="large">Цитаты)</Button>
                 </Link>
                 <Link to="/timeline">
-                    <Button type="link" size="large">Таймлайнич)</Button>    
+                    <Button type="link" size="large">Таймлайнич)</Button>
                 </Link>
                 <Link to="/gamesaves">
                     <Button type="link" size="large">Сейвы)</Button>
