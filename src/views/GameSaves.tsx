@@ -1,7 +1,8 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import '../styles/GameSaves.css';
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
+import axios from 'axios'
 // Styles
 
 const CardsContainer = styled.div`
@@ -23,12 +24,7 @@ const Heading = styled.h1`
     color: var(--primary);
 `
 
-const GameSaves: FC = () => {
-    return (
-        <SavesContainer>
-            <Heading>Сейвы</Heading>
-            <CardsContainer>
-                <SaveCard
+/* <SaveCard
                     title="SevTech"
                     description="2020"
                     imageAlt="SevTech"
@@ -83,7 +79,39 @@ const GameSaves: FC = () => {
                     image="https://i.imgur.com/BoTg0He.png"
                     size="62.2MB"
                     link="https://mega.nz/file/vltj3AYC#8e32Hp7QcwmYDsWf6_hoUfCvJTehJTEqEUdv9NsFIDc">
-                </SaveCard>
+                </SaveCard> */
+interface GameSaveApiEntity {
+    id: number,
+    name: string, 
+    year: number,
+    download_link: string,
+    size: string
+}
+
+const GameSaves: FC = () => {
+    const imageLink = "https://api.ryav.tk/v1/gamesaves/img/";
+    const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
+    axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves')
+    .then(r => {
+        setSaves(r.data.reverse());
+    })
+    .catch(e => {
+        console.log('got some shit here bro ', e)
+    })
+    return (
+        <SavesContainer>
+          <Heading>Сейвы</Heading>
+            <CardsContainer>
+                {saves.map(save => (
+                    <SaveCard
+                        title={save.name}
+                        description={save.year.toString()}
+                        imageAlt={save.name}
+                        image={imageLink+save.id}
+                        size={save.size}
+                        link={save.download_link}
+                    />
+                ))}
             </CardsContainer>
         </SavesContainer>
     );

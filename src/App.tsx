@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Link
 } from "react-router-dom";
 
 import Navbar from './components/Navbar';
@@ -12,17 +13,14 @@ import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
 import LoginModal from './components/LoginModal';
 import './styles/App.css';
-import './theme.css'; //ant precompiled theme
+import './theme.css';
 
 const App: FC = () => {
-  const onClick = (): void => {
-    console.log('пидорасы уебки')
-  }
-
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   return (
     <Router>
       <div className="app">
-        <Navbar onClick={onClick}/>
+        <Navbar onClick={() => setIsModalVisible(true)}></Navbar>
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -31,7 +29,7 @@ const App: FC = () => {
             <Route path="/gamesaves" component={GameSaves} />
           </Switch>
         </main>
-        <LoginModal/>
+        <LoginModal opened={isModalVisible} closeClicked={() => setIsModalVisible(false)}/>
       </div>
     </Router>
   );
