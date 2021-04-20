@@ -4,6 +4,7 @@ import '../styles/Navbar.css';
 import logo from '../assets/img/logotext.svg'
 import styled from 'styled-components'
 import React from 'react'
+import LoginButton from "./LoginButton";
 
 // Styles
 const Nav = styled.nav`
@@ -27,7 +28,7 @@ const NavbarButtons = styled.div`
     gap: 10px;
 `;
 
-const Navbar: React.FC<{ onClick: () => void }> = (props) => {
+const Navbar: React.FC = () => {
     return (
         <Nav>
             <Link to="/"><Logo /></Link>
@@ -42,7 +43,7 @@ const Navbar: React.FC<{ onClick: () => void }> = (props) => {
                     <Button type="link" size="large">Сейвы)</Button>
                 </Link>
             </NavbarButtons>
-            <Button type="primary" shape="round" size="large" className="login" onClick={props.onClick}>Login</Button>
+            <LoginButton/>
         </Nav>
     );
 }
