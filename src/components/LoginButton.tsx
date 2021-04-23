@@ -1,14 +1,53 @@
 import React, { FC } from "react";
-import {Button} from "antd";
-import { GoogleLogin } from "react-google-login";
+import { useSelector, useDispatch } from 'react-redux'
+import { Button } from "antd";
+import { GoogleLogin, GoogleLogout, GoogleLoginResponse, GoogleLoginResponseOffline } from "react-google-login";
+import { RootState } from '../store'
+import { googleLogin, googleLogout } from '../store/actions/auth'
 
 const LoginButton: FC = () => {
+    const user = useSelector((s: RootState) => s.googleUser)
+    const dispatch = useDispatch();
+
     //todo send request to /account/auth to check if user is in database (onSuccess)
-    return (
+    const onSuccess = (data: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+        if(!('tokenId' in data)) {
+            alert('offline)')
+            return;
+        }
+        dispatch(googleLogin(data as GoogleLoginResponse)) //make request to this thang to check shit
+    }
+    const onFailure = (err: any) => {
+        alert('no success bro')
+        console.log(err)
+    }
+    const onLogout = () => {
+        dispatch(googleLogout())
+    }
+
+    return user ? 
+    (
+        <GoogleLogout
+            clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
+            onLogoutSuccess={onLogout}
+            render={props => (
+                <Button
+                    type="primary"
+                    shape="round"
+                    size="large"
+                    onClick={props.onClick}
+                >
+                    Logout
+                </Button>
+            )}
+        />
+    ) 
+    :
+    (
         <GoogleLogin
             clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
-            onSuccess={data => console.log('success login, got ', data)}
-            onFailure={err => console.log('unsuccess login, got ', err)}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
             cookiePolicy='single_host_origin'
             isSignedIn={true}
             render={props => (
