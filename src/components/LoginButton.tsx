@@ -15,7 +15,13 @@ const LoginButton: FC = () => {
             alert('offline)')
             return;
         }
-        dispatch(googleLogin(data as GoogleLoginResponse)) //make request to this thang to check shit
+        googleLogin(data as GoogleLoginResponse)
+            .then(r => dispatch(r))
+            .catch(e => {
+                alert('error loggin in this shit')
+                console.log(e)
+            })
+         //make request to this thang to check shit
     }
     const onFailure = (err: any) => {
         alert('no success bro')
@@ -25,7 +31,7 @@ const LoginButton: FC = () => {
         dispatch(googleLogout())
     }
 
-    return user ? 
+    return user ?
     (
         <GoogleLogout
             clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
@@ -41,7 +47,7 @@ const LoginButton: FC = () => {
                 </Button>
             )}
         />
-    ) 
+    )
     :
     (
         <GoogleLogin
