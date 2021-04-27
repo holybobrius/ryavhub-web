@@ -1,7 +1,7 @@
 import {FC} from "react";
 import { Chrono } from 'react-chrono'
 import styled from 'styled-components'
-import '../styles/App.css';
+import '../App.css';
 
 const TimelinePageContainer = styled.div`
     display: flex;
