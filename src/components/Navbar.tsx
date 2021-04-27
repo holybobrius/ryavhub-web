@@ -8,6 +8,7 @@ const Nav = styled.nav`
     padding: 0 10px;
     background-color: #191B1F;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
     font-family: 'Basis Grotesque Pro', sans-serif;
