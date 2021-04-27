@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import '../styles/GameSaves.css';
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'

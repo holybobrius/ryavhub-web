@@ -1,5 +1,4 @@
 import {FC} from "react";
-import '../styles/Home.css';
 import styled from 'styled-components'
 
 // Styles
