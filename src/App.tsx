@@ -12,6 +12,7 @@ import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
 import './styles/App.css';
 import './theme.css';
+import './assets/fonts/basisgrotesquepro/style.css';
 
 const App: FC = () => {
   return (
