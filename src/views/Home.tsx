@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 // Styles
 const HomeContainer = styled.div`
+    height: 100%;
     display: flex;
     flex-direction: row;
 `;

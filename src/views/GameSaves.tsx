@@ -2,21 +2,14 @@ import {FC, useEffect, useState} from 'react'
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'
-import {read} from "fs";
 
 const CardsContainer = styled.div`
-    height: 100%;
+    background-color: #191B1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
-const SavesContainer = styled.div`
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-`
-const Heading = styled.h1`
-    margin-top: 10px;
-    font-size: 5rem;
-    color: var(--primary);
-`;
-
 interface GameSaveApiEntity {
     id: number,
     name: string,
