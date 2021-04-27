@@ -5,11 +5,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const CardsContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 270px));
-    justify-content: space-around;
-    column-gap: 10px;
-    row-gap: 20px;
+    height: 100%;
 `
 const SavesContainer = styled.div`
     font-family: 'Oswald', sans-serif;
@@ -39,8 +35,6 @@ const GameSaves: FC = () => {
         console.log('got some shit here bro ', e)
     })
     return (
-        <SavesContainer>
-          <Heading>Сейвы</Heading>
             <CardsContainer>
                 {saves.map(save => (
                     <SaveCard
@@ -53,7 +47,6 @@ const GameSaves: FC = () => {
                     />
                 ))}
             </CardsContainer>
-        </SavesContainer>
     );
 }
 export default GameSaves

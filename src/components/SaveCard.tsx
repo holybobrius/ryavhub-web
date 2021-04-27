@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import {FC} from "react";
 
 const CardContainer = styled.div`
-    height: 100%;
     background-color: #191B1F;
     display: flex;
     flex-direction: column;

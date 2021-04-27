@@ -4,6 +4,7 @@ html, body, #root, .app {
     --primary: #669335;
     --light: #E9EDDE;
     --dark: #292E1E;
+    background-color: #191B1F;
 }
 .app {
     display: flex;
