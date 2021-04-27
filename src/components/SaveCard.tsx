@@ -3,6 +3,7 @@ import {FC} from "react";
 
 const CardContainer = styled.div`
     background-color: #191B1F;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -32,7 +33,7 @@ const Info = styled.div`
     margin-top: 15px;
     display: flex;
     align-items: center;
-    gap: 1000px;
+    justify-content: space-between;
 `;
 const DownloadButton = styled.button`
     height: 3rem;
