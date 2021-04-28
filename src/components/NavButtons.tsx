@@ -7,11 +7,25 @@ const Container = styled.div`
     position: fixed;
     top: 42%;
     right: 3%;
-    gap: 5px;
+    gap: 15px;
 `;
 
-const NavButton = styled.input`
-    width: 100px;
+const NavButtonInput = styled.input`
+    opacity: 0;
+    display: none;
+`;
+
+const NavButtonSpan = styled.span`
+    width: 16px;
+    height: 16px;
+    border: 1px solid #666;
+    border-radius: 100%;
+    display: block;
+    background-color: #666;
+    cursor: pointer;
+    &:after {
+        background-color: red;
+    }
 `;
 
 interface Props {
@@ -27,7 +41,12 @@ const NavButtons: FC<Props> = (props) => {
     const buttons = useMemo(() => {
         let btns = [];
         for(let i = 0; i < props.total; i++) {
-            btns.push(<NavButton type="radio" name="radio-btn" onChange={scroll(i)} id={`radio${i}`} onClick={() => scroll(i)}/>);
+            btns.push(
+                <label>
+                    <NavButtonInput type="radio" name="radio-btn" onChange={scroll(i)} id={`radio${i}`} onClick={() => scroll(i)}/>
+                    <NavButtonSpan />
+                </label>
+                );
         }
         return btns;
     }, [props.total])    
