@@ -1,50 +1,63 @@
-import { Link } from 'react-router-dom';
-import { Button } from 'antd';
-import '../styles/Navbar.css';
-import logo from '../assets/img/logotext.svg'
+import { FC } from 'react';
 import styled from 'styled-components'
-import React from 'react'
-import LoginButton from "./LoginButton";
+import { Link } from 'react-router-dom';
+import logo from '../assets/images/logotext_white.svg'
+import LoginButton from './LoginButton'
 
-// Styles
 const Nav = styled.nav`
-    height: 50px;
-    padding: 0 10px;
-    background-color: #292E1E;
+    height: 60px;
+    padding-left: 0 10px;
+    background-color: #191B1F;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Basis Grotesque Pro', sans-serif;
 `;
-
+const NavLink = styled.button`
+    width: 131px;
+    height: 28px;
+    font-size: 16px;
+    color: #9e9e9e;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: ease 250ms;
+    &:hover {
+        color: #FFF;
+    }
+`;
 const Logo = styled.div`
-    width: 92px; 
-    height: 35px;
+    width: 110.4px;
+    height: 42px;
     background-image: url(${logo});
 `;
-
 const NavbarButtons = styled.div`
     display: flex;
-    gap: 10px;
 `;
 
-const Navbar: React.FC = () => {
-    return (
+const Navbar: FC = () => {
+    return(
         <Nav>
-            <Link to="/"><Logo /></Link>
+            <Link to="/">
+                <Logo/>
+            </Link>
             <NavbarButtons>
                 <Link to="/quotes">
-                    <Button type="link" size="large">Цитаты)</Button>
+                    <NavLink>цитаты</NavLink>
                 </Link>
                 <Link to="/timeline">
-                    <Button type="link" size="large">Таймлайнич)</Button>
+                    <NavLink>таймлайн</NavLink>
                 </Link>
                 <Link to="/gamesaves">
-                    <Button type="link" size="large">Сейвы)</Button>
+                    <NavLink>сейвы</NavLink>
                 </Link>
             </NavbarButtons>
             <LoginButton/>
         </Nav>
-    );
+    )
 }
-export default Navbar;
+export default Navbar

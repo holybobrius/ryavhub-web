@@ -10,8 +10,9 @@ import Home from './views/Home';
 import Quotes from './views/Quotes';
 import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
-import './styles/App.css';
+import './App.css';
 import './theme.css';
+import './assets/fonts/basisgrotesquepro/style.css';
 
 const App: FC = () => {
   return (

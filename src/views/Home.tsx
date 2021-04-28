@@ -1,11 +1,11 @@
 import {FC} from "react";
-import '../styles/Home.css';
 import styled from 'styled-components'
 
 // Styles
 const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
+    height: 100%;
 `;
 
 const Half = styled.div`
