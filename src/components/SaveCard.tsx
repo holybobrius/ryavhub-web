@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {FC} from "react";
+import NavButtons from './NavButtons'
 
 const CardContainer = styled.div`
     display: flex;
@@ -76,7 +77,9 @@ interface Props {
     size: string,
     link: string,
     image: string,
-    imageAlt: string
+    imageAlt: string,
+    total: number,
+    index: number
 }
 const SaveCard: FC<Props> = (props) => {
     const onClick = (e: any) => {
@@ -85,7 +88,7 @@ const SaveCard: FC<Props> = (props) => {
         document.querySelector(str).scrollIntoView({behavior: 'smooth'});
       }
     return(
-        <CardContainer>
+        <CardContainer id={`card${props.index}`}>
             <Images>
                 <PrimaryImage src={props.image} alt={props.imageAlt}></PrimaryImage>
                 <SecondaryImages>
@@ -106,6 +109,7 @@ const SaveCard: FC<Props> = (props) => {
                     <DownloadButton>СКАЧАТЬ ({props.size})</DownloadButton>
                 </a>
             </Info>
+            
         </CardContainer>
     )
 }

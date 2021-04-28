@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'
+import NavButtons from '../components/NavButtons'
 
 const CardsContainer = styled.div`
     background-color: #191B1F;
@@ -16,7 +17,9 @@ interface GameSaveApiEntity {
     name: string,
     year: number,
     download_link: string,
-    size: string
+    size: string,
+    total: number,
+    index: number
 }
 const GameSaves: FC = () => {
     const imageLink = "https://api.ryav.tk/v1/gamesaves/img/";
@@ -27,6 +30,7 @@ const GameSaves: FC = () => {
             setSaves(fr.data.reverse());
         })();
     }, [])
+    
     return (
             <CardsContainer>
                 {saves.map(save => (
@@ -37,8 +41,11 @@ const GameSaves: FC = () => {
                         image={imageLink+save.id}
                         size={save.size}
                         link={save.download_link}
+                        total={saves.length}
+                        index={saves.indexOf(save)}
                     />
                 ))}
+                <NavButtons total={saves.length} />
             </CardsContainer>
     );
 }
