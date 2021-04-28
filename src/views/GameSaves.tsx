@@ -1,7 +1,8 @@
-import { FC, useState } from 'react'
+import {FC, useEffect, useState} from 'react'
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'
+import {read} from "fs";
 
 const CardsContainer = styled.div`
     height: 100%;
@@ -26,13 +27,12 @@ interface GameSaveApiEntity {
 const GameSaves: FC = () => {
     const imageLink = "https://api.ryav.tk/v1/gamesaves/img/";
     const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
-    axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves')
-    .then(r => {
-        setSaves(r.data.reverse());
-    })
-    .catch(e => {
-        console.log('got some shit here bro ', e)
-    })
+    useEffect(() => {
+        (async () => {
+            const fr = await axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves');
+            setSaves(fr.data);
+        })();
+    }, [])
     return (
             <CardsContainer>
                 {saves.map(save => (
