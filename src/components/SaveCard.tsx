@@ -2,16 +2,17 @@ import styled from 'styled-components'
 import {FC} from "react";
 
 const CardContainer = styled.div`
-    background-color: #191B1F;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     overflow: hidden;
     color: white;
     height: 100vh;
 `;
 const Images = styled.div`
-    margin-top: 20px;
-    margin-left: 120px;
+    align-items: center;
+    justify-content: center;
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -19,7 +20,6 @@ const Images = styled.div`
 `;
 const PrimaryImage = styled.img`
     height: 100%;
-    width: 65%;
 `;
 const SecondaryImages = styled.div`
     display: flex;
@@ -29,11 +29,11 @@ const SecondaryImages = styled.div`
     height: 100%;
 `;
 const Info = styled.div`
-    margin-left: 120px;
     margin-top: 15px;
     display: flex;
     align-items: center;
-    gap: 76.5vh;
+    justify-content: space-between;
+    width: 100%;
 `;
 const DownloadButton = styled.button`
     height: 3rem;
@@ -45,6 +45,7 @@ const DownloadButton = styled.button`
     background-color: transparent;
     color: #FFFFFF;
     cursor: pointer;
+    margin-right: 43vh;
     &:hover {
         transform: scale(1.01);
     }
@@ -101,7 +102,7 @@ const SaveCard: FC<Props> = (props) => {
                     <button onClick={onClick}>2</button>
                     <button onClick={onClick}>3</button>*/}
                 </TextInfo>
-                <a href={props.link}>
+                <a href={props.link} target="_blank" rel="noreferrer">
                     <DownloadButton>СКАЧАТЬ ({props.size})</DownloadButton>
                 </a>
             </Info>

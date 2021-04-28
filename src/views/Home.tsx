@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
+    height: 100%;
 `;
 
 const Half = styled.div`

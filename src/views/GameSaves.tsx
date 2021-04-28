@@ -1,20 +1,15 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'
 
 const CardsContainer = styled.div`
-    height: 100%;
+    background-color: #191B1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
-const SavesContainer = styled.div`
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-`
-const Heading = styled.h1`
-    margin-top: 10px;
-    font-size: 5rem;
-    color: var(--primary);
-`;
 
 interface GameSaveApiEntity {
     id: number,
@@ -26,13 +21,12 @@ interface GameSaveApiEntity {
 const GameSaves: FC = () => {
     const imageLink = "https://api.ryav.tk/v1/gamesaves/img/";
     const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
-    axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves')
-    .then(r => {
-        setSaves(r.data.reverse());
-    })
-    .catch(e => {
-        console.log('got some shit here bro ', e)
-    })
+    useEffect(() => {
+        (async () => {
+            const fr = await axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves');
+            setSaves(fr.data.reverse());
+        })();
+    }, [])
     return (
             <CardsContainer>
                 {saves.map(save => (
