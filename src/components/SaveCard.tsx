@@ -3,11 +3,11 @@ import {FC} from "react";
 
 const CardContainer = styled.div`
     background-color: #191B1F;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     color: white;
+    height: 100vh;
 `;
 const Images = styled.div`
     margin-top: 20px;
@@ -33,7 +33,7 @@ const Info = styled.div`
     margin-top: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 76.5vh;
 `;
 const DownloadButton = styled.button`
     height: 3rem;
@@ -44,6 +44,10 @@ const DownloadButton = styled.button`
     font-size: 20px;
     background-color: transparent;
     color: #FFFFFF;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.01);
+    }
 `;
 const TextInfo = styled.div`
     display: flex;
@@ -53,11 +57,13 @@ const SaveYear = styled.p`
     font-family: 'Basis Grotesque Pro', sans-serif;
     font-style: italic;
     font-size: 20px;
+    
 `;
 const SaveName = styled.h1`
     margin: 0;
     font-size: 55px;
     font-family: 'Basis Grotesque Pro', sans-serif;
+    color: white;
 `;
 const SecondaryImage = styled.img`
     height: 33%;
@@ -80,7 +86,7 @@ const SaveCard: FC<Props> = (props) => {
     return(
         <CardContainer>
             <Images>
-                <PrimaryImage src="https://i.imgur.com/UfFNAgV.png"></PrimaryImage>
+                <PrimaryImage src={props.image} alt={props.imageAlt}></PrimaryImage>
                 <SecondaryImages>
                     <SecondaryImage src='https://i.imgur.com/0biEgB0.png'/>
                     <SecondaryImage src='https://i.imgur.com/YYQN6Qd.png'/>
@@ -89,13 +95,15 @@ const SaveCard: FC<Props> = (props) => {
             </Images>
             <Info>
                 <TextInfo>
-                    <SaveName>Яма 8</SaveName>
-                    <SaveYear>2020</SaveYear>
+                    <SaveName>{props.title}</SaveName>
+                    <SaveYear>{props.description}</SaveYear>
                     {/*<button onClick={onClick}>1</button>
                     <button onClick={onClick}>2</button>
                     <button onClick={onClick}>3</button>*/}
                 </TextInfo>
-                <DownloadButton>СКАЧАТЬ (3GB)</DownloadButton>
+                <a href={props.link}>
+                    <DownloadButton>СКАЧАТЬ ({props.size})</DownloadButton>
+                </a>
             </Info>
         </CardContainer>
     )
