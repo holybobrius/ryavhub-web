@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logotext_white.svg'
+import LoginButton from './LoginButton'
 
 const Nav = styled.nav`
     height: 80px;
@@ -50,7 +51,7 @@ const Navbar: FC = () => {
                     <NavLink>сейвы</NavLink>
                 </Link>
             </NavbarButtons>
-            <NavLink>login</NavLink>
+            <LoginButton/>
         </Nav>
     )
 }
