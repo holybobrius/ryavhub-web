@@ -2,24 +2,23 @@ import styled from 'styled-components'
 import {FC} from "react";
 
 const CardContainer = styled.div`
-    height: 100vh;
+    background-color: #191B1F;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     overflow: hidden;
     color: white;
 `;
 const Images = styled.div`
+    margin-top: 20px;
+    margin-left: 120px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: row;
     gap: 10px;
     height: 72%;
 `;
 const PrimaryImage = styled.img`
     height: 100%;
+    width: 65%;
 `;
 const SecondaryImages = styled.div`
     display: flex;
@@ -29,11 +28,11 @@ const SecondaryImages = styled.div`
     height: 100%;
 `;
 const Info = styled.div`
-  width: 100%;
+    margin-left: 120px;
     margin-top: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1000px;
 `;
 const DownloadButton = styled.button`
     height: 3rem;
@@ -58,7 +57,6 @@ const SaveName = styled.h1`
     margin: 0;
     font-size: 55px;
     font-family: 'Basis Grotesque Pro', sans-serif;
-    color: white;
 `;
 const SecondaryImage = styled.img`
     height: 33%;
@@ -73,6 +71,11 @@ interface Props {
     imageAlt: string
 }
 const SaveCard: FC<Props> = (props) => {
+    const onClick = (e: any) => {
+        let str = '#card' + e.target.innerHTML;
+        // @ts-ignore
+        document.querySelector(str).scrollIntoView({behavior: 'smooth'});
+      }
     return(
         <CardContainer>
             <Images>
