@@ -5,8 +5,8 @@ import logo from '../assets/images/logotext_white.svg'
 import LoginButton from './LoginButton'
 
 const Nav = styled.nav`
-    height: 80px;
-    padding: 0 10px;
+    height: 60px;
+    padding-left: 0 10px;
     background-color: #191B1F;
     display: flex;
     flex-shrink: 0;
@@ -18,12 +18,17 @@ const NavLink = styled.button`
     width: 131px;
     height: 28px;
     font-size: 16px;
-    color: #FFFFFF;
+    color: #9e9e9e;
     border: none;
     outline: none;
     background-color: transparent;
     font-family: 'Basis Grotesque Pro', sans-serif;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: ease 250ms;
+    &:hover {
+        color: #FFF;
+    }
 `;
 const Logo = styled.div`
     width: 110.4px;

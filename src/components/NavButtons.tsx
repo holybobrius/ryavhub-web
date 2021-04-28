@@ -5,8 +5,13 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 50%;
-    right: 10%;
+    top: 42%;
+    right: 3%;
+    gap: 5px;
+`;
+
+const NavButton = styled.input`
+    width: 100px;
 `;
 
 interface Props {
@@ -22,7 +27,7 @@ const NavButtons: FC<Props> = (props) => {
     const buttons = useMemo(() => {
         let btns = [];
         for(let i = 0; i < props.total; i++) {
-            btns.push(<input type="radio" name="radio-btn" onChange={scroll(i)} id={`radio${i}`} onClick={() => scroll(i)}/>);
+            btns.push(<NavButton type="radio" name="radio-btn" onChange={scroll(i)} id={`radio${i}`} onClick={() => scroll(i)}/>);
         }
         return btns;
     }, [props.total])    

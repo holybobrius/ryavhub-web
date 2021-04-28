@@ -40,15 +40,17 @@ const DownloadButton = styled.button`
     height: 3rem;
     width: 13rem;
     border-radius: 20px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #9e9e9e;
     font-family: 'Basis Grotesque Pro';
     font-size: 20px;
     background-color: transparent;
-    color: #FFFFFF;
+    color: #9e9e9e;
     cursor: pointer;
     margin-right: 43vh;
+    transition: ease 250ms;
     &:hover {
-        transform: scale(1.01);
+        border: 1px solid #fff;
+        color: #fff;
     }
 `;
 const TextInfo = styled.div`

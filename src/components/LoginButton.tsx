@@ -9,12 +9,17 @@ const NavLink = styled.button`
     width: 131px;
     height: 28px;
     font-size: 16px;
-    color: #FFFFFF;
+    color: #9e9e9e;
     border: none;
     outline: none;
     background-color: transparent;
     font-family: 'Basis Grotesque Pro', sans-serif;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: ease 250ms;
+    &:hover {
+        color: #FFF;
+    }
 `;
 const LoginButton: FC = () => {
     const user = useSelector((s: RootState) => s.googleUser)
