@@ -89,6 +89,9 @@ const SaveCard: FC<Props> = (props) => {
         // @ts-ignore
         document.querySelector(str).scrollIntoView({behavior: 'smooth'});
       }
+    const onScroll = () => {
+        console.log('scrolling')
+    }
     return(
         <CardContainer id={`card${props.index}`}>
             <Images>

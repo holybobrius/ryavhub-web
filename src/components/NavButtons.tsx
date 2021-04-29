@@ -8,6 +8,7 @@ const Container = styled.div`
     top: 42%;
     right: 3%;
     gap: 15px;
+    transition: ease 200ms;
 `;
 
 const NavButtonInput = styled.input`
@@ -23,7 +24,12 @@ const NavButtonSpan = styled.span`
     display: block;
     background-color: #666;
     cursor: pointer;
-    &:after {
+    transition: ease 250ms;
+    &:hover {
+        background-color: #868585;
+        transform: scale(1.1);
+    }
+    &:after{
         background-color: red;
     }
 `;
