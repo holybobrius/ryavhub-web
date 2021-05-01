@@ -6,7 +6,7 @@ import LoginButton from './LoginButton'
 
 const Nav = styled.nav`
     height: 60px;
-    padding-left: 0 10px;
+    padding: 0 10px;
     background-color: #191B1F;
     display: flex;
     flex-shrink: 0;
