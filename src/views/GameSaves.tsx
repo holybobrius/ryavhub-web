@@ -18,11 +18,9 @@ interface GameSaveApiEntity {
     year: number,
     download_link: string,
     size: string,
-    total: number,
-    index: number
+    imgs: string[]
 }
 const GameSaves: FC = () => {
-    const imageLink = "https://api.ryav.tk/v1/gamesaves/img/";
     const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
     useEffect(() => {
         (async () => {
@@ -30,7 +28,7 @@ const GameSaves: FC = () => {
             setSaves(fr.data.reverse());
         })();
     }, [])
-    
+
     return (
             <CardsContainer>
                 {saves.map(save => (
@@ -38,7 +36,7 @@ const GameSaves: FC = () => {
                         title={save.name}
                         description={save.year.toString()}
                         imageAlt={save.name}
-                        image={imageLink+save.id+'_'}
+                        images={save.imgs}
                         size={save.size}
                         link={save.download_link}
                         total={saves.length}
