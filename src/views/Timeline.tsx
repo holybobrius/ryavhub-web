@@ -1,26 +1,17 @@
+import { Timeline } from "antd";
 import {FC} from "react";
 import { Chrono } from 'react-chrono'
 import styled from 'styled-components'
 import '../App.css';
 
-const TimelinePageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-family: 'Oswald', sans-serif;
-`;
 
-const TimelineContainer = styled.div`
+const TimelineContainerPage = styled.div`
     display: flex;
-    align-self: center;
     justify-content: center;
+    justify-content: center;
+    color: #cac8c8;
 `;
 
-const Header = styled.h1`
-    margin-top: 10px;
-    font-size: 5rem;
-    color: var(--primary);
-    align-self: center;
-`;
 
 const TimeLine: FC = () => {
     const items = [
@@ -78,17 +69,16 @@ const TimeLine: FC = () => {
     ]
 
     return (
-        <TimelinePageContainer>
-            <Header>Таймлайн</Header>
-            <TimelineContainer>
-                <div style={{ width: "700px", height: "650px" }}>
+            <TimelineContainerPage>
+                <div style={{ width: "900px", height: "90vh" }}>
                     <Chrono
                         items={items}
                         mode="VERTICAL_ALTERNATING"
-                        theme={{primary:"var(--primary)", secondary:"#fdfa48"}} />
+                        theme={{primary:"#4290f6", secondary: "#cac8c8" }}
+                    />
                 </div>
-            </TimelineContainer>
-        </TimelinePageContainer>
+            </TimelineContainerPage>
+
     );
 }
 export default TimeLine;
