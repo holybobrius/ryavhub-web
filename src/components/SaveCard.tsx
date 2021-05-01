@@ -60,7 +60,9 @@ const TextInfo = styled.div`
 const SaveYear = styled.p`
     font-family: 'Basis Grotesque Pro', sans-serif;
     font-style: italic;
+    font-weight: 300px;
     font-size: 20px;
+    color: #e0dfdf
     
 `;
 const SaveName = styled.h1`
@@ -95,11 +97,11 @@ const SaveCard: FC<Props> = (props) => {
     return(
         <CardContainer id={`card${props.index}`}>
             <Images>
-                <PrimaryImage src={props.image} alt={props.imageAlt}></PrimaryImage>
+                <PrimaryImage src={props.image+'1'} alt={props.imageAlt}></PrimaryImage>
                 <SecondaryImages>
-                    <SecondaryImage src='https://i.imgur.com/0biEgB0.png'/>
-                    <SecondaryImage src='https://i.imgur.com/YYQN6Qd.png'/>
-                    <SecondaryImage src='https://i.imgur.com/ClnfeUO.png'/>
+                    <SecondaryImage src={props.image+'2'}/>
+                    <SecondaryImage src={props.image+'3'}/>
+                    <SecondaryImage src={props.image+'4'}/>
                 </SecondaryImages>
             </Images>
             <Info>

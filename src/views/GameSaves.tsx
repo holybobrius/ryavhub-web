@@ -38,7 +38,7 @@ const GameSaves: FC = () => {
                         title={save.name}
                         description={save.year.toString()}
                         imageAlt={save.name}
-                        image={imageLink+save.id}
+                        image={imageLink+save.id+'_'}
                         size={save.size}
                         link={save.download_link}
                         total={saves.length}
