@@ -35,3 +35,7 @@ main {
 .css-13k9u7t-TimelineItemContentWrapper {
     min-height: 90px !important;
 }
+
+.css-mb4vrd-TimelineContentDetailsWrapper {
+    margin: 0 !important;
+}
