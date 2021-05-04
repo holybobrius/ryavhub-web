@@ -1,8 +1,9 @@
-import { Timeline } from "antd";
-import {FC} from "react";
+import { FC, useState, useEffect, useMemo } from "react";
 import { Chrono } from 'react-chrono'
 import styled from 'styled-components'
 import '../App.css';
+import axios from 'axios';
+import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 
 
 const TimelineContainerPage = styled.div`
@@ -13,68 +14,55 @@ const TimelineContainerPage = styled.div`
 `;
 
 
+interface Participant {
+    id: number;
+    name: string;
+    email: string;
+ }
+ interface CreatedBy {
+    id: number;
+    name: string;
+    email: string;
+ }
+ interface AxiosResponseObj {
+    id: number;
+    title: string;
+    location: string;
+    date: string;
+    participants: Participant[];
+    created_by: CreatedBy;
+ }
+
+
 const TimeLine: FC = () => {
-    const items = [
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-            cardSubtitle: "Нижний Новгород"
+    const [itemsState, setItemsState] = useState<TimelineItemModel[]>();
+    useEffect(() => {
+        (async () => {
+            const r = await axios.get<AxiosResponseObj[]>('https://api.ryav.tk/v1/timeline');
+            let itemsArr: TimelineItemModel[] = r.data.map(i => {
+                let participants = i.participants.map(p => p.name).join(', ')
+                return {
+                    title: i.date,
+                    cardTitle: i.title,
+                    cardSubtitle: i.location,
+                    cardDetailedText: participants
+                }
+            })
+            console.log(itemsArr)
+            setItemsState(itemsArr)
+        })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-        {
-            title: "01.09.2009",
-            cardTitle: "Ткач и Шорен идут в школу",
-
-        },
-    ]
 
     return (
             <TimelineContainerPage>
                 <div style={{ width: "900px", height: "90vh" }}>
                     <Chrono
-                        items={items}
+                        items={itemsState}
                         mode="VERTICAL_ALTERNATING"
                         theme={{primary:"#4290f6", secondary: "#cac8c8" }}
+                        allowDynamicUpdate={true}
                     />
                 </div>
             </TimelineContainerPage>
