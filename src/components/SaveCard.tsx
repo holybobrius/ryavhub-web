@@ -9,6 +9,7 @@ const CardContainer = styled.div`
     overflow: hidden;
     color: white;
     height: 100vh;
+    scroll-snap-align: start;
 `;
 const Images = styled.div`
     align-items: center;
@@ -61,7 +62,7 @@ const SaveYear = styled.p`
     font-style: italic;
     font-weight: 300px;
     font-size: 20px;
-    color: #e0dfdf
+    color: #e0dfdf;
     
 `;
 const SaveName = styled.h1`
@@ -84,7 +85,7 @@ interface Props {
 
     total: number,
     index: number
-}
+};
 const SaveCard: FC<Props> = (props) => {
     return(
         <CardContainer id={`card${props.index}`}>
