@@ -63,7 +63,7 @@ const Home: FC = () => {
                     </BioCardTitle>
                     <BioCardText>
                         <p>
-                            Место для истории.
+                            Место для истории
                         </p>
                     </BioCardText>
                 </BioCard>
