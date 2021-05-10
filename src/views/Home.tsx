@@ -49,6 +49,23 @@ const BioCardText = styled.div`
     font-size: 1.5rem;
 `;
 
+const GenerateButton = styled.button`
+    background-color: transparent;
+    font-size: 1rem;
+    outline: none;
+    border-style: none;
+    border: 1px solid #aaa;
+    color: #aaa;
+    border-radius: 15px;
+    padding: 7px;
+    cursor: pointer;
+    transition: 200ms ease;
+    &:hover {
+        background-color: #aaa;
+        color: #191B1F;
+    }
+`;
+
 const Home: FC = () => {
     return (
         <HomeContainer>
@@ -65,6 +82,7 @@ const Home: FC = () => {
                         <p>
                             Место для истории
                         </p>
+                        <GenerateButton>Сгенерировать цитату</GenerateButton>
                     </BioCardText>
                 </BioCard>
             </Half>
