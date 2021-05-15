@@ -44,13 +44,19 @@ interface QuotesUser {
  `;
 const Quotes: FC = () => {
     const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const modal = document.querySelector('#modal');
+    const addQuote = document.querySelector('#add-quote');
+    const changeVisibility = () => {
+        setIsVisible(!isVisible);
+    }
+    console.log(modal);
     useEffect(() => {
             (async () => {
                 const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
                 setQuotes(r.data);
             })();
     }, []);
-    console.log(quotes);
     return (
         <QuotesPage>
             <QuotesContainer>
@@ -62,8 +68,8 @@ const Quotes: FC = () => {
                     />
                 ))}
             </QuotesContainer>
-            <AddButton>+</AddButton>
-        <NewQuoteModal />
+            <AddButton id="add-quote" onClick={changeVisibility}>+</AddButton>
+            <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility}/>
         </QuotesPage>
     )
 }

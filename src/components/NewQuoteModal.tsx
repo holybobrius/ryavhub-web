@@ -89,7 +89,12 @@ const Modal = styled.div`
         font-weight: bold;
     `;
 
-const NewQuoteModal: FC = () => {
+    interface Props {
+        visible: boolean;
+        changeVisibility: () => void;
+    }
+
+const NewQuoteModal: FC<Props> = (props) => {
     const [users, setUsers] = useState<any[]>([]);
     useEffect(() => {
             (async () => {
@@ -98,9 +103,10 @@ const NewQuoteModal: FC = () => {
             })();
     }, []);
     return(
-        <Modal>
+        props.visible ?
+            <Modal id="modal" onClick={props.changeVisibility}>
                 <ModalContent>
-                    <Close>&times;</Close>
+                    <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form>
                         <Label htmlFor="quote">Цитата</Label>
                         <TextArea name="quote"></TextArea>
@@ -115,7 +121,7 @@ const NewQuoteModal: FC = () => {
                         <Submit type="submit"></Submit>
                     </Form>
                 </ModalContent>
-            </Modal>
+            </Modal> : null
     )
 }
 
