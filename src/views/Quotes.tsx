@@ -31,16 +31,26 @@ interface QuotesUser {
  }
 
  const AddButton = styled.button`
+    width: 80px; height: 80px;
     position: absolute;
     top: 90vh;
     right: 5vw;
+    border-radius: 100%;
     font-size: 5rem;
-    border-radius: 100px;
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: black;
+    }
+    &:before {
+      width: 5px;
+      margin: 10px auto;
+    }
+    &:after {
+      margin: auto 10px;
+      height: 5px;
+    }
  `;
 const Quotes: FC = () => {
     const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
@@ -61,14 +71,14 @@ const Quotes: FC = () => {
         <QuotesPage>
             <QuotesContainer>
                 {quotes.map(quote => (
-                    <Quote 
+                    <Quote
                         quote={quote.quote}
                         date={quote.date}
                         author={quote.quote_by.name}
                     />
                 ))}
             </QuotesContainer>
-            <AddButton id="add-quote" onClick={changeVisibility}>+</AddButton>
+            <AddButton id="add-quote" onClick={changeVisibility}/>
             <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility}/>
         </QuotesPage>
     )
