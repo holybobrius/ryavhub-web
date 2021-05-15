@@ -104,7 +104,7 @@ const NewQuoteModal: FC<Props> = (props) => {
     }, []);
     return(
         props.visible ?
-            <Modal id="modal" onClick={props.changeVisibility}>
+            <Modal id="modal">
                 <ModalContent>
                     <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form>
