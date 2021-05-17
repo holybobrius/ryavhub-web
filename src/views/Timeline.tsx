@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import '../App.css';
 import axios from 'axios';
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
+import AddButton from '../components/AddButton'
+import NewTimelineItemModal from '../components/NewTimelineItemModal'
 
 
 const TimelineContainerPage = styled.div`
@@ -36,6 +38,10 @@ interface Participant {
 
 const TimeLine: FC = () => {
     const [itemsState, setItemsState] = useState<TimelineItemModel[]>();
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const changeVisibility = () => {
+        setIsVisible(!isVisible);
+    }
     useEffect(() => {
         (async () => {
             const r = await axios.get<AxiosResponseObj[]>('https://api.ryav.tk/v1/timeline');
@@ -53,8 +59,6 @@ const TimeLine: FC = () => {
         })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-
     return (
             <TimelineContainerPage>
                 <div style={{ width: "900px", height: "90vh" }}>
@@ -65,6 +69,8 @@ const TimeLine: FC = () => {
                         allowDynamicUpdate={true}
                     />
                 </div>
+                <AddButton handleClick={changeVisibility}/>
+                <NewTimelineItemModal visible={isVisible} changeVisibility={changeVisibility} />
             </TimelineContainerPage>
 
     );
