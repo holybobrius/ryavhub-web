@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import { useForm } from 'react-hook-form';
+import store from '../store/index';
 
 const Modal = styled.div`
     display: block; /* Hidden by default */
@@ -109,6 +110,8 @@ const NewQuoteModal: FC<Props> = (props) => {
                 setUsers(r.data);
             })();
     }, []);
+    const reduxStore = store.getState();
+    console.log(reduxStore);
 
     const { register, handleSubmit } = useForm<FormValues>();
     return(
@@ -117,9 +120,9 @@ const NewQuoteModal: FC<Props> = (props) => {
                 <ModalContent>
                     <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form onSubmit={handleSubmit(data => {
-                            axios.post('url', {
+                            axios.post('https://api.ryav.tk/v1/quotes?token=' + reduxStore.googleUser?.tokenId, {
                                 quote: data.quote,
-                                author: data.author,
+                                quote_by: data.author,
                                 date: data.date
                             })
                             console.log(data);
@@ -130,7 +133,7 @@ const NewQuoteModal: FC<Props> = (props) => {
                         <Label htmlFor="author">Автор</Label>
                         <Select {...register("author", { required: true })}>
                             {users.map(user => (
-                                <option>{user.name}</option>
+                                <option value={user.id}>{user.name}</option>
                             ))}
                         </Select>
                         <Label htmlFor="date">Дата</Label>
