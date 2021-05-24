@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import { useForm } from 'react-hook-form';
+import store from '../store/index'
 
 const Modal = styled.div`
     display: block; /* Hidden by default */
@@ -37,7 +38,6 @@ const TextArea = styled.textarea`
     background-color: #2e3136;
     border-style: none;
     border-radius: 10px;
-    height: 15vh;
     font-size: 1rem;
     width: 80%;
 `;
@@ -50,6 +50,7 @@ const Select = styled.select`
     width: 30%;
     height: 20vh;
     cursor: pointer;
+    text-align: center;
 `;
 
 const Date = styled.input`
@@ -60,6 +61,7 @@ const Date = styled.input`
     width: 30%;
     padding: 3px;
     cursor: pointer;
+    text-align: center;
 `;
 
 const Submit = styled.input`
@@ -98,6 +100,16 @@ const Label = styled.label`
     font-weight: bold;
 `;
 
+const Input = styled.input`
+    background-color: #2e3136;
+    border-style: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 30%;
+    text-align: center;
+    padding: 3px;
+`;
+
 interface Props {
     visible: boolean;
     changeVisibility: () => void;
@@ -105,12 +117,14 @@ interface Props {
 
 type FormValues = {
     main: string,
-    participants: string,
-    date: string
+    participants: number[],
+    date: string,
+    location: string
 }
 
 
 const NewTimelineItemModal: FC<Props> = (props) => {
+    const reduxStore = store.getState();
     const [users, setUsers] = useState<any[]>([]);
     useEffect(() => {
             (async () => {
@@ -119,7 +133,7 @@ const NewTimelineItemModal: FC<Props> = (props) => {
             })();
     }, []);
     const usersArr = users.map(user => (
-        <option>{user.name}</option>
+        <option value={user.id}>{user.name}</option>
     ))
     const { register, handleSubmit } = useForm<FormValues>();
     return(
@@ -128,9 +142,10 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                 <ModalContent>
                     <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form onSubmit={handleSubmit(data => {
-                            axios.post('url', {
-                                main: data.main,
-                                author: data.participants,
+                            axios.post('https://api.ryav.tk/v1/timeline'+reduxStore.googleUser?.tokenId, {
+                                title: data.main,
+                                participants: data.participants.map(Number),
+                                location: data.location,
                                 date: data.date
                             })
                             console.log(data);
@@ -138,6 +153,8 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                     >
                         <Label htmlFor="main">Событие</Label>
                         <TextArea {...register("main", { required: true })}></TextArea>
+                        <Label htmlFor="location">Место</Label>
+                        <Input {...register('location')}></Input>
                         <Label htmlFor="date">Дата</Label>
                         <Date {...register("date", { required: true })} type="date"></Date>
                         <Label htmlFor="author">Участники</Label>

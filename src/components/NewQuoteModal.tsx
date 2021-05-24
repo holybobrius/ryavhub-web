@@ -91,6 +91,8 @@ const Label = styled.label`
     font-weight: bold;
 `;
 
+
+
 interface Props {
     visible: boolean;
     changeVisibility: () => void;
@@ -122,7 +124,7 @@ const NewQuoteModal: FC<Props> = (props) => {
                     <Form onSubmit={handleSubmit(data => {
                             axios.post('https://api.ryav.tk/v1/quotes?token=' + reduxStore.googleUser?.tokenId, {
                                 quote: data.quote,
-                                quote_by: data.author,
+                                quote_by: Number(data.author),
                                 date: data.date
                             })
                             console.log(data);
