@@ -41,6 +41,7 @@ const TextArea = styled.textarea`
     height: 15vh;
     font-size: 1rem;
     width: 80%;
+    padding: 7px;
 `;
 
 const Select = styled.select`
@@ -48,7 +49,10 @@ const Select = styled.select`
     border-style: none;
     border-radius: 10px;
     font-size: 1rem;
+    height: 4vh;
     width: 20%;
+    cursor: pointer;
+    text-align-last: center;
 `;
 
 const Date = styled.input`
@@ -56,8 +60,11 @@ const Date = styled.input`
     border-style: none;
     border-radius: 10px;
     font-size: 1rem;
-    width: 25%;
+    width: 8vw;
+    height: 4vh;
     padding: 3px;
+    text-align: center;
+    cursor: pointer;
 `;
 
 const Submit = styled.input`
@@ -70,7 +77,7 @@ const Submit = styled.input`
     cursor: pointer;
     transition: 200ms ease;
     &:hover {
-        transform: scale(1.03);
+        color: white;
     }
 `;
 
@@ -91,7 +98,9 @@ const Label = styled.label`
     font-weight: bold;
 `;
 
-
+const Option = styled.option`
+    text-align: center;
+`;
 
 interface Props {
     visible: boolean;
@@ -129,7 +138,7 @@ const NewQuoteModal: FC<Props> = (props) => {
                                 quote_by: Number(data.author),
                                 date: data.date
                             })
-                            console.log(data);
+                            props.changeVisibility();
                         })}
                     >
                         <Label htmlFor="quote">Цитата</Label>
@@ -137,7 +146,7 @@ const NewQuoteModal: FC<Props> = (props) => {
                         <Label htmlFor="author">Автор</Label>
                         <Select {...register("author", { required: true })}>
                             {users.map(user => (
-                                <option value={user.id}>{user.name}</option>
+                                <Option value={user.id}>{user.name}</Option>
                             ))}
                         </Select>
                         <Label htmlFor="date">Дата</Label>

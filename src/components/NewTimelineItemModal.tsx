@@ -40,6 +40,7 @@ const TextArea = styled.textarea`
     border-radius: 10px;
     font-size: 1rem;
     width: 80%;
+    padding: 7px;
 `;
 
 const Select = styled.select`
@@ -50,7 +51,7 @@ const Select = styled.select`
     width: 30%;
     height: 20vh;
     cursor: pointer;
-    text-align: center;
+    text-align-last: center;
 `;
 
 const Date = styled.input`
@@ -148,7 +149,7 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                                 location: data.location,
                                 date: data.date
                             })
-                            console.log(data);
+                            props.changeVisibility();
                         })}
                     >
                         <Label htmlFor="main">Событие</Label>
