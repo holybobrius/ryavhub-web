@@ -2,8 +2,6 @@ import { FC, useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import { useForm } from 'react-hook-form';
-//@ts-ignore
-import { Multiselect } from 'multiselect-react-dropdown';
 
 const Modal = styled.div`
     display: block; /* Hidden by default */
@@ -49,7 +47,9 @@ const Select = styled.select`
     border-style: none;
     border-radius: 10px;
     font-size: 1rem;
-    width: 20%;
+    width: 30%;
+    height: 20vh;
+    cursor: pointer;
 `;
 
 const Date = styled.input`
@@ -57,8 +57,9 @@ const Date = styled.input`
     border-style: none;
     border-radius: 10px;
     font-size: 1rem;
-    width: 25%;
+    width: 30%;
     padding: 3px;
+    cursor: pointer;
 `;
 
 const Submit = styled.input`
@@ -71,34 +72,30 @@ const Submit = styled.input`
     cursor: pointer;
     transition: 200ms ease;
     &:hover {
-        transform: scale(1.03);
+        color: white;
     }
 `;
 
+const P = styled.p`
+    font-size: 14px;
+    margin: 0;
+`;
 const Close = styled.span`
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    transition: 200ms ease;
     &:hover, :focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
     }
 `;
 
 const Label = styled.label`
     font-size: 1rem;
     font-weight: bold;
-`;
-
-const Input = styled.input`
-    background-color: #2e3136;
-    border-style: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    width: 50%;
-    padding: 3px;
 `;
 
 interface Props {
@@ -121,15 +118,9 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                 setUsers(r.data);
             })();
     }, []);
-    const [options, setOptions] = useState<any[]>([]);
-    const optionsArr: any = useMemo(() => {
-        users.map(user => ({
-            name: user.name
-        }))
-    }, [users])
-    console.log(optionsArr)
-    setOptions(optionsArr)
-
+    const usersArr = users.map(user => (
+        <option>{user.name}</option>
+    ))
     const { register, handleSubmit } = useForm<FormValues>();
     return(
         props.visible ?
@@ -150,10 +141,10 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                         <Label htmlFor="date">Дата</Label>
                         <Date {...register("date", { required: true })} type="date"></Date>
                         <Label htmlFor="author">Участники</Label>
-                        <Multiselect 
-                            options={options}
-                            displayValue="name"
-                        />
+                        <Select {...register("participants", { required: true })} multiple>
+                            {usersArr}
+                        </Select>
+                        <P>Выбрать нескольких - Ctrl</P>
                         <Submit type="submit"></Submit>
                     </Form>
                 </ModalContent>
