@@ -111,6 +111,7 @@ const Input = styled.input`
 interface Props {
     visible: boolean;
     changeVisibility: () => void;
+    fetchTimeline: () => Promise<void>;
 }
 
 type FormValues = {
@@ -146,7 +147,9 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                                 location: data.location,
                                 date: data.date
                             })
-                            props.changeVisibility();
+                            .then(() => {
+                                props.fetchTimeline().then(() => props.changeVisibility())
+                            })
                         })}
                     >
                         <Label htmlFor="main">Событие</Label>

@@ -42,9 +42,8 @@ const TimeLine: FC = () => {
     const changeVisibility = () => {
         setIsVisible(!isVisible);
     }
-    useEffect(() => {
-        (async () => {
-            const r = await axios.get<AxiosResponseObj[]>('https://api.ryav.tk/v1/timeline');
+    const fetchTimeline = async () => {
+        const r = await axios.get<AxiosResponseObj[]>('https://api.ryav.tk/v1/timeline');
             let itemsArr: TimelineItemModel[] = r.data.map(i => {
                 let participants = i.participants.map(p => p.name).join(', ')
                 return {
@@ -54,10 +53,10 @@ const TimeLine: FC = () => {
                     cardDetailedText: participants
                 }
             })
-            console.log(itemsArr)
             setItemsState(itemsArr)
-        })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+    useEffect(() => {
+        fetchTimeline();
     }, [])
     return (
             <TimelineContainerPage>
@@ -70,7 +69,7 @@ const TimeLine: FC = () => {
                     />
                 </div>
                 <AddButton handleClick={changeVisibility}/>
-                <NewTimelineItemModal visible={isVisible} changeVisibility={changeVisibility} />
+                <NewTimelineItemModal visible={isVisible} changeVisibility={changeVisibility} fetchTimeline={fetchTimeline}/>
             </TimelineContainerPage>
 
     );
