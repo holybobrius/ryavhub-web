@@ -1,10 +1,9 @@
-import {FC, useState, useEffect} from 'react'
+import { FC, useState, useEffect } from 'react'
 import Quote from '../components/Quote'
 import styled from 'styled-components'
 import axios from 'axios'
 import NewQuoteModal from '../components/NewQuoteModal';
 import AddButton from '../components/AddButton'
-import {useStore} from "react-redux";
 
 const QuotesPage = styled.div`
     display: flex;
@@ -33,7 +32,6 @@ interface QuotesUser {
  }
 
 const Quotes: FC = () => {
-    const store = useStore().getState();
     const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const changeVisibility = () => {
@@ -55,7 +53,7 @@ const Quotes: FC = () => {
                     />
                 ))}
             </QuotesContainer>
-            <AddButton visible={!!store.googleUser} handleClick={changeVisibility}/>
+            <AddButton handleClick={changeVisibility}/>
             <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility} fetchQuotes={fetchQuotes}/>
         </QuotesPage>
     )
