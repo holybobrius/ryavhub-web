@@ -1,6 +1,6 @@
-import {FC} from "react";
+import {FC, useState, useEffect } from "react";
 import styled from 'styled-components'
-
+import axios from 'axios'
 // Styles
 const HomeContainer = styled.div`
     display: flex;
@@ -66,7 +66,33 @@ const GenerateButton = styled.button`
     }
 `;
 
+interface QuotesUser {
+    id: number;
+    email: string;
+    name: string;
+ }
+
+ interface QuotesApiResponseEntity {
+    id: number;
+    quote: string;
+    quote_by: QuotesUser;
+    created_by: QuotesUser;
+    date: string;
+ }
+
 const Home: FC = () => {
+    const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
+    const [randomQuote, setRandomQuote] = useState<string>('Место для истории');
+    useEffect(() => {
+        (async () => {
+            const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
+            setQuotes(r.data);
+        })();
+}, []);
+    const handleClick = () => {
+        setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
+        console.log(randomQuote);
+    }
     return (
         <HomeContainer>
             <Half>
@@ -79,10 +105,10 @@ const Home: FC = () => {
                         РявХаб
                     </BioCardTitle>
                     <BioCardText>
-                        <p>
-                            Место для истории
-                        </p>
-                        <GenerateButton>Сгенерировать цитату</GenerateButton>
+                        {<p>
+                            {randomQuote}
+                        </p>}
+                        <GenerateButton onClick={handleClick}>Сгенерировать цитату</GenerateButton>
                     </BioCardText>
                 </BioCard>
             </Half>
