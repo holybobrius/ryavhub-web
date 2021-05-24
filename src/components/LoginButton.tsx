@@ -31,6 +31,7 @@ const LoginButton: FC = () => {
             alert('offline)')
             return;
         }
+        console.log(data);
         googleLogin(data as GoogleLoginResponse)
             .then(r => dispatch(r))
             .catch(e => {

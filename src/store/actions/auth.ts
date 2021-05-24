@@ -9,7 +9,7 @@ export const googleLogin = async (content: GoogleLoginResponse) => {
         });
         return {
             type: GOOGLE_LOGIN,
-            payload: { content }
+            payload: content 
         };
     } catch(err) {
         throw err;

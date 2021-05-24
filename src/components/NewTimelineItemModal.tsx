@@ -142,7 +142,7 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                 <ModalContent>
                     <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form onSubmit={handleSubmit(data => {
-                            axios.post('https://api.ryav.tk/v1/timeline'+reduxStore.googleUser?.tokenId, {
+                            axios.post('https://api.ryav.tk/v1/timeline?token='+reduxStore.googleUser?.tokenId, {
                                 title: data.main,
                                 participants: data.participants.map(Number),
                                 location: data.location,

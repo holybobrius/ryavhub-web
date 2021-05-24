@@ -122,6 +122,8 @@ const NewQuoteModal: FC<Props> = (props) => {
                 <ModalContent>
                     <Close onClick={props.changeVisibility}>&times;</Close>
                     <Form onSubmit={handleSubmit(data => {
+                            console.log(reduxStore.googleUser?.tokenId);
+                            //@ts-ignore
                             axios.post('https://api.ryav.tk/v1/quotes?token=' + reduxStore.googleUser?.tokenId, {
                                 quote: data.quote,
                                 quote_by: Number(data.author),
