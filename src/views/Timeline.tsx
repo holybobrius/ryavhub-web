@@ -6,6 +6,7 @@ import axios from 'axios';
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 import AddButton from '../components/AddButton'
 import NewTimelineItemModal from '../components/NewTimelineItemModal'
+import {useStore} from "react-redux";
 
 
 const TimelineContainerPage = styled.div`
@@ -37,6 +38,7 @@ interface Participant {
 
 
 const TimeLine: FC = () => {
+    const store = useStore().getState();
     const [itemsState, setItemsState] = useState<TimelineItemModel[]>();
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const changeVisibility = () => {
@@ -68,7 +70,7 @@ const TimeLine: FC = () => {
                         allowDynamicUpdate={true}
                     />
                 </div>
-                <AddButton handleClick={changeVisibility}/>
+                <AddButton visible={!!store.googleUser} handleClick={changeVisibility}/>
                 <NewTimelineItemModal visible={isVisible} changeVisibility={changeVisibility} fetchTimeline={fetchTimeline}/>
             </TimelineContainerPage>
 

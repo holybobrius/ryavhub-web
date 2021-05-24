@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FC } from 'react';
-import store from '../store/index'
+
 
 
 const NewButton = styled.button`
@@ -36,16 +36,14 @@ const NewButton = styled.button`
 `;
 
 interface Props {
+    visible: boolean,
     handleClick: () => void
 }
 
 const AddButton: FC<Props> = (props) => {
-    const reduxStore = store.getState();
     return(
-        (reduxStore.googleUser !== null) ?
-        <NewButton onClick={props.handleClick}/>
-        : null
-    )
+        props.visible ? (<NewButton onClick={props.handleClick}/>) : null
+    );
 }
 
 export default AddButton
