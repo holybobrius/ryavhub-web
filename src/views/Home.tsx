@@ -37,6 +37,8 @@ const BioCard = styled.div`
     font-family: 'Basis Grotesque Pro';
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const BioCardTitle = styled.div`
