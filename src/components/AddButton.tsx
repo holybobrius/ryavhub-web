@@ -5,15 +5,21 @@ import { FC } from 'react';
 const NewButton = styled.button`
     width: 80px; height: 80px;
     position: absolute;
+    background-color: transparent;
+    outline: none;
+    border-style: solid;
+    border: 1 px solid #aaa;
     top: 90vh;
     right: 5vw;
     border-radius: 100%;
     font-size: 5rem;
+    transition: 200ms ease;
+    cursor: pointer;
     &:before, &:after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: black;
+        background: #aaa;
     }
     &:before {
         width: 5px;
@@ -22,6 +28,9 @@ const NewButton = styled.button`
     &:after {
         margin: auto 10px;
         height: 5px;
+    }
+    &:hover {
+        transform: scale(1.05);
     }
 `;
 
