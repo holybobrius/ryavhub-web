@@ -8,7 +8,7 @@ const NewButton = styled.button`
     background-color: transparent;
     outline: none;
     border-style: solid;
-    border: 1 px solid #aaa;
+    border: 5px solid #aaa;
     top: 90vh;
     right: 5vw;
     border-radius: 100%;
