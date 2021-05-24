@@ -102,6 +102,7 @@ const Option = styled.option`
 interface Props {
     visible: boolean;
     changeVisibility: () => void;
+    fetchQuotes: () => Promise<void>;
 }
 
 type FormValues = {
@@ -135,11 +136,13 @@ const NewQuoteModal: FC<Props> = (props) => {
                                 quote_by: Number(data.author),
                                 date: data.date
                             })
-                            props.changeVisibility();
+                            .then(() => {
+                                props.fetchQuotes().then(() => props.changeVisibility());
+                            })
                         })}
                     >
                         <Label htmlFor="quote">Цитата</Label>
-                        <TextArea {...register("quote", { required: true })}></TextArea>
+                        <TextArea {...register("quote", { required: true })}/>
                         <Label htmlFor="author">Автор</Label>
                         <Select {...register("author", { required: true })}>
                             {users.map(user => (
@@ -147,8 +150,8 @@ const NewQuoteModal: FC<Props> = (props) => {
                             ))}
                         </Select>
                         <Label htmlFor="date">Дата</Label>
-                        <Date {...register("date", { required: true })} type="date"></Date>
-                        <Submit type="submit"></Submit>
+                        <Date {...register("date", { required: true })} type="date"/>
+                        <Submit type="submit"/>
                     </Form>
                 </ModalContent>
             </Modal> : null

@@ -37,12 +37,11 @@ const Quotes: FC = () => {
     const changeVisibility = () => {
         setIsVisible(!isVisible);
     }
-    useEffect(() => {
-            (async () => {
-                const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
-                setQuotes(r.data);
-            })();
-    }, []);
+    const fetchQuotes = async () => {
+        const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
+        setQuotes(r.data);
+    }
+    useEffect(() => { fetchQuotes() }, []);
     return (
         <QuotesPage>
             <QuotesContainer>
@@ -55,7 +54,7 @@ const Quotes: FC = () => {
                 ))}
             </QuotesContainer>
             <AddButton handleClick={changeVisibility}/>
-            <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility}/>
+            <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility} fetchQuotes={fetchQuotes}/>
         </QuotesPage>
     )
 }
