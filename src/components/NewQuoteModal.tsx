@@ -5,21 +5,18 @@ import { useForm } from 'react-hook-form';
 import store from '../store/index';
 
 const Modal = styled.div`
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    display: flex; 
+    align-items: center; justify-content: center;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    z-index: 999;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.7);
 `;
 
 const ModalContent = styled.div`
     background-color: #191B1F;
-    margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border-radius: 15px;
     width: 30%; 
