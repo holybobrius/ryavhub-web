@@ -39,7 +39,7 @@ const Quotes: FC = () => {
     }
     const fetchQuotes = async () => {
         const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
-        setQuotes(r.data);
+        setQuotes(r.data.reverse());
     }
     useEffect(() => { fetchQuotes() }, []);
     return (

@@ -44,7 +44,7 @@ const TimeLine: FC = () => {
     }
     const fetchTimeline = async () => {
         const r = await axios.get<AxiosResponseObj[]>('https://api.ryav.tk/v1/timeline');
-            let itemsArr: TimelineItemModel[] = r.data.map(i => {
+            let itemsArr: TimelineItemModel[] = r.data.reverse().map(i => {
                 let participants = i.participants.map(p => p.name).join(', ')
                 return {
                     title: i.date,
