@@ -6,6 +6,9 @@ import axios from 'axios';
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 import AddButton from '../components/AddButton'
 import NewTimelineItemModal from '../components/NewTimelineItemModal'
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import LockedHome from "./LockedHome";
 
 
 const TimelineContainerPage = styled.div`
@@ -39,6 +42,7 @@ interface Participant {
 const TimeLine: FC = () => {
     const [itemsState, setItemsState] = useState<TimelineItemModel[]>();
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const reduxStore = useSelector<RootState>(state => state.googleUser)
     const changeVisibility = () => {
         setIsVisible(!isVisible);
     }
@@ -58,6 +62,11 @@ const TimeLine: FC = () => {
     useEffect(() => {
         fetchTimeline();
     }, [])
+    if(reduxStore === null) {
+        return(
+            <LockedHome />
+        )
+    }
     return (
             <TimelineContainerPage>
                 <div style={{ width: "900px", height: "90vh" }}>

@@ -3,6 +3,9 @@ import SaveCard from "../components/SaveCard"
 import styled from 'styled-components'
 import axios from 'axios'
 import NavButtons from '../components/NavButtons'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
+import LockedHome from './LockedHome'
 
 const CardsContainer = styled.div`
     background-color: #191B1F;
@@ -22,12 +25,19 @@ interface GameSaveApiEntity {
 }
 const GameSaves: FC = () => {
     const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
+    const reduxStore = useSelector<RootState>(state => state.googleUser)
     useEffect(() => {
         (async () => {
             const fr = await axios.get<GameSaveApiEntity[]>('https://api.ryav.tk/v1/gamesaves');
             setSaves(fr.data.reverse());
         })();
     }, [])
+
+    if(reduxStore === null) {
+        return(
+            <LockedHome />
+        )
+    }
 
     return (
             <CardsContainer>

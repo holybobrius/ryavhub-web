@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logotext_white.svg'
 import LoginButton from './LoginButton'
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 const Nav = styled.nav`
     height: 60px;
@@ -40,6 +42,12 @@ const NavbarButtons = styled.div`
 `;
 
 const Navbar: FC = () => {
+    const reduxStore = useSelector<RootState>(state => state.googleUser)
+    if(reduxStore === null) {
+        return(
+            <></>
+        )
+    }
     return(
         <Nav>
             <Link to="/">

@@ -1,9 +1,7 @@
 import {FC, useState, useEffect } from "react";
 import styled from 'styled-components'
 import axios from 'axios'
-import store, { RootState } from "../store";
-import LockedHome from "./LockedHome";
-import { useSelector } from "react-redux";
+import LoginButton from "../components/LoginButton";
 // Styles
 const HomeContainer = styled.div`
     display: flex;
@@ -20,7 +18,6 @@ const Half = styled.div`
 `;
 
 const MemeCard = styled.img`
-    width: 350px;
     height: 450px;
     /* meme possibility */
 `;
@@ -61,48 +58,11 @@ const GenerateButton = styled.button`
     }
 `;
 
-interface QuotesUser {
-    id: number;
-    email: string;
-    name: string;
- }
-
- interface QuotesApiResponseEntity {
-    id: number;
-    quote: string;
-    quote_by: QuotesUser;
-    created_by: QuotesUser;
-    date: string;
- }
-
-const Home: FC = () => {
-    const reduxStore = useSelector<RootState>(state => state.googleUser)
-    const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
-    const [randomQuote, setRandomQuote] = useState<string>('Место для истории');
-    useEffect(() => {
-        (async () => {
-            const r = await axios.get<QuotesApiResponseEntity[]>('https://api.ryav.tk/v1/quotes');
-            setQuotes(r.data);
-        })();
-}, []);
-    const handleClick = () => {
-        setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
-        console.log(randomQuote);
-    }
-
-    console.log(reduxStore)
-    
-    if(reduxStore === null) {
-        return(
-            <LockedHome />
-        )
-    }
-        
-
+const LockedHome: FC = () => {
     return (
         <HomeContainer>
             <Half>
-                <MemeCard src="https://i.imgur.com/aXyJDID.png">
+                <MemeCard src="https://i.imgur.com/HQZtu5A.png">
                 </MemeCard>
             </Half>
             <Half>
@@ -112,13 +72,15 @@ const Home: FC = () => {
                     </BioCardTitle>
                     <BioCardText>
                         {<p>
-                            {randomQuote}
+                            Дружище, дальше придется залогиниться.
                         </p>}
-                        <GenerateButton onClick={handleClick}>Сгенерировать цитату</GenerateButton>
+                        <div>
+                            <LoginButton />
+                        </div>
                     </BioCardText>
                 </BioCard>
             </Half>
         </HomeContainer>
     );
 }
-export default Home
+export default LockedHome

@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import axios from 'axios'
 import NewQuoteModal from '../components/NewQuoteModal';
 import AddButton from '../components/AddButton'
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import LockedHome from './LockedHome';
 
 const QuotesPage = styled.div`
     display: flex;
@@ -34,6 +37,7 @@ interface QuotesUser {
 const Quotes: FC = () => {
     const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const reduxStore = useSelector<RootState>(state => state.googleUser)
     const changeVisibility = () => {
         setIsVisible(!isVisible);
     }
@@ -42,6 +46,13 @@ const Quotes: FC = () => {
         setQuotes(r.data.reverse());
     }
     useEffect(() => { fetchQuotes() }, []);
+
+    if(reduxStore === null) {
+        return(
+            <LockedHome />
+        )
+    }
+
     return (
         <QuotesPage>
             <QuotesContainer>

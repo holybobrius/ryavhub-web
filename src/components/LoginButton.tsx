@@ -21,6 +21,26 @@ const NavLink = styled.button`
         color: #FFF;
     }
 `;
+
+const LoginBtn = styled.button`
+    margin-top: 16px;
+    width: 100px;
+    background-color: transparent;
+    font-size: 1rem;
+    outline: none;
+    border-style: none;
+    border: 1px solid #aaa;
+    color: #aaa;
+    border-radius: 15px;
+    font-size: 1rem;
+    padding: 7px;
+    cursor: pointer;
+    transition: 200ms ease;
+    &:hover {
+        background-color: #aaa;
+        color: #191B1F;
+    }
+`
 const LoginButton: FC = () => {
     const user = useSelector((s: RootState) => s.googleUser)
     const dispatch = useDispatch();
@@ -31,7 +51,6 @@ const LoginButton: FC = () => {
             alert('offline)')
             return;
         }
-        console.log(data);
         googleLogin(data as GoogleLoginResponse)
             .then(r => dispatch(r))
             .catch(e => {
@@ -67,7 +86,7 @@ const LoginButton: FC = () => {
             cookiePolicy='single_host_origin'
             isSignedIn={true}
             render={props => (
-                <NavLink onClick={props.onClick}>Login</NavLink>
+                <LoginBtn onClick={props.onClick}>Login</LoginBtn>
             )}
         />
     )

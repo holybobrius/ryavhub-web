@@ -11,10 +11,13 @@ import Quotes from './views/Quotes';
 import TimelinePage from "./views/Timeline";
 import GameSaves from "./views/GameSaves"
 import './App.css';
-import './theme.css';
 import './assets/fonts/basisgrotesquepro/style.css';
+import LockedHome from './views/LockedHome';
+import store from './store';
+import { useSelector } from 'react-redux';
 
 const App: FC = () => {
+  const reduxStore = store.getState()
   return (
     <Router>
       <div className="app">
