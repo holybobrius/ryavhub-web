@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useMemo } from "react";
 import { Chrono } from 'react-chrono'
 import styled from 'styled-components'
 import '../App.css';
+
 import axios from 'axios';
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
 import AddButton from '../components/AddButton'
@@ -10,6 +11,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import LockedHome from "./LockedHome";
 
+// FIXME: Set font.
+
 
 const TimelineContainerPage = styled.div`
     display: flex;
@@ -17,8 +20,6 @@ const TimelineContainerPage = styled.div`
     justify-content: center;
     color: #cac8c8;
 `;
-
-
 interface Participant {
     id: number;
     name: string;
@@ -37,7 +38,6 @@ interface Participant {
     participants: Participant[];
     created_by: CreatedBy;
  }
-
 
 const TimeLine: FC = () => {
     const [itemsState, setItemsState] = useState<TimelineItemModel[]>();

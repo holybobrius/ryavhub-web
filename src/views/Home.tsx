@@ -12,6 +12,10 @@ const HomeContainer = styled.div`
     
 `;
 
+const RandomQuote = styled.p`
+    margin-bottom: 20px;
+`
+
 const Half = styled.div`
     height: 100%; width: 50%;
     display: flex;
@@ -52,7 +56,7 @@ const GenerateButton = styled.button`
     border: 1px solid #aaa;
     color: #aaa;
     border-radius: 15px;
-    padding: 7px;
+    padding: 10px;
     cursor: pointer;
     transition: 200ms ease;
     &:hover {
@@ -111,9 +115,9 @@ const Home: FC = () => {
                         РявХаб
                     </BioCardTitle>
                     <BioCardText>
-                        {<p>
+                        <RandomQuote>
                             {randomQuote}
-                        </p>}
+                        </RandomQuote>
                         <GenerateButton onClick={handleClick}>Сгенерировать цитату</GenerateButton>
                     </BioCardText>
                 </BioCard>
