@@ -13,6 +13,7 @@ const Modal = styled.div`
     z-index: 999;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.7);
+    font-family: 'Basis Grotesque Pro';
 `;
 
 const ModalContent = styled.div`
@@ -29,6 +30,7 @@ const Form = styled.form`
     gap: 15px;
     align-items: center;
     justify-items: center;
+    font-family: 'Basis Grotesque Pro';
 `;
 
 const TextArea = styled.textarea`
@@ -39,6 +41,8 @@ const TextArea = styled.textarea`
     font-size: 1rem;
     width: 80%;
     padding: 7px;
+    font-family: 'Basis Grotesque Pro';
+    color: white;
 `;
 
 const Select = styled.select`
@@ -50,6 +54,8 @@ const Select = styled.select`
     width: 20%;
     cursor: pointer;
     text-align-last: center;
+    font-family: 'Basis Grotesque Pro';
+    color: white;
 `;
 
 const Date = styled.input`
@@ -62,10 +68,13 @@ const Date = styled.input`
     padding: 3px;
     text-align: center;
     cursor: pointer;
+    font-family: 'Basis Grotesque Pro';
+    color: white;
 `;
 
 const Submit = styled.input`
     background-color: #2e3136;
+    font-size: 16px;
     border-style: none;
     border-radius: 15px;
     margin-top: 10px;
@@ -73,6 +82,8 @@ const Submit = styled.input`
     width: 8vw;
     cursor: pointer;
     transition: 200ms ease;
+    font-family: 'Basis Grotesque Pro';
+    color: #aaa;
     &:hover {
         color: white;
     }
@@ -87,6 +98,7 @@ const Close = styled.span`
     color: black;
     text-decoration: none;
     cursor: pointer;
+    
     }
 `;
 

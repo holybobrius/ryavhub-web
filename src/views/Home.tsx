@@ -24,7 +24,7 @@ const Half = styled.div`
 `;
 
 const MemeCard = styled.img`
-    width: 350px;
+    
     height: 450px;
     /* meme possibility */
 `;
@@ -106,7 +106,7 @@ const Home: FC = () => {
     return (
         <HomeContainer>
             <Half>
-                <MemeCard src="https://i.imgur.com/aXyJDID.png">
+                <MemeCard src="https://i.imgur.com/ytgrYGc.jpg">
                 </MemeCard>
             </Half>
             <Half>
