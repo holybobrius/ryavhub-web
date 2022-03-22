@@ -3,21 +3,27 @@ import styled from 'styled-components'
 
 const QuoteContainer = styled.div`
     min-height: 10vh;
+    border-radius: 15px;
     width: 50vw;
     display: flex;
     align-items: center;
+    background-color: #2D2D2D;
     justify-content: center;
     flex-direction: column;
     text-align: justify;
     text-align-last: center;
-    border-bottom: 2px dashed #aaa;
     font-family: 'Basis Grotesque Pro';
+    font-size: 14px;
 `;
 
+const QuoteInfoWrapper = styled.div`
+    margin: 3vh;
+`
+
 const QuoteMain = styled.h2`
-    margin-top: vh;
     color: white;
     width: 40vw;
+    margin-bottom: 1vh;
 `;
 
 const QuoteAuthor = styled.h4`
@@ -36,7 +42,7 @@ const QuoteInfo = styled.div`
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 5vh;
+
     font-size: 1rem;
 `;
 
@@ -49,11 +55,13 @@ interface Props {
 const Quote: FC<Props> = (props) => {
     return(
         <QuoteContainer>
-            <QuoteMain>{props.quote}</QuoteMain>
-            <QuoteInfo>
-                <QuoteAuthor>{props.author}</QuoteAuthor>
-                <QuoteDate>{props.date}</QuoteDate>
-            </QuoteInfo>
+            <QuoteInfoWrapper>
+                <QuoteMain>{props.quote}</QuoteMain>
+                <QuoteInfo>
+                    <QuoteAuthor>{props.author}</QuoteAuthor>
+                    <QuoteDate>{props.date}</QuoteDate>
+                </QuoteInfo>
+            </QuoteInfoWrapper>
         </QuoteContainer>
     )
 }
