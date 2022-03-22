@@ -4,7 +4,7 @@ import store from '../store/index'
 
 
 const NewButton = styled.button`
-    width: 80px; height: 80px;
+    width: 60px; height: 60px;
     position: absolute;
     background-color: transparent;
     outline: none;
@@ -12,7 +12,7 @@ const NewButton = styled.button`
     border: 5px solid #aaa;
     top: 90vh;
     right: 5vw;
-    border-radius: 100%;
+    border-radius: 15px;
     font-size: 5rem;
     transition: 200ms ease;
     cursor: pointer;
