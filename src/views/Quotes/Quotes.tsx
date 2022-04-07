@@ -1,25 +1,12 @@
 import { FC, useState, useEffect } from 'react'
-import Quote from '../components/Quote'
-import styled from 'styled-components'
+import Quote from '../../components/Quote/Quote'
+import * as Styled from './Quotes.style'
 import axios from 'axios'
-import NewQuoteModal from '../components/NewQuoteModal';
-import AddButton from '../components/AddButton'
+import NewQuoteModal from '../../components/NewQuoteModal/NewQuoteModal';
+import AddButton from '../../components/AddButton/AddButton'
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
-import LockedHome from './LockedHome';
-
-const QuotesPage = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const QuotesContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 5vh;
-    margin-top: 5vh;
-`;
+import { RootState } from '../../store';
+import LockedHome from '../LockedHome/LockedHome';
 
 interface QuotesUser {
     id: number;
@@ -55,19 +42,20 @@ const Quotes: FC = () => {
     }
 
     return (
-        <QuotesPage>
-            <QuotesContainer>
+        <Styled.QuotesPage>
+            <Styled.QuotesContainer>
                 {quotes.map(quote => (
                     <Quote
+                        key={quote.id}
                         quote={quote.quote}
                         date={quote.date}
                         author={quote.quote_by.name}
                     />
                 ))}
-            </QuotesContainer>
+            </Styled.QuotesContainer>
             <AddButton handleClick={changeVisibility}/>
             <NewQuoteModal visible={isVisible} changeVisibility={changeVisibility} fetchQuotes={fetchQuotes}/>
-        </QuotesPage>
+        </Styled.QuotesPage>
     )
 }
 export default Quotes;

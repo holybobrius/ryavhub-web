@@ -5,14 +5,14 @@ import {
   Route
 } from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import Home from './views/Home';
-import Quotes from './views/Quotes';
-import TimelinePage from "./views/Timeline";
-import GameSaves from "./views/GameSaves"
+import Navbar from './components/Navbar/Navbar';
+import Home from './views/Home/Home';
+import Quotes from './views/Quotes/Quotes';
+import TimelinePage from "./views/Timeline/Timeline";
+import GameSaves from "./views/GameSaves/GameSaves"
 import './App.css';
 import './assets/fonts/basisgrotesquepro/style.css';
-import LockedHome from './views/LockedHome';
+import LockedHome from './views/LockedHome/LockedHome';
 import store from './store';
 import { useSelector } from 'react-redux';
 

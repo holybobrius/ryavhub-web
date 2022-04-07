@@ -1,25 +1,15 @@
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useState, useEffect } from "react";
 import { Chrono } from 'react-chrono'
-import styled from 'styled-components'
-import '../App.css';
-
+import * as Styled from './Timeline.style'
+import '../../App.css';
 import axios from 'axios';
 import { TimelineItemModel } from "react-chrono/dist/models/TimelineItemModel";
-import AddButton from '../components/AddButton'
-import NewTimelineItemModal from '../components/NewTimelineItemModal'
+import AddButton from '../../components/AddButton/AddButton'
+import NewTimelineItemModal from '../../components/NewTimelineItemModal/NewTimelineItemModal'
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import LockedHome from "./LockedHome";
+import { RootState } from "../../store";
+import LockedHome from "../LockedHome/LockedHome";
 
-// FIXME: Set font.
-
-
-const TimelineContainerPage = styled.div`
-    display: flex;
-    justify-content: center;
-    justify-content: center;
-    color: #cac8c8;
-`;
 interface Participant {
     id: number;
     name: string;
@@ -68,7 +58,7 @@ const TimeLine: FC = () => {
         )
     }
     return (
-            <TimelineContainerPage>
+            <Styled.TimelineContainerPage>
                 <div style={{ width: "900px", height: "90vh" }}>
                     <Chrono
                         items={itemsState}
@@ -79,7 +69,7 @@ const TimeLine: FC = () => {
                 </div>
                 <AddButton handleClick={changeVisibility}/>
                 <NewTimelineItemModal visible={isVisible} changeVisibility={changeVisibility} fetchTimeline={fetchTimeline}/>
-            </TimelineContainerPage>
+            </Styled.TimelineContainerPage>
 
     );
 }

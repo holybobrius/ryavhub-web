@@ -1,19 +1,11 @@
 import { FC, useState, useEffect } from 'react'
-import SaveCard from "../components/SaveCard"
-import styled from 'styled-components'
+import SaveCard from "../../components/SaveCard/SaveCard"
+import * as Styled from './GameSaves.style'
 import axios from 'axios'
-import NavButtons from '../components/NavButtons'
+import NavButtons from '../../components/NavButton/NavButtons'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store'
-import LockedHome from './LockedHome'
-
-const CardsContainer = styled.div`
-    background-color: #191B1F;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
+import { RootState } from '../../store'
+import LockedHome from '../LockedHome/LockedHome'
 
 interface GameSaveApiEntity {
     id: number,
@@ -23,6 +15,7 @@ interface GameSaveApiEntity {
     size: string,
     imgs: string[]
 }
+
 const GameSaves: FC = () => {
     const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
     const reduxStore = useSelector<RootState>(state => state.googleUser)
@@ -40,9 +33,10 @@ const GameSaves: FC = () => {
     }
 
     return (
-            <CardsContainer>
+            <Styled.CardsContainer>
                 {saves.map(save => (
                     <SaveCard
+                        key={save.id}
                         title={save.name}
                         description={save.year.toString()}
                         imageAlt={save.name}
@@ -54,7 +48,7 @@ const GameSaves: FC = () => {
                     />
                 ))}
                 <NavButtons total={saves.length} />
-            </CardsContainer>
+            </Styled.CardsContainer>
     );
 }
 export default GameSaves
