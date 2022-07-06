@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import logo from '../../assets/images/logotext_white.svg'
 
 export const Nav = styled.nav`
-    height: 60px;
+    height: 80px;
     padding: 0 10px;
-    background-color: #191B1F;
+    background-color: #0D0D11;
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
@@ -15,6 +15,7 @@ export const NavLink = styled.button`
     width: 131px;
     height: 28px;
     font-size: 16px;
+    font-weight: 300;
     color: #9e9e9e;
     border: none;
     outline: none;

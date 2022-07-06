@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-export const NavLink = styled.button`
-    width: 131px;
-    height: 28px;
+export const NavLoginBtn = styled.button`
+    width: 145px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    border-radius: 15px;
     font-size: 16px;
-    color: #9e9e9e;
-    border: none;
+    color: rgba(255, 255, 255, 0.6);
     outline: none;
     background-color: transparent;
     font-family: 'Basis Grotesque Pro', sans-serif;
@@ -14,6 +16,7 @@ export const NavLink = styled.button`
     transition: ease 250ms;
     &:hover {
         color: #FFF;
+        border: 1px solid #FFF;
     }
 `;
 

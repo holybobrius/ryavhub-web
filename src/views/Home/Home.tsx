@@ -4,6 +4,7 @@ import axios from 'axios'
 import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
 import { useSelector } from "react-redux";
+import backgroundImg from '../../assets/images/background.png'
 
 interface QuotesUser {
     id: number;
@@ -34,30 +35,32 @@ const Home: FC = () => {
         setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
     }
     
+    /*
     if(reduxStore === null) {
         return(
             <LockedHome />
         )
     }
+    */
 
     return (
-        <Styled.HomeContainer>
+        <Styled.HomeContainer style={{backgroundImage: `url(${backgroundImg})`}}>
             <Styled.Half>
-                <Styled.MemeCard src="https://i.imgur.com/ytgrYGc.jpg">
+                <Styled.MemeCard src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
                 </Styled.MemeCard>
             </Styled.Half>
             <Styled.Half>
-                <Styled.BioCard>
-                    <Styled.BioCardTitle>
+                <Styled.InfoWrapper>
+                    <Styled.InfoTitle>
                         РявХаб
-                    </Styled.BioCardTitle>
-                    <Styled.BioCardText>
+                    </Styled.InfoTitle>
+                    <Styled.InfoText>
                         <Styled.RandomQuote>
                             {randomQuote}
                         </Styled.RandomQuote>
                         <Styled.GenerateButton onClick={handleClick}>Сгенерировать цитату</Styled.GenerateButton>
-                    </Styled.BioCardText>
-                </Styled.BioCard>
+                    </Styled.InfoText>
+                </Styled.InfoWrapper>
             </Styled.Half>
         </Styled.HomeContainer>
     );

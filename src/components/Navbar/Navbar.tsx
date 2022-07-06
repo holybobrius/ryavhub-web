@@ -7,11 +7,15 @@ import { RootState } from '../../store';
 
 const Navbar: FC = () => {
     const reduxStore = useSelector<RootState>(state => state.googleUser)
+
+    /*
     if(reduxStore === null) {
         return(
             <></>
         )
     }
+    */
+
     return(
         <Styled.Nav>
             <Link to="/">

@@ -1,61 +1,69 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
     height: 100%;
-    
 `;
-
-export const RandomQuote = styled.p`
-    margin-bottom: 20px;
-`
 
 export const Half = styled.div`
     height: 100%; width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 `;
 
 export const MemeCard = styled.img`
-    
     height: 450px;
     /* meme possibility */
 `;
 
-export const BioCard = styled.div`
+export const InfoWrapper = styled.div`
     color: #fff;
     font-family: 'Basis Grotesque Pro';
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 10px;
 `;
 
-export const BioCardTitle = styled.div`
-    font-size: 8rem;
-    font-weight: bold;
+export const InfoTitle = styled.p`
+    font-size: 75px;
+    font-weight: 900;
 `;
 
-export const BioCardText = styled.div`
+export const InfoText = styled.p`
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
 `;
+
+export const RandomQuote = styled.p`
+    margin-bottom: 20px;
+`
 
 export const GenerateButton = styled.button`
+    margin-top: 16px;
+    width: 250px;
+    height: 75px;
     background-color: transparent;
-    font-size: 1rem;
+    font-size: 20px;
+    margin-top: 55px;
+    font-weight: 300;
     outline: none;
     border-style: none;
-    border: 1px solid #aaa;
-    color: #aaa;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 7px;
     cursor: pointer;
     transition: 200ms ease;
+    text-transform: uppercase;
     &:hover {
-        background-color: #aaa;
-        color: #191B1F;
+        color: #fff;
+        border-color: #fff;
     }
-`;
+`

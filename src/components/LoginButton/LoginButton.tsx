@@ -31,13 +31,24 @@ const LoginButton: FC = () => {
         dispatch(googleLogout())
     }
 
+    return (
+        <GoogleLogout
+            clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
+            onLogoutSuccess={onLogout}
+            render={props => (
+                <Styled.NavLoginBtn onClick={props.onClick}>Logout</Styled.NavLoginBtn>
+            )}
+        />
+    )
+
+    /*
     return user ?
     (
         <GoogleLogout
             clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
             onLogoutSuccess={onLogout}
             render={props => (
-                <Styled.NavLink onClick={props.onClick}>Logout</Styled.NavLink>
+                <Styled.NavLoginBtn onClick={props.onClick}>Logout</Styled.NavLoginBtn>
             )}
         />
     )
@@ -53,6 +64,6 @@ const LoginButton: FC = () => {
                 <Styled.LoginBtn onClick={props.onClick}>Login</Styled.LoginBtn>
             )}
         />
-    )
+    )*/
 }
 export default LoginButton;
