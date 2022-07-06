@@ -19,20 +19,24 @@ export const NavLink = styled.button`
 
 export const LoginBtn = styled.button`
     margin-top: 16px;
-    width: 100px;
+    width: 250px;
+    height: 75px;
     background-color: transparent;
-    font-size: 1rem;
+    font-size: 20px;
+    margin-top: 55px;
+    font-weight: 300;
     outline: none;
     border-style: none;
-    border: 1px solid #aaa;
-    color: #aaa;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
-    font-size: 1rem;
+    font-size: 20px;
     padding: 7px;
     cursor: pointer;
     transition: 200ms ease;
+    text-transform: uppercase;
     &:hover {
-        background-color: #aaa;
-        color: #191B1F;
+        color: #fff;
+        border-color: #fff;
     }
 `
