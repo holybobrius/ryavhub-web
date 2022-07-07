@@ -43,11 +43,9 @@ export const InfoWrapper = styled.div`
 export const InfoTitle = styled.p`
     font-size: 75px;
     font-weight: 900;
-    
 `;
 
 export const InfoText = styled.p`
-
     font-size: 20px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.6);

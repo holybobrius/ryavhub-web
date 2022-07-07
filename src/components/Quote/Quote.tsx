@@ -13,8 +13,7 @@ const Quote: FC<Props> = (props) => {
             <Styled.QuoteInfoWrapper>
                 <Styled.QuoteMain>{props.quote}</Styled.QuoteMain>
                 <Styled.QuoteInfo>
-                    <Styled.QuoteAuthor>{props.author}</Styled.QuoteAuthor>
-                    <Styled.QuoteDate>{props.date}</Styled.QuoteDate>
+                    {props.author} | {props.date}
                 </Styled.QuoteInfo>
             </Styled.QuoteInfoWrapper>
         </Styled.QuoteContainer>

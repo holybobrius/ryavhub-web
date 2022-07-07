@@ -3,44 +3,30 @@ import styled from 'styled-components'
 export const QuoteContainer = styled.div`
     min-height: 10vh;
     border-radius: 15px;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    background-color: #2D2D2D;
+    width: 1000px;
+    background-color: #17171D;
     justify-content: center;
-    flex-direction: column;
-    text-align: justify;
-    text-align-last: center;
     font-family: 'Basis Grotesque Pro';
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 400;
+    background-repeat: no-repeat;
 `;
 
 export const QuoteInfoWrapper = styled.div`
-    margin: 3vh;
+    margin: 3vh 3vh 3vh 100px;
 `
 
-export const QuoteMain = styled.h2`
+export const QuoteMain = styled.p`
     color: white;
     width: 40vw;
-    margin-bottom: 1vh;
+    margin: 10px 0 20px 0;
 `;
 
-export const QuoteAuthor = styled.h4`
-    color: #aaa;
+
+export const QuoteInfo = styled.p`
+    color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
-`;
-
-export const QuoteDate = styled.h5`
-    color: #aaa;
-    font-size: 1.03rem;
-`;
-
-export const QuoteInfo = styled.div`
-    display: flex;
-    width: 40vw;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-
-    font-size: 1rem;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
 `;

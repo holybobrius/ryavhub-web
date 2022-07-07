@@ -7,6 +7,7 @@ import AddButton from '../../components/AddButton/AddButton'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import LockedHome from '../LockedHome/LockedHome';
+import backgroundImg from '../../assets/images/background.png'
 
 interface QuotesUser {
     id: number;
@@ -42,7 +43,7 @@ const Quotes: FC = () => {
     }
 
     return (
-        <Styled.QuotesPage>
+        <Styled.QuotesPage style={{backgroundImage: `url(${backgroundImg})`}}>
             <Styled.QuotesContainer>
                 {quotes.map(quote => (
                     <Quote
