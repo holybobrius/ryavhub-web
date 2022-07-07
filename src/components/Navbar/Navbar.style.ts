@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import logo from '../../assets/images/logotext_white.svg'
+import logo from '../../assets/images/logo.svg'
 
 export const Nav = styled.nav`
     height: 80px;
@@ -12,7 +12,7 @@ export const Nav = styled.nav`
     font-family: 'Basis Grotesque Pro', sans-serif;
 `;
 export const NavLink = styled.button`
-    width: 131px;
+    width: 187px;
     height: 28px;
     font-size: 16px;
     font-weight: 300;
@@ -28,10 +28,17 @@ export const NavLink = styled.button`
         color: #FFF;
     }
 `;
+
+export const Separator = styled.div`
+    border-left: 1px solid #fff;
+`
+
 export const Logo = styled.div`
-    width: 110.4px;
+    margin-left: 240px;
+    width: 125px;
     height: 42px;
     background-image: url(${logo});
+    background-repeat: no-repeat;
 `;
 export const NavbarButtons = styled.div`
     display: flex;

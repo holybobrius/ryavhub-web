@@ -8,13 +8,11 @@ import { RootState } from '../../store';
 const Navbar: FC = () => {
     const reduxStore = useSelector<RootState>(state => state.googleUser)
 
-    /*
     if(reduxStore === null) {
         return(
             <></>
         )
     }
-    */
 
     return(
         <Styled.Nav>
@@ -22,15 +20,19 @@ const Navbar: FC = () => {
                 <Styled.Logo/>
             </Link>
             <Styled.NavbarButtons>
+                <Styled.Separator />
                 <Link to="/quotes">
                     <Styled.NavLink>цитаты</Styled.NavLink>
                 </Link>
+                <Styled.Separator />
                 <Link to="/timeline">
                     <Styled.NavLink>таймлайн</Styled.NavLink>
                 </Link>
+                <Styled.Separator />
                 <Link to="/gamesaves">
                     <Styled.NavLink>сейвы</Styled.NavLink>
                 </Link>
+                <Styled.Separator />
             </Styled.NavbarButtons>
             <LoginButton/>
         </Styled.Nav>

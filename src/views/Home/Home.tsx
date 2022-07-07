@@ -35,13 +35,11 @@ const Home: FC = () => {
         setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
     }
     
-    /*
     if(reduxStore === null) {
         return(
             <LockedHome />
         )
     }
-    */
 
     return (
         <Styled.HomeContainer style={{backgroundImage: `url(${backgroundImg})`}}>

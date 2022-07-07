@@ -18,6 +18,7 @@ export const NavLoginBtn = styled.button`
         color: #FFF;
         border: 1px solid #FFF;
     }
+    margin-right: 240px;
 `;
 
 export const LoginBtn = styled.button`
