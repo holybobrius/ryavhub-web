@@ -43,24 +43,39 @@ const Home: FC = () => {
 
     return (
         <Styled.HomeContainer style={{backgroundImage: `url(${backgroundImg})`}}>
-            <Styled.Half>
+            <Styled.ImgHalf>
                 <Styled.MemeCard src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
                 </Styled.MemeCard>
-            </Styled.Half>
+            </Styled.ImgHalf>
             <Styled.Half>
                 <Styled.InfoWrapper>
                     <Styled.InfoTitle>
                         РявХаб
                     </Styled.InfoTitle>
-                    <Styled.InfoText>
-                        <Styled.RandomQuote>
-                            {randomQuote}
-                        </Styled.RandomQuote>
-                        <Styled.GenerateButton onClick={handleClick}>Сгенерировать цитату</Styled.GenerateButton>
+                    <Styled.InfoText>{randomQuote}
                     </Styled.InfoText>
+                    <Styled.GenerateButton onClick={handleClick}>Сгенерировать цитату</Styled.GenerateButton>
                 </Styled.InfoWrapper>
             </Styled.Half>
         </Styled.HomeContainer>
+
+    /*<Styled.HomeContainer style={{backgroundImage: `url(${backgroundImg})`}}>
+    <Styled.Half>
+        <Styled.MemeCard src={require("../../assets/images/sadface.png")}>
+        </Styled.MemeCard>
+    </Styled.Half>
+    <Styled.Half>
+        <Styled.InfoWrapper>
+            <Styled.InfoTitle>
+                РявХаб
+            </Styled.InfoTitle>
+            <Styled.InfoText>
+                    Дружище, дальше придется залогиниться
+            </Styled.InfoText>
+            <LoginButton />
+        </Styled.InfoWrapper>
+    </Styled.Half>
+    </Styled.HomeContainer> */
     );
 }
 export default Home

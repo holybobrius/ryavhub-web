@@ -5,7 +5,7 @@ export const NavLoginBtn = styled.button`
     height: 50px;
     border: 1px solid rgba(255, 255, 255, 0.6);
     font-weight: 300;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.6);
     outline: none;
@@ -33,7 +33,7 @@ export const LoginBtn = styled.button`
     border-style: none;
     border: 1px solid rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 20px;
     padding: 7px;
     cursor: pointer;
