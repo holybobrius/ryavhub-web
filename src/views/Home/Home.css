@@ -1,0 +1,62 @@
+.section-home {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #fff;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 16rem;
+}
+
+.img-box img {
+  width: 45%;
+}
+
+.heading {
+  font-size: 7.5rem;
+  font-weight: 900;
+}
+
+.info-text {
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.hero-btn {
+  margin-top: 16px;
+  width: 270px;
+  height: 75px;
+  background-color: transparent;
+  font-size: 20px;
+  margin-top: 55px;
+  font-weight: 300;
+  outline: none;
+  border-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 7px;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+
+.hero-btn:hover {
+  color: #fff;
+  border-color: #fff;
+}
