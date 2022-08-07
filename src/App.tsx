@@ -18,6 +18,7 @@ const App: FC = () => {
     <Router>
       <div className="app">
         <main>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/quotes" component={Quotes} />
