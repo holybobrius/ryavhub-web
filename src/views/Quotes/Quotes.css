@@ -1,0 +1,38 @@
+.quotesSvg {
+  fill: hsl(350deg, 30%, 50%);
+  animation-name: rotate;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.quotes-page {
+  padding: 13rem 24rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.quotes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quotes-page .img-box img {
+  position: fixed;
+  width: 55%;
+  top: -6.5rem;
+  right: -44rem;
+}
