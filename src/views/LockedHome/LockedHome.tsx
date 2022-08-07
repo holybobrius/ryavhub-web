@@ -1,28 +1,22 @@
 import { FC } from "react";
-import * as Styled from './LockedHome.style'
 import LoginButton from "../../components/LoginButton/LoginButton";
-import backgroundImg from '../../assets/images/background.png'
-
+import "./LockedHome.css";
 
 const LockedHome: FC = () => {
-    return (
-        <Styled.HomeContainer style={{backgroundImage: `url(${backgroundImg})`}}>
-            <Styled.Half>
-                <Styled.MemeCard src={require("../../assets/images/sadface.png")}>
-                </Styled.MemeCard>
-            </Styled.Half>
-            <Styled.Half>
-                <Styled.InfoWrapper>
-                    <Styled.InfoTitle>
-                        РявХаб
-                    </Styled.InfoTitle>
-                    <Styled.InfoText>
-                            Дружище, дальше придется залогиниться
-                    </Styled.InfoText>
-                    <LoginButton />
-                </Styled.InfoWrapper>
-            </Styled.Half>
-        </Styled.HomeContainer>
-    );
-}
-export default LockedHome
+  return (
+    <section className="section-locked">
+      <div className="img-box">
+        <img
+          src={require("../../assets/images/sadface.png")}
+          alt="Sad face Emoji"
+        ></img>
+      </div>
+      <div className="text-box">
+        <h1 className="heading">РявХаб</h1>
+        <p className="info-text">Дружище, дальше придется залогиниться...</p>
+        <LoginButton />
+      </div>
+    </section>
+  );
+};
+export default LockedHome;

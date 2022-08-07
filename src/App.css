@@ -1,41 +1,50 @@
-* { padding: 0; margin: 0; }
-html, body, #root, .app {
-    height: 100%;
-    --primary: #669335;
-    --light: #E9EDDE;
-    --dark: #292E1E;
-    background-color: #191B1F;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+#root,
+.app {
+  height: 100%;
+  overflow: auto;
+  font-family: "Basis Grotesque Pro";
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  background-image: url("./assets/images/background.png");
+  background-size: cover;
 }
 .app {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex: 1 1 auto;
-    height: 100%;
-    overflow-y: auto;
+  flex: 1 1 auto;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
-    width: 0.25rem;
+  width: 0.25rem;
 }
 ::-webkit-scrollbar-track {
-    background-color: rgb(97, 97, 97);
+  background-color: rgb(97, 97, 97);
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #aaa;
+  background-color: #aaa;
 }
 
-
 .timeline-item-title {
-    color: #aaa;
+  color: #aaa;
 }
 
 .css-13k9u7t-TimelineItemContentWrapper {
-    min-height: 90px !important;
+  min-height: 90px !important;
 }
 
 .css-mb4vrd-TimelineContentDetailsWrapper {
-    margin: 0 !important;
+  margin: 0 !important;
 }

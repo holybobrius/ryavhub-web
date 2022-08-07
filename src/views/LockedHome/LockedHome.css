@@ -1,0 +1,30 @@
+.section-locked {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #fff;
+  align-items: center;
+  justify-items: center;
+}
+
+.img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-box img {
+  width: 45%;
+}
+
+.heading {
+  font-size: 7.5rem;
+  font-weight: 900;
+}
+
+.info-text {
+  font-size: 2rem;
+  opacity: 0.6;
+}
