@@ -1,0 +1,44 @@
+.login-btn--nav {
+  width: 14.5rem;
+  height: 5rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  border-radius: 20px;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  background-color: transparent;
+  font-family: "Basis Grotesque Pro", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: ease 250ms;
+  margin-right: 24rem;
+}
+
+.login-btn--nav:hover {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.login-btn {
+  width: 25rem;
+  height: 7.5rem;
+  background-color: transparent;
+  font-size: 2rem;
+  margin-top: 5.5rem;
+  font-weight: 300;
+  outline: none;
+  border-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: 200ms ease;
+  text-transform: uppercase;
+}
+
+.login-btn:hover {
+  color: #fff;
+  border-color: #fff;
+}
