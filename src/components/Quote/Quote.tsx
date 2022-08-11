@@ -1,23 +1,21 @@
 import { FC } from "react";
-import * as Styled from './Quote.style'
+import "./Quote.css";
 
 interface Props {
-    quote: string,
-    author: string,
-    date: string
+  quote: string;
+  author: string;
+  date: string;
 }
 
 const Quote: FC<Props> = (props) => {
-    return(
-        <Styled.QuoteContainer>
-            <Styled.QuoteInfoWrapper>
-                <Styled.QuoteMain>{props.quote}</Styled.QuoteMain>
-                <Styled.QuoteInfo>
-                    {props.author} | {props.date}
-                </Styled.QuoteInfo>
-            </Styled.QuoteInfoWrapper>
-        </Styled.QuoteContainer>
-    )
-}
+  return (
+    <div className="quote-container">
+      <p className="quote-main">{props.quote}</p>
+      <p className="quote-info">
+        {props.author} | {props.date}
+      </p>
+    </div>
+  );
+};
 
 export default Quote;
