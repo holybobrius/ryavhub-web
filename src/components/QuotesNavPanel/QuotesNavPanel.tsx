@@ -16,7 +16,9 @@ const QuotesNavPanel: FC<Props> = (props) => {
 
   return (
     <Styled.QuotesNavContainer>
-      <Styled.QuotesNavButton onClick={scrollToTop}>↑</Styled.QuotesNavButton>
+      <Styled.QuotesNavButton onClick={scrollToTop}>
+        &uarr;
+      </Styled.QuotesNavButton>
       <Styled.QuotesNavButton onClick={props.changeVisibility}>
         +
       </Styled.QuotesNavButton>
