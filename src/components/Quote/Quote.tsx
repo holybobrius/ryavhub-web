@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Tag from "../Tag/Tag";
 import "./Quote.css";
 
 interface Props {
@@ -12,7 +13,7 @@ const Quote: FC<Props> = (props) => {
     <div className="quote-container">
       <p className="quote-main">{props.quote}</p>
       <p className="quote-info">
-        {props.author} | {props.date}
+        <Tag text={props.author} /> {props.date}
       </p>
     </div>
   );

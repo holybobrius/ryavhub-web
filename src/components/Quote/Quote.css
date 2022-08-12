@@ -20,4 +20,7 @@
   font-style: italic;
   font-weight: 300;
   font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
