@@ -44,7 +44,7 @@ const Home: FC = () => {
     <section className="section-home">
       <div className="img-box">
         <img
-          src="https://cdn150.picsart.com/upscale-271811111038211.png"
+          src={require("../../assets/images/hero-pic.png")}
           alt="Sad face Emoji"
         ></img>
       </div>

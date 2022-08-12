@@ -1,4 +1,9 @@
 .section-saves {
+  background-image: url("../../assets/images/saves-bg.png");
+  background-repeat: no-repeat;
+  padding-top: 2rem;
+  background-attachment: fixed;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
