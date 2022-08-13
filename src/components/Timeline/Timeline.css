@@ -1,0 +1,15 @@
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  margin: 4rem 0;
+  position: relative;
+}
+
+.timeline-container::after {
+  background-color: rgba(255, 255, 255, 0.6);
+  content: "";
+  position: absolute;
+  width: 2px;
+  left: calc(50% - 2px);
+  height: 100%;
+}

@@ -4,16 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./views/Home/Home";
 import Quotes from "./views/Quotes/Quotes";
-import TimelinePage from "./views/Timeline/Timeline";
+import TimelinePage from "./views/TimelinePage/TimelinePage";
 import GameSaves from "./views/GameSaves/GameSaves";
 import "./App.css";
 import "./assets/fonts/basisgrotesquepro/style.css";
-import LockedHome from "./views/LockedHome/LockedHome";
-import store from "./store";
-import { useSelector } from "react-redux";
 
 const App: FC = () => {
-  const reduxStore = store.getState();
   return (
     <Router>
       <div className="app">
