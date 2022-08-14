@@ -9,13 +9,14 @@
   justify-items: center;
 }
 
-.img-box {
+.section-locked .img-box {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 16rem;
 }
 
-.img-box img {
+.section-locked .img-box img {
   width: 45%;
 }
 
