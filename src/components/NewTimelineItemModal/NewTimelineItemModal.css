@@ -1,0 +1,48 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.85); /* Fallback color */
+}
+
+.modal-content {
+  background-color: #17171d;
+  padding: 3.5rem 3rem;
+  border-radius: 15px;
+  width: 58rem;
+  color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  column-gap: 3.6rem;
+  row-gap: 2.5rem;
+}
+
+.textarea-box {
+  grid-column: 1 / 3;
+}
+
+.participants-box {
+  grid-column: 1 / 3;
+  max-width: 44rem;
+}
+
+.participants-box .tags-box .tag {
+  background-color: #0d0d11;
+  text-transform: none;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.2rem;
+}

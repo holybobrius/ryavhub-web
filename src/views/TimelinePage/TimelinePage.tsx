@@ -29,7 +29,7 @@ interface AxiosResponseObj {
 
 const TimelinePage: FC = () => {
   const [timelineItems, setTimelineItems] = useState<any>([]);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const reduxStore = useSelector<RootState>((state) => state.googleUser);
 
   const changeVisibility = () => {
