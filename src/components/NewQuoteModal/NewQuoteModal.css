@@ -9,6 +9,7 @@
   height: 100%;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.85); /* Fallback color */
+  backdrop-filter: blur(2px);
 }
 
 .modal-content {
