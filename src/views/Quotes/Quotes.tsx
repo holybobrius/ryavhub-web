@@ -2,13 +2,11 @@ import { FC, useState, useEffect } from "react";
 import Quote from "../../components/Quote/Quote";
 import axios from "axios";
 import NewQuoteModal from "../../components/NewQuoteModal/NewQuoteModal";
-import AddButton from "../../components/AddButton/AddButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
-import backgroundImg from "../../assets/images/background.png";
 import "./Quotes.css";
-import QuotesNavPanel from "../../components/QuotesNavPanel/QuotesNavPanel";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 interface QuotesUser {
   id: number;
@@ -47,7 +45,7 @@ const Quotes: FC = () => {
 
   return (
     <section className="quotes-page" id="quotesContainer">
-      <QuotesNavPanel changeVisibility={changeVisibility} />
+      <BottomNav changeVisibility={changeVisibility} />
       <div className="quotes-container">
         {quotes.map((quote) => (
           <Quote

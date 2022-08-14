@@ -2,10 +2,8 @@ import { FC, useState, useEffect } from "react";
 import "../../App.css";
 import axios from "axios";
 import "./TimelinePage.css";
-import AddButton from "../../components/AddButton/AddButton";
+import BottomNav from "../../components/BottomNav/BottomNav";
 import NewTimelineItemModal from "../../components/NewTimelineItemModal/NewTimelineItemModal";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import Timeline from "../../components/Timeline/Timeline";
 
 interface Participant {
@@ -29,8 +27,7 @@ interface AxiosResponseObj {
 
 const TimelinePage: FC = () => {
   const [timelineItems, setTimelineItems] = useState<any>([]);
-  const [isVisible, setIsVisible] = useState<boolean>(true);
-  const reduxStore = useSelector<RootState>((state) => state.googleUser);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const changeVisibility = () => {
     setIsVisible(!isVisible);
@@ -49,7 +46,7 @@ const TimelinePage: FC = () => {
   return (
     <section className="section-timeline">
       <Timeline items={timelineItems.length === 0 ? "" : timelineItems} />
-      <AddButton handleClick={changeVisibility} />
+      <BottomNav changeVisibility={changeVisibility} />
       <NewTimelineItemModal
         visible={isVisible}
         changeVisibility={changeVisibility}
