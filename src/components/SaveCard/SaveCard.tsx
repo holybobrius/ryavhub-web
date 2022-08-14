@@ -1,4 +1,3 @@
-import * as Styled from "./SaveCard.style";
 import "./SaveCard.css";
 import { FC } from "react";
 

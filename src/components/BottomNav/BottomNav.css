@@ -1,0 +1,38 @@
+.bottom-nav-btn {
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.bottom-nav-btn svg {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-btn:hover {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.bottom-nav-btn:hover svg {
+  stroke: #fff;
+  opacity: 1;
+}
+
+.bottom-nav-container {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-between;
+  position: fixed;
+  left: 3vw;
+  top: 80vh;
+}
