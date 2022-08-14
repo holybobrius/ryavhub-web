@@ -6,7 +6,21 @@
   border-radius: 999px;
   font-style: normal;
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 400;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: translateY(-0.1rem);
+}
+
+.participants-box .tags-box .active {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #0d0d11 !important;
 }

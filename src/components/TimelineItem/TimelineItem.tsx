@@ -23,7 +23,7 @@ const TimelineItem: FC<Props> = (props) => {
         </p>
         <div className="tags-box">
           {props.participants.map((n: { name: string }) => (
-            <Tag key={props.participants.indexOf(n)} text={n.name} />
+            <Tag key={props.participants.indexOf(n)} user={n} text={n.name} />
           ))}
         </div>
       </div>

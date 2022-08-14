@@ -21,13 +21,19 @@ type FormValues = {
 const NewTimelineItemModal: FC<Props> = (props) => {
   const reduxStore = store.getState();
   const [users, setUsers] = useState<any[]>([]);
+  const [selectedParticipants, setSelectedParticipants] = useState([]);
+  const handleClick = (person: any) => {
+    setSelectedParticipants(selectedParticipants.concat(person));
+  };
   useEffect(() => {
     (async () => {
       const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
       setUsers(r.data);
     })();
   }, []);
-  const usersArr = users.map((user) => <Tag text={user.name} />);
+  const usersArr = users.map((user) => (
+    <Tag user={user} text={user.name} clickable={true} />
+  ));
   const { register, handleSubmit } = useForm<FormValues>();
   return props.visible ? (
     <div className="modal" id="modal">
