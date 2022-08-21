@@ -32,3 +32,61 @@
     font-size: 6rem;
   }
 }
+
+@media (max-width: 75em) {
+  html {
+    font-size: 54%;
+  }
+
+  .save-card {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    gap: 3rem;
+    margin-bottom: 10rem;
+  }
+
+  .section-saves {
+    padding: 10rem;
+  }
+
+  .save-card .text-box {
+    align-self: flex-start;
+  }
+
+  .save-card.inverted {
+    flex-direction: column-reverse;
+  }
+
+  .secondary-img {
+    display: none;
+  }
+
+  .nav-btns-container {
+    display: none;
+  }
+
+  .info-box {
+    margin-bottom: 5.6rem;
+  }
+
+  .bottom-nav-container {
+    display: none;
+  }
+
+  nav {
+    padding: 0 5rem !important;
+  }
+
+  .navbar-buttons {
+    display: none !important;
+  }
+
+  .nav-desktop-login-container {
+    display: none;
+  }
+
+  .nav-mobile-btn {
+    display: block !important;
+  }
+}
