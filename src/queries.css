@@ -89,4 +89,12 @@
   .nav-mobile-btn {
     display: block !important;
   }
+
+  .quotes-page {
+    padding: 13rem 4rem;
+  }
+
+  .quote-container {
+    padding: 2rem 4rem;
+  }
 }
