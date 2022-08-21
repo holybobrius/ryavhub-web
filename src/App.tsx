@@ -7,6 +7,7 @@ import Quotes from "./views/Quotes/Quotes";
 import TimelinePage from "./views/TimelinePage/TimelinePage";
 import GameSaves from "./views/GameSaves/GameSaves";
 import "./App.css";
+import "./queries.css";
 import "./assets/fonts/basisgrotesquepro/style.css";
 
 const App: FC = () => {

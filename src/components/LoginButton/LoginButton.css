@@ -12,7 +12,6 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: ease 250ms;
-  margin-right: 24rem;
 }
 
 .login-btn--nav:hover {
