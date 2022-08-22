@@ -115,3 +115,48 @@
     align-self: flex-start;
   }
 }
+
+@media (max-width: 34em) {
+  html {
+    font-size: 50%;
+  }
+
+  .save-title {
+    font-size: 5.4rem;
+    margin-left: 1rem;
+  }
+
+  .section-saves {
+    padding: 12rem 4rem;
+  }
+
+  .info-box {
+    align-self: center;
+    margin-bottom: 5rem;
+  }
+
+  .text-box,
+  .download-btn {
+    width: 100% !important;
+  }
+
+  .download-icon {
+    display: none;
+  }
+
+  .section-home {
+    justify-content: space-around;
+  }
+
+  .section-home .text-box {
+    margin-bottom: 0;
+  }
+
+  .quotes-page {
+    padding: 11rem 3rem;
+  }
+
+  .quote-container {
+    padding: 2rem 3rem;
+  }
+}
