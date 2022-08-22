@@ -1,9 +1,11 @@
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useState, useEffect, useMemo, useCallback } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import store from "../../store/index";
 import "./NewTimelineItemModal.css";
 import Tag from "../Tag/Tag";
+import { TagList } from "../TagList/TagList";
+import { User } from "../../types/types";
 
 interface Props {
   visible: boolean;
@@ -18,23 +20,37 @@ type FormValues = {
   location: string;
 };
 
+/* FIXME общая логика модалок повторяется, думаю стоит сделать компонент Modal.tsx и в него соответствующий контент */
+
 const NewTimelineItemModal: FC<Props> = (props) => {
   const reduxStore = store.getState();
-  const [users, setUsers] = useState<any[]>([]);
-  const [selectedParticipants, setSelectedParticipants] = useState([]);
-  const handleClick = (person: any) => {
-    setSelectedParticipants(selectedParticipants.concat(person));
-  };
+  const [users, setUsers] = useState<User[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   useEffect(() => {
-    (async () => {
-      const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
-      setUsers(r.data);
-    })();
+    //(async () => {
+    //  const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
+    //  setUsers(r.data);
+    //})(); //FIXME IIFE
+    axios.get<any[]>("https://api.ryav.tk/v1/users").then(({ data }) => {
+      console.log(data);
+      setUsers(data);
+    });
   }, []);
-  const usersArr = users.map((user) => (
-    <Tag user={user} text={user.name} clickable={true} />
-  ));
   const { register, handleSubmit } = useForm<FormValues>();
+
+  const handleClick = useCallback(
+    (user: User) => {
+      if (selectedUsers.includes(user.id)) {
+        return setSelectedUsers((selected) =>
+          selected.filter((u) => user.id !== u)
+        );
+      }
+
+      setSelectedUsers((p) => [...p, user.id]);
+    },
+    [selectedUsers]
+  );
+
   return props.visible ? (
     <div className="modal" id="modal">
       <div className="modal-content">
@@ -63,13 +79,13 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                   reduxStore.googleUser?.tokenId,
                 {
                   title: data.main,
-                  participants: data.participants.map(Number),
+                  participants: selectedUsers,
                   location: data.location,
                   date: data.date,
                 }
               )
               .then(() => {
-                props.fetchTimeline().then(() => props.changeVisibility());
+                props.fetchTimeline().then(() => props.changeVisibility()); //FIXME
               });
           })}
         >
@@ -103,7 +119,13 @@ const NewTimelineItemModal: FC<Props> = (props) => {
             <label className="label" htmlFor="author">
               Участники:
             </label>
-            <div className="tags-box">{usersArr}</div>
+            <div className="tags-box">
+              <TagList
+                users={users}
+                selected={selectedUsers}
+                onClick={handleClick}
+              />
+            </div>
           </div>
 
           <button className="submit" type="submit">

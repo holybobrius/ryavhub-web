@@ -53,12 +53,12 @@ nav {
   transition: 0.3s all;
 }
 
-.active {
+.active-icon {
   opacity: 1;
   transform: rotate(180deg);
 }
 
-/* import logo from "../../assets/images/logo.svg";
+/* FIXME delete import logo from "../../assets/images/logo.svg";
 
 export const Nav = styled.nav`
   height: 80px;

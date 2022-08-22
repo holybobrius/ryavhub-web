@@ -8,15 +8,13 @@ interface Props {
   date: string;
 }
 
-const Quote: FC<Props> = (props) => {
-  return (
-    <div className="quote-container">
-      <p className="quote-main">{props.quote}</p>
-      <p className="quote-info">
-        <Tag text={props.author} /> {props.date}
-      </p>
-    </div>
-  );
-};
+const Quote: FC<Props> = ({ quote, author, date }) => (
+  <div className="quote-container">
+    <p className="quote-main">{quote}</p>
+    <p className="quote-info">
+      <Tag user={{ id: 0, name: author }} /> {date}
+    </p>
+  </div>
+);
 
 export default Quote;

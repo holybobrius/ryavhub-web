@@ -20,7 +20,6 @@ interface QuotesApiResponseEntity {
 }
 
 const Home: FC = () => {
-  const reduxStore = useSelector<RootState>((state) => state.googleUser);
   const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
   const [randomQuote, setRandomQuote] = useState<string>("Место для истории");
   useEffect(() => {
@@ -29,16 +28,12 @@ const Home: FC = () => {
         "https://api.ryav.tk/v1/quotes"
       );
       setQuotes(r.data);
-    })();
+    })(); //FIXME IIFE
   }, []);
 
   const handleClick = () => {
     setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote);
   };
-
-  if (reduxStore === null) {
-    return <LockedHome />;
-  }
 
   return (
     <section className="section-home">
@@ -46,14 +41,16 @@ const Home: FC = () => {
         <img
           src={require("../../assets/images/hero-pic.png")}
           alt="Sad face Emoji"
-        ></img>
+        />
       </div>
       <div className="text-box">
-        <h1 className="heading">РявХаб</h1>
-        <p className="info-text">{randomQuote}</p>
-        <button className="hero-btn" onClick={handleClick}>
-          Сгенерировать цитату
-        </button>
+        <div className="text-box-inner">
+          <h1 className="heading">РявХаб</h1>
+          <p className="info-text">{randomQuote}</p>
+          <button className="hero-btn" onClick={handleClick}>
+            Сгенерировать цитату
+          </button>
+        </div>
       </div>
     </section>
 

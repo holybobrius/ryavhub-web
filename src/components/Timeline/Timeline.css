@@ -10,6 +10,15 @@
   content: "";
   position: absolute;
   width: 2px;
-  left: calc(50% - 2px);
-  height: 100%;
+  left: 2.5rem;
+  /* top: 50px; TODO подергать */
+  height: 100%; /* calc(100% - 150px); TODO подергать */
+}
+
+@media (min-width: 34em) {
+  .timeline-container::after {
+    left: calc(50% - 2px);
+    /* top: 50px; TODO подергать */
+    height: 100%; /* calc(100% - 150px); TODO подергать */
+  }
 }

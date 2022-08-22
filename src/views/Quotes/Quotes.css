@@ -34,6 +34,7 @@
 .quotes-page .img-box img {
   position: fixed;
   width: 55%;
-  top: -6.5rem;
-  right: -44rem;
+  right: -25%;
+  top: 0;
+  z-index: -3;
 }

@@ -1,6 +1,7 @@
 import "./SaveCard.css";
 import { FC } from "react";
 
+//FIXME type Props = {...}
 interface Props {
   title: string;
   description: string;
@@ -13,6 +14,7 @@ interface Props {
   index: number;
 }
 const SaveCard: FC<Props> = (props) => {
+  //FIXME разверни props в {title, ...}
   return (
     <div
       className={`save-card ${props.index % 2 !== 0 ? "inverted" : ""}`}

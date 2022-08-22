@@ -29,7 +29,7 @@
   transform: scale(1.1);
 }
 
-/* import styled from 'styled-components'
+/* FIXME remove me import styled from 'styled-components'
 
 export const Container = styled.div`
     

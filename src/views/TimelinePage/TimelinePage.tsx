@@ -5,17 +5,25 @@ import "./TimelinePage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import NewTimelineItemModal from "../../components/NewTimelineItemModal/NewTimelineItemModal";
 import Timeline from "../../components/Timeline/Timeline";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import LockedHome from "../LockedHome/LockedHome";
 
+//FIXME type
 interface Participant {
   id: number;
   name: string;
   email: string;
 }
+
+//FIXME type
 interface CreatedBy {
   id: number;
   name: string;
   email: string;
 }
+
+//FIXME type
 interface AxiosResponseObj {
   id: number;
   title: string;
@@ -37,7 +45,7 @@ const TimelinePage: FC = () => {
     const r = await axios.get<AxiosResponseObj[]>(
       "https://api.ryav.tk/v1/timeline"
     );
-    setTimelineItems(r.data.reverse());
+    setTimelineItems(r.data.reverse()); //FIXME промисы
   };
   useEffect(() => {
     fetchTimeline();
@@ -45,6 +53,7 @@ const TimelinePage: FC = () => {
 
   return (
     <section className="section-timeline">
+      {/* FIXME в Timeline.tsx items это [], а тут строка, как вариант сделать items?: [] и отдавать undefined */}
       <Timeline items={timelineItems.length === 0 ? "" : timelineItems} />
       <BottomNav changeVisibility={changeVisibility} />
       <NewTimelineItemModal

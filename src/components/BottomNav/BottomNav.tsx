@@ -1,9 +1,9 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import "./BottomNav.css";
 
-interface Props {
+type Props = {
   changeVisibility: any;
-}
+};
 
 const QuotesNavPanel: FC<Props> = (props) => {
   const scrollToTop = () => {
@@ -11,13 +11,12 @@ const QuotesNavPanel: FC<Props> = (props) => {
       top: 0,
       behavior: "smooth",
     });
-    console.log(window);
   };
 
   return (
     <div className="bottom-nav-container">
       <button className="bottom-nav-btn" onClick={scrollToTop}>
-        <svg
+        <svg //FIXME вынеси меня наружу
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -31,7 +30,7 @@ const QuotesNavPanel: FC<Props> = (props) => {
         </svg>
       </button>
       <button className="bottom-nav-btn" onClick={props.changeVisibility}>
-        <svg
+        <svg //FIXME вынеси меня наружу
           width="20"
           height="20"
           viewBox="0 0 20 20"

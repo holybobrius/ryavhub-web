@@ -6,21 +6,45 @@ import Home from "./views/Home/Home";
 import Quotes from "./views/Quotes/Quotes";
 import TimelinePage from "./views/TimelinePage/TimelinePage";
 import GameSaves from "./views/GameSaves/GameSaves";
+import LockedHome from "./views/LockedHome/LockedHome";
+import { GuardedRoute } from "./hocs/GuardedRoute";
+import { useIsAuthorized } from "./hooks/useIsAuthorized";
 import "./App.css";
 import "./queries.css";
 import "./assets/fonts/basisgrotesquepro/style.css";
 
 const App: FC = () => {
+  const isAuthorized = useIsAuthorized();
+
   return (
     <Router>
       <div className="app">
         <main>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/quotes" component={Quotes} />
-            <Route path="/timeline" component={TimelinePage} />
-            <Route path="/gamesaves" component={GameSaves} />
+            <GuardedRoute
+              exact
+              path="/"
+              auth={isAuthorized}
+              render={(props) => <Home {...props} />}
+            />
+            <GuardedRoute
+              path="/quotes"
+              auth={isAuthorized}
+              render={(props) => <Quotes {...props} />}
+            />
+            <GuardedRoute
+              path="/gamesaves"
+              auth={isAuthorized}
+              render={(props) => <GameSaves {...props} />}
+            />
+
+            <GuardedRoute
+              path="/timeline"
+              auth={isAuthorized}
+              render={(props) => <TimelinePage {...props} />}
+            />
+            <Route path="/unauth" component={LockedHome} />
           </Switch>
         </main>
       </div>

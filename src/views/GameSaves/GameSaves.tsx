@@ -7,6 +7,7 @@ import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
 import "./GameSaves.css";
 
+//FIXME type ... = {}
 interface GameSaveApiEntity {
   id: number;
   name: string;
@@ -18,19 +19,14 @@ interface GameSaveApiEntity {
 
 const GameSaves: FC = () => {
   const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
-  const reduxStore = useSelector<RootState>((state) => state.googleUser);
   useEffect(() => {
     (async () => {
       const fr = await axios.get<GameSaveApiEntity[]>(
         "https://api.ryav.tk/v1/gamesaves"
       );
       setSaves(fr.data.reverse());
-    })();
+    })(); //FIXME IIFE
   }, []);
-
-  if (reduxStore === null) {
-    return <LockedHome />;
-  }
 
   return (
     <section className="section-saves">

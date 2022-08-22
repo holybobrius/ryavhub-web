@@ -1,26 +1,35 @@
 .section-home {
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  padding: 10% 0;
   background-size: cover;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   color: #fff;
-  align-items: center;
-  justify-items: center;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .img-box {
+  flex: 0 0 50%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .text-box {
+  flex: 0 0 50%;
+  height: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+}
 
-  margin-bottom: 16rem;
+.text-box-inner {
+  width: 40rem;
+  text-align: left;
 }
 
 .img-box img {
@@ -36,6 +45,9 @@
 .info-text {
   font-size: 2rem;
   opacity: 0.6;
+  height: 15rem;
+  max-width: 40rem;
+  overflow: hidden;
 }
 
 .hero-btn {

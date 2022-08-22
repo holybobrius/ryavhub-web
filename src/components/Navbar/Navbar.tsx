@@ -1,23 +1,22 @@
-import { FC } from "react";
+import { FC, useState, useCallback } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import LoginButton from "../LoginButton/LoginButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 
 const Navbar: FC = () => {
+  const [navbarOpened, setNavbarOpened] = useState(false);
+  const handleNavbarOpened = useCallback(() => setNavbarOpened(true), []);
+  const handleNavbarClose = useCallback(() => setNavbarOpened(false), []);
+
+  //FIXME минор, мне кажется красивше будет вынести в App.tsx сокрытие навбара
+  //заюзай хук hooks/useIsAuthorized, в который убрана логика проверки юзера
   const reduxStore = useSelector<RootState>((state) => state.googleUser);
 
-  const toggleMobileNavbar = () => {
-    const mobileNav = document.querySelector(".navbar-mobile");
-    const mobileNavIcon = document.querySelector(".nav-mobile-btn-icon");
-    mobileNav?.classList.toggle("hidden");
-    mobileNavIcon?.classList.toggle("active");
-  };
-
   if (reduxStore === null) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -27,7 +26,12 @@ const Navbar: FC = () => {
       </Link>
       <div className="navbar-buttons">
         <div className="separator" />
-        <Link style={{ textDecoration: "none" }} to="/quotes">
+        <Link
+          style={
+            { textDecoration: "none" } /* FIXME можно общий класс навесить */
+          }
+          to="/quotes"
+        >
           <a className="nav-link">цитаты</a>
         </Link>
         <div className="separator" />
@@ -43,8 +47,8 @@ const Navbar: FC = () => {
       <div className="nav-desktop-login-container">
         <LoginButton />
       </div>
-      <button className="nav-mobile-btn" onClick={toggleMobileNavbar}>
-        <svg
+      <button className="nav-mobile-btn" onClick={handleNavbarOpened}>
+        <svg //FIXME в отдельный файл
           className="nav-mobile-btn-icon"
           width="12"
           height="20"
@@ -60,30 +64,8 @@ const Navbar: FC = () => {
           />
         </svg>
       </button>
-      <NavbarMobile handleClick={toggleMobileNavbar} />
+      {navbarOpened && <NavbarMobile onClose={handleNavbarClose} />}
     </nav>
-
-    // <Styled.Nav>
-    // <Link to="/">
-    //     <Styled.Logo/>
-    // </Link>
-    // <Styled.NavbarButtons>
-    //     <Styled.Separator />
-    //     <Link to="/quotes">
-    //         <Styled.NavLink>цитаты</Styled.NavLink>
-    //     </Link>
-    //     <Styled.Separator />
-    //     <Link to="/timeline">
-    //         <Styled.NavLink>таймлайн</Styled.NavLink>
-    //     </Link>
-    //     <Styled.Separator />
-    //     <Link to="/gamesaves">
-    //         <Styled.NavLink>сейвы</Styled.NavLink>
-    //     </Link>
-    //     <Styled.Separator />
-    // </Styled.NavbarButtons>
-    // <LoginButton/>
-    // </Styled.Nav>
   );
 };
 export default Navbar;

@@ -8,14 +8,14 @@ import {
 } from "react-google-login";
 import { RootState } from "../../store";
 import { googleLogin, googleLogout } from "../../store/actions/auth";
-
+import { useHistory } from "react-router-dom";
 import "./LoginButton.css";
 
 const LoginButton: FC = () => {
   const user = useSelector((s: RootState) => s.googleUser);
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  //todo send request to /account/auth to check if user is in database (onSuccess)
   const onSuccess = (
     data: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => {
@@ -25,11 +25,11 @@ const LoginButton: FC = () => {
     }
     googleLogin(data as GoogleLoginResponse)
       .then((r) => dispatch(r))
+      .then(() => history.push("/"))
       .catch((e) => {
         alert("error (see console)");
         console.log(e);
       });
-    //make request to this thang to check shit
   };
   const onFailure = (err: any) => {
     alert("unsuccesful");
@@ -43,8 +43,8 @@ const LoginButton: FC = () => {
     <GoogleLogout
       clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
       onLogoutSuccess={onLogout}
-      render={(props) => (
-        <button className="login-btn--nav" onClick={props.onClick}>
+      render={({ onClick }) => (
+        <button className="login-btn--nav" onClick={onClick}>
           Logout
         </button>
       )}
@@ -56,8 +56,8 @@ const LoginButton: FC = () => {
       onFailure={onFailure}
       cookiePolicy="single_host_origin"
       isSignedIn={true}
-      render={(props) => (
-        <button className="login-btn" onClick={props.onClick}>
+      render={({ onClick }) => (
+        <button className="login-btn" onClick={onClick}>
           Login
         </button>
       )}

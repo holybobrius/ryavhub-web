@@ -8,12 +8,14 @@ import LockedHome from "../LockedHome/LockedHome";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 
+//FIXME type
 interface QuotesUser {
   id: number;
   email: string;
   name: string;
 }
 
+//FIXME type
 interface QuotesApiResponseEntity {
   id: number;
   quote: string;
@@ -24,8 +26,7 @@ interface QuotesApiResponseEntity {
 
 const Quotes: FC = () => {
   const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const reduxStore = useSelector<RootState>((state) => state.googleUser);
+  const [isVisible, setIsVisible] = useState(false);
   const changeVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -36,12 +37,8 @@ const Quotes: FC = () => {
     setQuotes(r.data.reverse());
   };
   useEffect(() => {
-    fetchQuotes();
+    fetchQuotes(); //FIXME через промисы
   }, []);
-
-  if (reduxStore === null) {
-    return <LockedHome />;
-  }
 
   return (
     <section className="quotes-page" id="quotesContainer">
@@ -59,7 +56,8 @@ const Quotes: FC = () => {
       <div className="img-box">
         <img
           src={require("../../assets/images/Композиция 1_тест мне интересно.png")}
-        ></img>
+          alt=""
+        />
       </div>
       {/*<AddButton handleClick={changeVisibility}/>*/}
       <NewQuoteModal

@@ -17,17 +17,18 @@ type FormValues = {
 };
 
 const NewQuoteModal: FC<Props> = (props) => {
+  //FIXME ^ разверни props в объект {visible, ...}
   const [users, setUsers] = useState<any[]>([]);
   useEffect(() => {
     (async () => {
       const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
       setUsers(r.data);
-    })();
+    })(); //FIXME IIFE (по аналогии с фиксом который раньше показывал)
   }, []);
   const reduxStore = store.getState();
 
   const { register, handleSubmit } = useForm<FormValues>();
-  return props.visible ? (
+  return props.visible ? ( //FIXME минор, но null торчит в самом конце. кмк для лучшей читаемости стоит выше сделать if(!props.visible) return null, а тут условие убрать
     <div className="modal" id="modal">
       <div className="modal-content">
         <span className="close" onClick={props.changeVisibility}>
@@ -60,9 +61,8 @@ const NewQuoteModal: FC<Props> = (props) => {
                   date: data.date,
                 }
               )
-              .then(() => {
-                props.fetchQuotes().then(() => props.changeVisibility());
-              });
+              .then(() => props.fetchQuotes())
+              .then(() => props.changeVisibility());
           })}
         >
           <div className="textarea-box input-box">
