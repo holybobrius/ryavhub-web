@@ -17,10 +17,20 @@
 
 .save-card .text-box {
   margin-bottom: 0;
+  align-items: flex-start;
 }
 
-.save-card.inverted {
-  flex-direction: row-reverse;
+.inverted {
+  grid-template-columns: 3fr 2fr;
+}
+
+.inverted .text-box {
+  grid-column: 2;
+}
+
+.inverted .imgs-box {
+  grid-row: 1;
+  grid-column: 0;
 }
 
 .save-img {
