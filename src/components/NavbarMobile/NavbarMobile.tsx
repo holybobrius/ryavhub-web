@@ -2,7 +2,11 @@ import { FC, useState } from "react";
 import "./NavbarMobile.css";
 import { Link } from "react-router-dom";
 
-const NavbarMobile: FC = () => {
+interface Props {
+  handleClick: any;
+}
+
+const NavbarMobile: FC<Props> = (props) => {
   return (
     <div className="navbar-mobile hidden">
       <div className="navbar-mobile-item">

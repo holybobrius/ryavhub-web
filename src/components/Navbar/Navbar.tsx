@@ -11,7 +11,9 @@ const Navbar: FC = () => {
 
   const toggleMobileNavbar = () => {
     const mobileNav = document.querySelector(".navbar-mobile");
+    const mobileNavIcon = document.querySelector(".nav-mobile-btn-icon");
     mobileNav?.classList.toggle("hidden");
+    mobileNavIcon?.classList.toggle("active");
   };
 
   if (reduxStore === null) {
@@ -43,6 +45,7 @@ const Navbar: FC = () => {
       </div>
       <button className="nav-mobile-btn" onClick={toggleMobileNavbar}>
         <svg
+          className="nav-mobile-btn-icon"
           width="12"
           height="20"
           viewBox="0 0 12 20"
@@ -57,7 +60,7 @@ const Navbar: FC = () => {
           />
         </svg>
       </button>
-      <NavbarMobile />
+      <NavbarMobile handleClick={toggleMobileNavbar} />
     </nav>
 
     // <Styled.Nav>

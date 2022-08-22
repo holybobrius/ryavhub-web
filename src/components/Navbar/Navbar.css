@@ -32,6 +32,8 @@ nav {
   height: 42px;
   background-image: url("../../assets/images/logo.svg");
   background-repeat: no-repeat;
+  align-self: center;
+  justify-self: center;
 }
 
 .navbar-buttons {
@@ -44,6 +46,16 @@ nav {
   background-color: transparent;
   border: none;
   display: none;
+}
+
+.nav-mobile-btn-icon {
+  opacity: 0.6;
+  transition: 0.3s all;
+}
+
+.active {
+  opacity: 1;
+  transform: rotate(180deg);
 }
 
 /* import logo from "../../assets/images/logo.svg";

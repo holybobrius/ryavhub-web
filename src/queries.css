@@ -106,8 +106,20 @@
     justify-content: center;
   }
 
+  .section-locked {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20rem 4rem;
+  }
+
   .img-box img {
     width: 100%;
+    margin-left: 0;
+  }
+
+  .section-locked .img-box img {
+    width: 80%;
     margin-left: 0;
   }
 
@@ -158,5 +170,9 @@
 
   .quote-container {
     padding: 2rem 3rem;
+  }
+
+  nav {
+    padding: 0 2.5rem !important;
   }
 }
