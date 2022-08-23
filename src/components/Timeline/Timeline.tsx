@@ -2,17 +2,15 @@ import { FC } from "react";
 import TimelineItem from "../TimelineItem/TimelineItem";
 import "./Timeline.css";
 
-//FIXME type Props = {..}
-interface Props {
+type Props = {
   items: any; //FIXME типы, когда доедут контракты сваггера
-}
+};
 
-const Timeline: FC<Props> = (props) => {
-  //FIXME разверни props в {items}
-  if (!props.items) return null;
+const Timeline: FC<Props> = ({ items }) => {
+  if (!items) return null;
   return (
     <div className="timeline-container">
-      {props.items.map(
+      {items.map(
         (i: {
           //FIXME types
           date: string;

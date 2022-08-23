@@ -9,29 +9,26 @@ import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import LockedHome from "../LockedHome/LockedHome";
 
-//FIXME type
-interface Participant {
+type Participant = {
   id: number;
   name: string;
   email: string;
-}
+};
 
-//FIXME type
-interface CreatedBy {
+type CreatedBy = {
   id: number;
   name: string;
   email: string;
-}
+};
 
-//FIXME type
-interface AxiosResponseObj {
+type AxiosResponseObj = {
   id: number;
   title: string;
   location: string;
   date: string;
   participants: Participant[];
   created_by: CreatedBy;
-}
+};
 
 const TimelinePage: FC = () => {
   const [timelineItems, setTimelineItems] = useState<any>([]);

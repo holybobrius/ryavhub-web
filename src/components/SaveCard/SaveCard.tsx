@@ -1,33 +1,40 @@
 import "./SaveCard.css";
 import { FC } from "react";
 
-//FIXME type Props = {...}
-interface Props {
+type Props = {
   title: string;
   description: string;
   size: string;
   link: string;
   images: string[];
   imageAlt: string;
-
   total: number;
   index: number;
-}
-const SaveCard: FC<Props> = (props) => {
-  //FIXME разверни props в {title, ...}
+};
+
+const SaveCard: FC<Props> = ({
+  title,
+  description,
+  size,
+  link,
+  images,
+  imageAlt,
+  total,
+  index,
+}) => {
   return (
     <div
-      className={`save-card ${props.index % 2 !== 0 ? "inverted" : ""}`}
-      id={`card${props.index}`}
+      className={`save-card ${index % 2 !== 0 ? "inverted" : ""}`}
+      id={`card${index}`}
     >
-      {props.index % 2 === 0 ? "" : ""}
+      {index % 2 === 0 ? "" : ""}
       <div className="text-box">
-        <p className="save-title">{props.title}</p>
+        <p className="save-title">{title}</p>
         <div className="info-box">
           <div className="separator" />
           <div className="info-item">
             <span>Год</span>
-            <p>{props.description}</p>
+            <p>{description}</p>
           </div>
           <div className="separator" />
           <div className="info-item">
@@ -37,11 +44,11 @@ const SaveCard: FC<Props> = (props) => {
           <div className="separator" />
           <div className="info-item">
             <span>Размер</span>
-            <p>{props.size}</p>
+            <p>{size}</p>
           </div>
           <div className="separator" />
         </div>
-        <a href={props.link} className="download-btn">
+        <a href={link} className="download-btn">
           Скачать
           <svg
             className="download-icon"
@@ -63,50 +70,24 @@ const SaveCard: FC<Props> = (props) => {
         </a>
       </div>
       <div className={`imgs-box`}>
+        <img className="primary-img save-img" src={images[0]} alt={imageAlt} />
         <img
-          className="primary-img save-img"
-          src={props.images[0]}
-          alt={props.imageAlt}
+          className="secondary-img save-img"
+          src={images[1]}
+          alt={imageAlt}
         />
         <img
           className="secondary-img save-img"
-          src={props.images[1]}
-          alt={props.imageAlt}
+          src={images[2]}
+          alt={imageAlt}
         />
         <img
           className="secondary-img save-img"
-          src={props.images[2]}
-          alt={props.imageAlt}
-        />
-        <img
-          className="secondary-img save-img"
-          src={props.images[3]}
-          alt={props.imageAlt}
+          src={images[3]}
+          alt={imageAlt}
         />
       </div>
     </div>
-    // <Styled.CardContainer id={`card${props.index}`}>
-    //     <Styled.Images>
-    //         <Styled.PrimaryImage src={props.images[0]} alt={props.imageAlt}/>
-    //         <Styled.SecondaryImages>
-    //             <Styled.SecondaryImage src={props.images[1]}/>
-    //             <Styled.SecondaryImage src={props.images[2]}/>
-    //             <Styled.SecondaryImage src={props.images[3]}/>
-    //         </Styled.SecondaryImages>
-    //     </Styled.Images>
-    //     <Styled.Info>
-    //         <Styled.TextInfo>
-    //             <Styled.SaveName>{props.title}</Styled.SaveName>
-    //             <Styled.SaveYear>{props.description}</Styled.SaveYear>
-    //             {/*<button onClick={onClick}>1</button>
-    //             <button onClick={onClick}>2</button>
-    //             <button onClick={onClick}>3</button>*/}
-    //         </Styled.TextInfo>
-    //         <a href={props.link} target="_blank" rel="noreferrer">
-    //             <Styled.DownloadButton>СКАЧАТЬ ({props.size})</Styled.DownloadButton>
-    //         </a>
-    //     </Styled.Info>
-    // </Styled.CardContainer>
   );
 };
 export default SaveCard;

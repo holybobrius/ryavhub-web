@@ -8,21 +8,19 @@ import LockedHome from "../LockedHome/LockedHome";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 
-//FIXME type
-interface QuotesUser {
+type QuotesUser = {
   id: number;
   email: string;
   name: string;
-}
+};
 
-//FIXME type
-interface QuotesApiResponseEntity {
+type QuotesApiResponseEntity = {
   id: number;
   quote: string;
   quote_by: QuotesUser;
   created_by: QuotesUser;
   date: string;
-}
+};
 
 const Quotes: FC = () => {
   const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
@@ -67,26 +65,5 @@ const Quotes: FC = () => {
       />
     </section>
   );
-
-  //   <Styled.QuotesPage id="quotesContainer">
-  //       <QuotesNavPanel changeVisibility={changeVisibility} />
-  //       <Styled.QuotesContainer>
-  //         {quotes.map((quote) => (
-  //           <Quote
-  //             key={quote.id}
-  //             quote={quote.quote}
-  //             date={quote.date}
-  //             author={quote.quote_by.name}
-  //           />
-  //         ))}
-  //       </Styled.QuotesContainer>
-
-  //       {/*<AddButton handleClick={changeVisibility}/>*/}
-  //       <NewQuoteModal
-  //         visible={isVisible}
-  //         changeVisibility={changeVisibility}
-  //         fetchQuotes={fetchQuotes}
-  //       />
-  //     </Styled.QuotesPage>
 };
 export default Quotes;

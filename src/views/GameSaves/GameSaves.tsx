@@ -7,15 +7,14 @@ import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
 import "./GameSaves.css";
 
-//FIXME type ... = {}
-interface GameSaveApiEntity {
+type GameSaveApiEntity = {
   id: number;
   name: string;
   year: number;
   download_link: string;
   size: string;
   imgs: string[];
-}
+};
 
 const GameSaves: FC = () => {
   const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);

@@ -28,24 +28,3 @@
   background-color: #868585;
   transform: scale(1.1);
 }
-
-/* FIXME remove me import styled from 'styled-components'
-
-export const Container = styled.div`
-    
-`;
-
-export const NavButtonInput = styled.input`
-    
-`;
-
-export const NavButtonSpan = styled.span`
-    
-    &:hover {
-        background-color: #868585;
-        transform: scale(1.1);
-    }
-    &:after{
-        background-color: red;
-    }
-`; */

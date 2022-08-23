@@ -4,11 +4,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import store from "../../store/index";
 
-interface Props {
+type Props = {
   visible: boolean;
   changeVisibility: () => void;
   fetchQuotes: () => Promise<void>;
-}
+};
 
 type FormValues = {
   quote: string;
@@ -16,8 +16,11 @@ type FormValues = {
   date: string;
 };
 
-const NewQuoteModal: FC<Props> = (props) => {
-  //FIXME ^ разверни props в объект {visible, ...}
+const NewQuoteModal: FC<Props> = ({
+  visible,
+  changeVisibility,
+  fetchQuotes,
+}) => {
   const [users, setUsers] = useState<any[]>([]);
   useEffect(() => {
     (async () => {
@@ -26,12 +29,14 @@ const NewQuoteModal: FC<Props> = (props) => {
     })(); //FIXME IIFE (по аналогии с фиксом который раньше показывал)
   }, []);
   const reduxStore = store.getState();
-
   const { register, handleSubmit } = useForm<FormValues>();
-  return props.visible ? ( //FIXME минор, но null торчит в самом конце. кмк для лучшей читаемости стоит выше сделать if(!props.visible) return null, а тут условие убрать
+
+  if (!visible) return null;
+
+  return (
     <div className="modal" id="modal">
       <div className="modal-content">
-        <span className="close" onClick={props.changeVisibility}>
+        <span className="close" onClick={changeVisibility}>
           <svg
             className="close-icon"
             width="19"
@@ -61,8 +66,8 @@ const NewQuoteModal: FC<Props> = (props) => {
                   date: data.date,
                 }
               )
-              .then(() => props.fetchQuotes())
-              .then(() => props.changeVisibility());
+              .then(() => fetchQuotes())
+              .then(() => changeVisibility());
           })}
         >
           <div className="textarea-box input-box">
@@ -97,7 +102,7 @@ const NewQuoteModal: FC<Props> = (props) => {
         </form>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default NewQuoteModal;

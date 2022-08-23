@@ -13,6 +13,7 @@
     "react-hook-form": "^7.6.0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
+    "react-svg": "^15.1.7",
     "redux": "^4.0.5",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.1.1"
