@@ -18,7 +18,7 @@ const Home: FC = () => {
     <section className="section-home">
       <div className="img-box">
         <img
-          src={require("../../assets/images/hero-pic.png")}
+          src={require("../../assets/images/hero-pic2.png")}
           alt="Sad face Emoji"
         />
       </div>

@@ -181,4 +181,16 @@
   nav {
     padding: 0 2.5rem !important;
   }
+
+  .info-text {
+    height: 10rem;
+  }
+
+  .login-btn {
+    margin-top: 0;
+  }
+
+  .section-locked {
+    padding-top: 13rem;
+  }
 }
