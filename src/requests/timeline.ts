@@ -6,3 +6,10 @@ export const timelineRequest = () =>
     url: "/timeline",
     method: "get",
   });
+
+export const postTimelineRequest = (data: Timeline.IndexPostRequestBody) =>
+  base<Timeline.IndexPostResponse>({
+    url: "/timeline",
+    method: "post",
+    data,
+  });

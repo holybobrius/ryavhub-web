@@ -1,19 +1,17 @@
-import { FC, useState, useEffect, useMemo, useCallback } from "react";
-import axios from "axios";
+import { FC, useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import store from "../../store/index";
 import "./NewTimelineItemModal.css";
-import Tag from "../Tag/Tag";
 import { TagList } from "../TagList/TagList";
-
 import { usersRequest } from "../../requests/users";
-import { Users } from "../../types/types";
+import { Timeline, Users } from "../../types/types";
+import { postTimelineRequest } from "../../requests/timeline";
 
-interface Props {
+type Props = {
   visible: boolean;
   changeVisibility: () => void;
   fetchTimeline: () => void;
-}
+};
 
 type FormValues = {
   main: string;
@@ -29,13 +27,14 @@ const NewTimelineItemModal: FC<Props> = (props) => {
   const [users, setUsers] = useState<Users.User[]>([]);
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   useEffect(() => {
-    //(async () => {
-    //  const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
-    //  setUsers(r.data);
-    //})(); //FIXME IIFE
     usersRequest().then(({ payload }) => setUsers(payload));
   }, []);
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<Timeline.TimelinePost>();
+  const handleInnerFormSubmit = (data: Timeline.TimelinePost) => {
+    return postTimelineRequest({ ...data, participants: selectedUsers })
+      .then(() => props.fetchTimeline())
+      .then(() => props.changeVisibility());
+  };
 
   const handleClick = useCallback(
     (user: Users.User) => {
@@ -71,29 +70,13 @@ const NewTimelineItemModal: FC<Props> = (props) => {
         </span>
         <form
           className="timeline-form"
-          onSubmit={handleSubmit((data) => {
-            axios
-              .post(
-                "https://api.ryav.tk/v1/timeline?token=" +
-                  reduxStore.googleUser?.tokenId,
-                {
-                  title: data.main,
-                  participants: selectedUsers,
-                  location: data.location,
-                  date: data.date,
-                }
-              )
-              .then(() => {
-                props.fetchTimeline();
-                props.changeVisibility(); //FIXME
-              });
-          })}
+          onSubmit={handleSubmit(handleInnerFormSubmit)}
         >
           <div className="textarea-box input-box">
             <label className="label" htmlFor="main">
               Событие:
             </label>
-            <textarea {...register("main", { required: true })}></textarea>
+            <textarea {...register("title", { required: true })}></textarea>
           </div>
           <div className="input-box">
             <label className="label" htmlFor="location">

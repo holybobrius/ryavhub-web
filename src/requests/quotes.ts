@@ -6,3 +6,10 @@ export const quotesRequest = () =>
     url: "/quotes",
     method: "get",
   });
+
+export const postQuotesRequest = (data: Quotes.IndexPostRequestBody) =>
+  base<Quotes.IndexPostResponse>({
+    url: "/quotes",
+    method: "post",
+    data,
+  });

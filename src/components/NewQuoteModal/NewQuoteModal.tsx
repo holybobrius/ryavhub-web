@@ -1,23 +1,15 @@
 import { FC, useState, useEffect } from "react";
 import "./NewQuoteModal.css";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import store from "../../store/index";
 import { usersRequest } from "../../requests/users";
-import { Users } from "../../types/types";
-
+import { Users, Quotes } from "../../types/types";
+import { postQuotesRequest, quotesRequest } from "../../requests/quotes";
 type Props = {
   visible: boolean;
   changeVisibility: () => void;
   fetchQuotes: () => void;
 };
-
-type FormValues = {
-  quote: string;
-  author: string;
-  date: string;
-};
-
 const NewQuoteModal: FC<Props> = ({
   visible,
   changeVisibility,
@@ -25,13 +17,16 @@ const NewQuoteModal: FC<Props> = ({
 }) => {
   const [users, setUsers] = useState<Users.User[]>([]);
   useEffect(() => {
-    usersRequest().then(({ payload }) => setUsers(payload)); //FIXME IIFE (по аналогии с фиксом который раньше показывал)
+    usersRequest().then(({ payload }) => setUsers(payload));
   }, []);
   const reduxStore = store.getState();
-  const { register, handleSubmit } = useForm<FormValues>();
-
+  const { register, handleSubmit } = useForm<Quotes.QuotePost>();
+  const handleInnerFormSubmit = (data: Quotes.QuotePost) => {
+    return postQuotesRequest(data)
+      .then(() => fetchQuotes())
+      .then(() => changeVisibility());
+  };
   if (!visible) return null;
-
   return (
     <div className="modal" id="modal">
       <div className="modal-content">
@@ -53,21 +48,7 @@ const NewQuoteModal: FC<Props> = ({
         </span>
         <form
           className="quotes-form"
-          onSubmit={handleSubmit((data) => {
-            //@ts-ignore
-            axios
-              .post(
-                "https://api.ryav.tk/v1/quotes?token=" +
-                  reduxStore.googleUser?.tokenId,
-                {
-                  quote: data.quote,
-                  quote_by: Number(data.author),
-                  date: data.date,
-                }
-              )
-              .then(() => fetchQuotes())
-              .then(() => changeVisibility());
-          })}
+          onSubmit={handleSubmit(handleInnerFormSubmit)}
         >
           <div className="textarea-box input-box">
             <label className="label" htmlFor="quote">
@@ -76,10 +57,10 @@ const NewQuoteModal: FC<Props> = ({
             <textarea {...register("quote", { required: true })} />
           </div>
           <div className="input-box">
-            <label className="label" htmlFor="author">
+            <label className="label" htmlFor="quote_by">
               Автор:
             </label>
-            <select {...register("author", { required: true })}>
+            <select {...register("quote_by", { required: true })}>
               {users.map((user) => (
                 <option value={user.id}>{user.name}</option>
               ))}
@@ -103,5 +84,4 @@ const NewQuoteModal: FC<Props> = ({
     </div>
   );
 };
-
 export default NewQuoteModal;
