@@ -1,13 +1,11 @@
 import { FC, useState, useEffect } from "react";
 import "../../App.css";
-import axios from "axios";
 import "./TimelinePage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import NewTimelineItemModal from "../../components/NewTimelineItemModal/NewTimelineItemModal";
 import Timeline from "../../components/Timeline/Timeline";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
-import LockedHome from "../LockedHome/LockedHome";
+import { timelineRequest } from "../../requests/timeline";
+import { Timeline as TimelineType } from "../../types/types";
 
 type Participant = {
   id: number;
@@ -31,18 +29,17 @@ type AxiosResponseObj = {
 };
 
 const TimelinePage: FC = () => {
-  const [timelineItems, setTimelineItems] = useState<any>([]);
+  const [timelineItems, setTimelineItems] = useState<TimelineType.Timeline[]>(
+    []
+  );
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const changeVisibility = () => {
     setIsVisible(!isVisible);
   };
 
-  const fetchTimeline = async () => {
-    const r = await axios.get<AxiosResponseObj[]>(
-      "https://api.ryav.tk/v1/timeline"
-    );
-    setTimelineItems(r.data.reverse()); //FIXME промисы
+  const fetchTimeline = () => {
+    timelineRequest().then(({ payload }) => setTimelineItems(payload));
   };
   useEffect(() => {
     fetchTimeline();

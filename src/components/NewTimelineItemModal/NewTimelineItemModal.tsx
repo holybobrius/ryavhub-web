@@ -5,12 +5,14 @@ import store from "../../store/index";
 import "./NewTimelineItemModal.css";
 import Tag from "../Tag/Tag";
 import { TagList } from "../TagList/TagList";
-import { User } from "../../types/types";
+
+import { usersRequest } from "../../requests/users";
+import { Users } from "../../types/types";
 
 interface Props {
   visible: boolean;
   changeVisibility: () => void;
-  fetchTimeline: () => Promise<void>;
+  fetchTimeline: () => void;
 }
 
 type FormValues = {
@@ -24,22 +26,19 @@ type FormValues = {
 
 const NewTimelineItemModal: FC<Props> = (props) => {
   const reduxStore = store.getState();
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<Users.User[]>([]);
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   useEffect(() => {
     //(async () => {
     //  const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
     //  setUsers(r.data);
     //})(); //FIXME IIFE
-    axios.get<any[]>("https://api.ryav.tk/v1/users").then(({ data }) => {
-      console.log(data);
-      setUsers(data);
-    });
+    usersRequest().then(({ payload }) => setUsers(payload));
   }, []);
   const { register, handleSubmit } = useForm<FormValues>();
 
   const handleClick = useCallback(
-    (user: User) => {
+    (user: Users.User) => {
       if (selectedUsers.includes(user.id)) {
         return setSelectedUsers((selected) =>
           selected.filter((u) => user.id !== u)
@@ -85,7 +84,8 @@ const NewTimelineItemModal: FC<Props> = (props) => {
                 }
               )
               .then(() => {
-                props.fetchTimeline().then(() => props.changeVisibility()); //FIXME
+                props.fetchTimeline();
+                props.changeVisibility(); //FIXME
               });
           })}
         >

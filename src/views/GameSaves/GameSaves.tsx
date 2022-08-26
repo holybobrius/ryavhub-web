@@ -5,26 +5,14 @@ import NavButtons from "../../components/NavButton/NavButtons";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
+import { gamesavesRequest } from "../../requests/gamesaves";
+import { Gamesaves } from "../../types/types";
 import "./GameSaves.css";
 
-type GameSaveApiEntity = {
-  id: number;
-  name: string;
-  year: number;
-  download_link: string;
-  size: string;
-  imgs: string[];
-};
-
 const GameSaves: FC = () => {
-  const [saves, setSaves] = useState<GameSaveApiEntity[]>([]);
+  const [saves, setSaves] = useState<Gamesaves.Gamesave[]>([]);
   useEffect(() => {
-    (async () => {
-      const fr = await axios.get<GameSaveApiEntity[]>(
-        "https://api.ryav.tk/v1/gamesaves"
-      );
-      setSaves(fr.data.reverse());
-    })(); //FIXME IIFE
+    gamesavesRequest().then(({ payload }) => setSaves(payload));
   }, []);
 
   return (

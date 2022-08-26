@@ -7,8 +7,9 @@ import {
   GoogleLoginResponseOffline,
 } from "react-google-login";
 import { RootState } from "../../store";
-import { googleLogin, googleLogout } from "../../store/actions/auth";
 import { useHistory } from "react-router-dom";
+import { GOOGLE_LOGIN, GOOGLE_LOGOUT } from "../../store/types";
+import { accountRequest } from "../../requests/account";
 import "./LoginButton.css";
 
 const LoginButton: FC = () => {
@@ -17,27 +18,24 @@ const LoginButton: FC = () => {
   const history = useHistory();
 
   const onSuccess = (
+    //FIXME useCallback
     data: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => {
-    if (!("tokenId" in data)) {
-      alert("offline)");
-      return;
-    }
-    googleLogin(data as GoogleLoginResponse)
-      .then((r) => dispatch(r))
+    if (!("tokenId" in data)) return alert("offline)");
+
+    return accountRequest(data.tokenId)
+      .then((r) => dispatch({ type: GOOGLE_LOGIN, payload: data }))
       .then(() => history.push("/"))
       .catch((e) => {
-        alert("error (see console)");
+        alert("Smth gone wrong (see console)");
         console.log(e);
       });
   };
   const onFailure = (err: any) => {
-    alert("unsuccesful");
+    alert("Smth gone wrong (see console)");
     console.log(err);
   };
-  const onLogout = () => {
-    dispatch(googleLogout());
-  };
+  const onLogout = () => dispatch({ type: GOOGLE_LOGOUT });
 
   return user ? (
     <GoogleLogout

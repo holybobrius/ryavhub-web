@@ -4,6 +4,8 @@ import { RootState } from "../../store";
 import LockedHome from "../LockedHome/LockedHome";
 import { useSelector } from "react-redux";
 import "./Home.css";
+import { quotesRequest } from "../../requests/quotes";
+import { Quotes } from "../../types/types";
 
 interface QuotesUser {
   id: number;
@@ -20,15 +22,10 @@ interface QuotesApiResponseEntity {
 }
 
 const Home: FC = () => {
-  const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
+  const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
   const [randomQuote, setRandomQuote] = useState<string>("Место для истории");
   useEffect(() => {
-    (async () => {
-      const r = await axios.get<QuotesApiResponseEntity[]>(
-        "https://api.ryav.tk/v1/quotes"
-      );
-      setQuotes(r.data);
-    })(); //FIXME IIFE
+    quotesRequest().then(({ payload }) => setQuotes(payload));
   }, []);
 
   const handleClick = () => {

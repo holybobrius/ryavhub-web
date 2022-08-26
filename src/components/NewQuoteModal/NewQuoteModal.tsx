@@ -7,7 +7,7 @@ import store from "../../store/index";
 type Props = {
   visible: boolean;
   changeVisibility: () => void;
-  fetchQuotes: () => Promise<void>;
+  fetchQuotes: () => void;
 };
 
 type FormValues = {

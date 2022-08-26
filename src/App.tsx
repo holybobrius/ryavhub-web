@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./views/Home/Home";
-import Quotes from "./views/Quotes/Quotes";
+import QuotesPage from "./views/Quotes/Quotes";
 import TimelinePage from "./views/TimelinePage/TimelinePage";
 import GameSaves from "./views/GameSaves/GameSaves";
 import LockedHome from "./views/LockedHome/LockedHome";
@@ -31,7 +31,7 @@ const App: FC = () => {
             <GuardedRoute
               path="/quotes"
               auth={isAuthorized}
-              render={(props) => <Quotes {...props} />}
+              render={(props) => <QuotesPage {...props} />}
             />
             <GuardedRoute
               path="/gamesaves"

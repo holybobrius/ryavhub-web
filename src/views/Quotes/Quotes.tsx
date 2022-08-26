@@ -1,10 +1,8 @@
 import { FC, useState, useEffect } from "react";
 import Quote from "../../components/Quote/Quote";
-import axios from "axios";
 import NewQuoteModal from "../../components/NewQuoteModal/NewQuoteModal";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import LockedHome from "../LockedHome/LockedHome";
+import { quotesRequest } from "../../requests/quotes";
+import { Quotes } from "../../types/types";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 
@@ -22,18 +20,17 @@ type QuotesApiResponseEntity = {
   date: string;
 };
 
-const Quotes: FC = () => {
-  const [quotes, setQuotes] = useState<QuotesApiResponseEntity[]>([]);
+const QuotesPage: FC = () => {
+  const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const changeVisibility = () => {
     setIsVisible(!isVisible);
   };
-  const fetchQuotes = async () => {
-    const r = await axios.get<QuotesApiResponseEntity[]>(
-      "https://api.ryav.tk/v1/quotes"
-    );
-    setQuotes(r.data.reverse());
+
+  const fetchQuotes = () => {
+    quotesRequest().then(({ payload }) => setQuotes(payload));
   };
+
   useEffect(() => {
     fetchQuotes(); //FIXME через промисы
   }, []);
@@ -66,4 +63,4 @@ const Quotes: FC = () => {
     </section>
   );
 };
-export default Quotes;
+export default QuotesPage;

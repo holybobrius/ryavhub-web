@@ -1,12 +1,12 @@
 import { FC, useState } from "react";
-import { User } from "../../types/types";
+import { Users } from "../../types/types";
 import "./Tag.css";
 
 type Props = {
   user: any;
   clickable?: boolean;
   active?: boolean;
-  onClick?: (user: User) => void;
+  onClick?: (user: Users.User) => void;
 };
 
 const Tag: FC<Props> = ({ user, onClick, clickable, active }) => (

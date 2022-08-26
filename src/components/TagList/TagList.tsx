@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { User } from "../../types/types";
+import { Users } from "../../types/types";
 import Tag from "../Tag/Tag";
 
 type Props = {
-  users: User[];
+  users: Users.User[];
   selected: number[];
-  onClick: (user: User) => void;
+  onClick: (user: Users.User) => void;
 };
 
 export const TagList: FC<Props> = ({ users, selected, onClick }) => (
