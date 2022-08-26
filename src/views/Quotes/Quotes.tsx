@@ -28,7 +28,7 @@ const QuotesPage: FC = () => {
   };
 
   const fetchQuotes = () => {
-    quotesRequest().then(({ payload }) => setQuotes(payload));
+    quotesRequest().then(({ payload }) => setQuotes(payload.reverse()));
   };
 
   useEffect(() => {

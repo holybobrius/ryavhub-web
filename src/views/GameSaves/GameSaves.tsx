@@ -12,7 +12,7 @@ import "./GameSaves.css";
 const GameSaves: FC = () => {
   const [saves, setSaves] = useState<Gamesaves.Gamesave[]>([]);
   useEffect(() => {
-    gamesavesRequest().then(({ payload }) => setSaves(payload));
+    gamesavesRequest().then(({ payload }) => setSaves(payload.reverse()));
   }, []);
 
   return (

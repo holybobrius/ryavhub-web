@@ -3,6 +3,8 @@ import "./NewQuoteModal.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import store from "../../store/index";
+import { usersRequest } from "../../requests/users";
+import { Users } from "../../types/types";
 
 type Props = {
   visible: boolean;
@@ -21,12 +23,9 @@ const NewQuoteModal: FC<Props> = ({
   changeVisibility,
   fetchQuotes,
 }) => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<Users.User[]>([]);
   useEffect(() => {
-    (async () => {
-      const r = await axios.get<any[]>("https://api.ryav.tk/v1/users");
-      setUsers(r.data);
-    })(); //FIXME IIFE (по аналогии с фиксом который раньше показывал)
+    usersRequest().then(({ payload }) => setUsers(payload)); //FIXME IIFE (по аналогии с фиксом который раньше показывал)
   }, []);
   const reduxStore = store.getState();
   const { register, handleSubmit } = useForm<FormValues>();
