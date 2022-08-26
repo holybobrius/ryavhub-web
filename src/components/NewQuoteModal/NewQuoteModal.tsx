@@ -1,10 +1,9 @@
 import { FC, useState, useEffect } from "react";
 import "./NewQuoteModal.css";
 import { useForm } from "react-hook-form";
-import store from "../../store/index";
 import { usersRequest } from "../../requests/users";
 import { Users, Quotes } from "../../types/types";
-import { postQuotesRequest, quotesRequest } from "../../requests/quotes";
+import { postQuotesRequest } from "../../requests/quotes";
 import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
 type Props = {
   visible: boolean;
@@ -20,7 +19,6 @@ const NewQuoteModal: FC<Props> = ({
   useEffect(() => {
     usersRequest().then(({ payload }) => setUsers(payload));
   }, []);
-  const reduxStore = store.getState();
   const { register, handleSubmit } = useForm<Quotes.QuotePost>();
   const handleInnerFormSubmit = (data: Quotes.QuotePost) => {
     return postQuotesRequest(data)
@@ -50,7 +48,9 @@ const NewQuoteModal: FC<Props> = ({
             </label>
             <select {...register("quote_by", { required: true })}>
               {users.map((user) => (
-                <option value={user.id}>{user.name}</option>
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
               ))}
             </select>
           </div>

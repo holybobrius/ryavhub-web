@@ -1,10 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import SaveCard from "../../components/SaveCard/SaveCard";
-import axios from "axios";
 import NavButtons from "../../components/NavButton/NavButtons";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import LockedHome from "../LockedHome/LockedHome";
 import { gamesavesRequest } from "../../requests/gamesaves";
 import { Gamesaves } from "../../types/types";
 import "./GameSaves.css";

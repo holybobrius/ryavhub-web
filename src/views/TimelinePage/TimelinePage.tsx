@@ -7,27 +7,6 @@ import Timeline from "../../components/Timeline/Timeline";
 import { timelineRequest } from "../../requests/timeline";
 import { Timeline as TimelineType } from "../../types/types";
 
-type Participant = {
-  id: number;
-  name: string;
-  email: string;
-};
-
-type CreatedBy = {
-  id: number;
-  name: string;
-  email: string;
-};
-
-type AxiosResponseObj = {
-  id: number;
-  title: string;
-  location: string;
-  date: string;
-  participants: Participant[];
-  created_by: CreatedBy;
-};
-
 const TimelinePage: FC = () => {
   const [timelineItems, setTimelineItems] = useState<TimelineType.Timeline[]>(
     []

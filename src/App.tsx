@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./views/Home/Home";
 import QuotesPage from "./views/Quotes/Quotes";

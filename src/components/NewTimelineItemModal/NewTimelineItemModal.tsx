@@ -1,6 +1,5 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
-import store from "../../store/index";
 import "./NewTimelineItemModal.css";
 import { TagList } from "../TagList/TagList";
 import { usersRequest } from "../../requests/users";
@@ -14,15 +13,7 @@ type Props = {
   fetchTimeline: () => void;
 };
 
-type FormValues = {
-  main: string;
-  participants: number[];
-  date: string;
-  location: string;
-};
-
 const NewTimelineItemModal: FC<Props> = (props) => {
-  const reduxStore = store.getState();
   const [users, setUsers] = useState<Users.User[]>([]);
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   useEffect(() => {

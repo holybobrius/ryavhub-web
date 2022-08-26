@@ -1,11 +1,10 @@
 import { FC, useState, useCallback } from "react";
 import "./Navbar.css";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginButton from "../LoginButton/LoginButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
-import arrowSideSvg from "../../assets/icons/arrow.svg";
 import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 
 const Navbar: FC = () => {

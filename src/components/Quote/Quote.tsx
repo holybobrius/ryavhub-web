@@ -2,18 +2,18 @@ import { FC } from "react";
 import Tag from "../Tag/Tag";
 import "./Quote.css";
 
-interface Props {
+type Props = {
   quote: string;
   author: string;
   date: string;
-}
+};
 
 const Quote: FC<Props> = ({ quote, author, date }) => (
   <div className="quote-container">
     <p className="quote-main">{quote}</p>
-    <p className="quote-info">
+    <div className="quote-info">
       <Tag user={{ id: 0, name: author }} /> {date}
-    </p>
+    </div>
   </div>
 );
 

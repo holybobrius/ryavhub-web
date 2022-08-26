@@ -1,25 +1,7 @@
 import { FC, useState, useEffect } from "react";
-import axios from "axios";
-import { RootState } from "../../store";
-import LockedHome from "../LockedHome/LockedHome";
-import { useSelector } from "react-redux";
 import "./Home.css";
 import { quotesRequest } from "../../requests/quotes";
 import { Quotes } from "../../types/types";
-
-interface QuotesUser {
-  id: number;
-  email: string;
-  name: string;
-}
-
-interface QuotesApiResponseEntity {
-  id: number;
-  quote: string;
-  quote_by: QuotesUser;
-  created_by: QuotesUser;
-  date: string;
-}
 
 const Home: FC = () => {
   const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);

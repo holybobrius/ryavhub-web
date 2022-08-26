@@ -7,20 +7,6 @@ import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import { ReactComponent as Wheel } from "../../assets/images/wheel2.svg";
 
-type QuotesUser = {
-  id: number;
-  email: string;
-  name: string;
-};
-
-type QuotesApiResponseEntity = {
-  id: number;
-  quote: string;
-  quote_by: QuotesUser;
-  created_by: QuotesUser;
-  date: string;
-};
-
 const QuotesPage: FC = () => {
   const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
   const [isVisible, setIsVisible] = useState(false);
