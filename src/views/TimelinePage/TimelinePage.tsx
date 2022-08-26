@@ -39,7 +39,9 @@ const TimelinePage: FC = () => {
   };
 
   const fetchTimeline = () => {
-    timelineRequest().then(({ payload }) => setTimelineItems(payload));
+    timelineRequest().then(({ payload }) =>
+      setTimelineItems(payload.reverse())
+    );
   };
   useEffect(() => {
     fetchTimeline();
