@@ -5,6 +5,7 @@ import { quotesRequest } from "../../requests/quotes";
 import { Quotes } from "../../types/types";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
+import { ReactComponent as Wheel } from "../../assets/images/wheel2.svg";
 
 type QuotesUser = {
   id: number;
@@ -32,12 +33,13 @@ const QuotesPage: FC = () => {
   };
 
   useEffect(() => {
-    fetchQuotes(); //FIXME через промисы
+    fetchQuotes();
   }, []);
 
   return (
     <section className="quotes-page" id="quotesContainer">
       <BottomNav changeVisibility={changeVisibility} />
+      <Wheel className="quotes-wheel" />
       <div className="quotes-container">
         {quotes.map((quote) => (
           <Quote
@@ -47,12 +49,6 @@ const QuotesPage: FC = () => {
             author={quote.quote_by.name}
           />
         ))}
-      </div>
-      <div className="img-box">
-        <img
-          src={require("../../assets/images/Композиция 1_тест мне интересно.png")}
-          alt=""
-        />
       </div>
       {/*<AddButton handleClick={changeVisibility}/>*/}
       <NewQuoteModal

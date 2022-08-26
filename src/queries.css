@@ -1,3 +1,9 @@
+@media (max-width: 106em) {
+  .quotes-wheel {
+    display: none;
+  }
+}
+
 @media (max-width: 97em) {
   html {
     font-size: 59%;
