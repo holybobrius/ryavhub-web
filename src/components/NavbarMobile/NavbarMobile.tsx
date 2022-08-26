@@ -39,7 +39,7 @@ const NavbarMobile: FC<Props> = ({ onClose }) => {
         <div className="separator"></div>
         <div className="navbar-mobile-item">
           <LogoutIcon />
-          <LoginButton /> {/*TODO: Logout styles*/}
+          <LoginButton />
         </div>
       </div>
     </>

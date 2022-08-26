@@ -49,8 +49,9 @@ const TimelinePage: FC = () => {
 
   return (
     <section className="section-timeline">
-      {/* FIXME в Timeline.tsx items это [], а тут строка, как вариант сделать items?: [] и отдавать undefined */}
-      <Timeline items={timelineItems.length === 0 ? "" : timelineItems} />
+      <Timeline
+        items={timelineItems.length === 0 ? undefined : timelineItems}
+      />
       <BottomNav changeVisibility={changeVisibility} />
       <NewTimelineItemModal
         visible={isVisible}

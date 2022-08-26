@@ -13,8 +13,6 @@ const Navbar: FC = () => {
   const handleNavbarOpened = useCallback(() => setNavbarOpened(true), []);
   const handleNavbarClose = useCallback(() => setNavbarOpened(false), []);
 
-  //FIXME минор, мне кажется красивше будет вынести в App.tsx сокрытие навбара
-  //заюзай хук hooks/useIsAuthorized, в который убрана логика проверки юзера
   const reduxStore = useSelector<RootState>((state) => state.googleUser);
 
   if (reduxStore === null) {

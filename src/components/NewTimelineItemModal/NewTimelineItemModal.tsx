@@ -21,8 +21,6 @@ type FormValues = {
   location: string;
 };
 
-/* FIXME общая логика модалок повторяется, думаю стоит сделать компонент Modal.tsx и в него соответствующий контент */
-
 const NewTimelineItemModal: FC<Props> = (props) => {
   const reduxStore = store.getState();
   const [users, setUsers] = useState<Users.User[]>([]);
