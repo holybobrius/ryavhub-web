@@ -1,8 +1,7 @@
 import React, { FC } from "react";
-import { ReactSVG } from "react-svg";
-import arrowSvg from "../../assets/icons/arrowup.svg";
-import plusSvg from "../../assets/icons/plus.svg";
 import "./BottomNav.css";
+import { ReactComponent as ArrowUp } from "../../assets/icons/arrowup.svg";
+import { ReactComponent as Plus } from "../../assets/icons/plus.svg";
 
 type Props = {
   changeVisibility: any;
@@ -19,12 +18,10 @@ const QuotesNavPanel: FC<Props> = (props) => {
   return (
     <div className="bottom-nav-container">
       <button className="bottom-nav-btn" onClick={scrollToTop}>
-        <img src={arrowSvg} />
-        {/* TODO: a way to customize svg without straight up pasting it to jsx */}
+        <ArrowUp />
       </button>
       <button className="bottom-nav-btn" onClick={props.changeVisibility}>
-        <img src={plusSvg} />
-        {/* TODO: a way to customize svg without straight up pasting it to jsx */}
+        <Plus />
       </button>
     </div>
   );

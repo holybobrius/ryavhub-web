@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import arrowSideSvg from "../../assets/icons/arrow.svg";
+import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
@@ -44,7 +45,7 @@ const Navbar: FC = () => {
         <LoginButton />
       </div>
       <button className="nav-mobile-btn" onClick={handleNavbarOpened}>
-        <img src={arrowSideSvg} />
+        <Arrow />
       </button>
       {navbarOpened && <NavbarMobile onClose={handleNavbarClose} />}
     </nav>
