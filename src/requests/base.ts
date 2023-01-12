@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from "../store";
 
-const baseURL = "https://api.ryav.tk/v2/";
+const baseURL = "https://api.ryav.lol/v2/";
 
 type BaseRequestParams = {
   url: string;
