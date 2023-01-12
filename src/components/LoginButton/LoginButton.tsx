@@ -39,7 +39,7 @@ const LoginButton: FC = () => {
 
   return user ? (
     <GoogleLogout
-      clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
+      clientId="68682133883-jnc71s26jtmqdq98klupgeienssmpbr2.apps.googleusercontent.com"
       onLogoutSuccess={onLogout}
       render={({ onClick }) => (
         <button className="login-btn--nav" onClick={onClick}>
@@ -49,7 +49,7 @@ const LoginButton: FC = () => {
     />
   ) : (
     <GoogleLogin
-      clientId="68682133883-q7k867bb1i2vjgg778kfr5c6vdso1edh.apps.googleusercontent.com"
+      clientId="68682133883-jnc71s26jtmqdq98klupgeienssmpbr2.apps.googleusercontent.com"
       onSuccess={onSuccess}
       onFailure={onFailure}
       cookiePolicy="single_host_origin"
