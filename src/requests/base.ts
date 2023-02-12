@@ -21,7 +21,7 @@ export const base = <T>({
       method,
       baseURL,
       url,
-      params: { token: store.getState().googleUser?.tokenId, ...params },
+      params: { token: store.getState().googleUser?.credential, ...params },
       data,
     })
     .then(({ data }) => data);

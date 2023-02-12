@@ -1,9 +1,9 @@
+import { CredentialResponse } from "@react-oauth/google";
 import { AnyAction } from "redux";
 import { GOOGLE_LOGIN, GOOGLE_LOGOUT } from "../types";
-import { GoogleLoginResponse } from "react-google-login";
 
 interface State {
-  googleUser: GoogleLoginResponse | null;
+  googleUser: CredentialResponse | null;
 }
 const initial: State = {
   googleUser: null,
