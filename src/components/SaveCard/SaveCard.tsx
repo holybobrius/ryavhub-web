@@ -6,7 +6,7 @@ type Props = {
   title: string;
   description: string;
   size: string;
-  link: string;
+  link: string | undefined;
   images: string[];
   imageAlt: string;
   total: number;
@@ -49,9 +49,12 @@ const SaveCard: FC<Props> = ({
           </div>
           <div className="separator" />
         </div>
-        <a href={link} className="download-btn">
-          Скачать
-          <DownloadIcon />
+        <a
+          href={link}
+          className={link ? "download-btn" : "download-btn-blocked"}
+        >
+          {link ? "Скачать" : "Нельзя скачать("}
+          {link && <DownloadIcon />}
         </a>
       </div>
       <div className={`imgs-box`}>
