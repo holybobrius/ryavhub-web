@@ -24,4 +24,4 @@ export const base = <T>({
       params: { token: store.getState().googleUser?.credential, ...params },
       data,
     })
-    .then(({ data }) => data);
+    .then(({ data }: any) => data);

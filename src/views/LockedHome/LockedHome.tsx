@@ -12,7 +12,9 @@ const LockedHome: FC = () => (
     </div>
     <div className="text-box">
       <h1 className="heading">РявХаб</h1>
-      <p className="info-text">Дружище, дальше придется залогиниться...</p>
+      <p className="info-text locked-info-text">
+        Дружище, дальше придется залогиниться...
+      </p>
       <LoginButton />
     </div>
   </section>

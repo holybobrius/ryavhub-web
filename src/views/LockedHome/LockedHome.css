@@ -29,3 +29,7 @@
   font-size: 2rem;
   opacity: 0.6;
 }
+
+.locked-info-text {
+  height: 8rem;
+}
