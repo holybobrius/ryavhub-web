@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Tag from "../Tag/Tag";
 import "./TimelineItem.css";
+import dayjs from "dayjs";
 
 type Props = {
   date: string;
@@ -13,7 +14,7 @@ const TimelineItem: FC<Props> = ({ date, place, title, participants }) => (
   <div className="timeline-item">
     <div className="timeline-item-content">
       <p className="event-info">
-        {date} | {place}
+        {dayjs(date)} | {place}
       </p>
       <p className="event-title">
         {title}
