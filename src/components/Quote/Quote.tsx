@@ -13,7 +13,7 @@ const Quote: FC<Props> = ({ quote, author, date }) => (
   <div className="quote-container">
     <p className="quote-main">{quote}</p>
     <div className="quote-info">
-      <Tag user={{ id: 0, name: author }} /> {dayjs(date).locale('ru').format('DD.MM.YYYY')}
+      <Tag user={{ id: 0, name: author }} /> {dayjs(date).locale('ru').format('D MMMM YYYY')}
     </div>
   </div>
 );

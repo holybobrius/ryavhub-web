@@ -14,7 +14,7 @@ const TimelineItem: FC<Props> = ({ date, place, title, participants }) => (
   <div className="timeline-item">
     <div className="timeline-item-content">
       <p className="event-info">
-        {dayjs(date).locale('ru').format('ru')} | {place}
+        {dayjs(date).locale('ru').format('D MMMM YYYY')} | {place}
       </p>
       <p className="event-title">
         {title}
