@@ -21,7 +21,7 @@ const NewQuoteModal: FC<Props> = ({
   }, []);
   const { register, handleSubmit } = useForm<Quotes.QuotePost>();
   const handleInnerFormSubmit = (data: Quotes.QuotePost) => {
-    return postQuotesRequest(data)
+    return postQuotesRequest({...data, quote_by: Number(data.quote_by)})
       .then(() => fetchQuotes())
       .then(() => changeVisibility());
   };
