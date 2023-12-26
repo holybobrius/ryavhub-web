@@ -48,7 +48,7 @@ const NewQuoteModal: FC<Props> = ({
             </label>
             <select {...register("quote_by", { required: true })}>
               {users.map((user) => (
-                <option key={user.id} value={user.id}>
+                <option key={user.id} value={Number(user.id)}>
                   {user.name}
                 </option>
               ))}
