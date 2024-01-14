@@ -21,7 +21,7 @@ export const base = <T>({
       method,
       baseURL,
       url,
-      params: { token: store.getState().googleUser?.credential, ...params },
+      params: { token: window.location.hostname === 'localhost' ? process.env.REACT_APP_GOOGLE_TOKEN : store.getState().googleUser?.credential, ...params },
       data,
     })
     .then(({ data }: any) => data);
