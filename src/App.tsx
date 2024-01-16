@@ -12,6 +12,7 @@ import "./App.css";
 import "./queries.css";
 import "./assets/fonts/basisgrotesquepro/style.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import {CringePg} from "./views/CringePG/CringePg";
 
 const App: FC = () => {
   const isAuthorized = useIsAuthorized();
@@ -44,6 +45,11 @@ const App: FC = () => {
                 path="/timeline"
                 auth={window.location.hostname === 'localhost' ? true : isAuthorized}
                 render={(props) => <TimelinePage {...props} />}
+              />
+              <GuardedRoute
+                path="/cringepg"
+                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                render={(props) => <CringePg {...props} />}
               />
               <Route path="/unauth" component={LockedHome} />
             </Switch>

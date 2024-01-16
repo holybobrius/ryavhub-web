@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*height: 400px;*/
+    overflow: hidden;
+    margin: 5rem auto;
+    width: 100vw;
+    flex-direction: column;
+}
+.game-list-container {
+    height: 25rem;
+    width: 100vw;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    font-weight: 300; /* Начертание Light */
+    font-size: 1.875rem; /* Размер шрифта 1.875rem */
+    overflow: hidden;
+}
+.game-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 5s ease-out;
+    white-space: nowrap; /* Отключаем перенос текста */
+    width: 100%;
+}
+.game {
+    flex: 0 0 8rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Basis Grotesque Pro', sans-serif;
+    font-weight: 300; /* Начертание Light */
+    font-size: 3rem; /* Размер шрифта 1.875rem */
+    cursor: pointer;
+    opacity: 0.7;
+    color: #454545;
+    transition: transform 0.3s ease-out, font-size 1s, opacity 1s, color 0.3s;
+    width: 100%;
+    overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
+}
+
+.hidden {
+    display: none;
+}
+
+
+.game.winner {
+    transform: scale(0.7);
+    color: white;
+    opacity: 1;
+    width: 100%;
+    font-weight: 400; /* Начертание Regular */
+    font-size: 7.5rem; /* Размер шрифта 4.688rem */
+    transition: transform 0.3s ease-out, color 0.3s, opacity 0.3s, font-size 0.3s;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.10) 0%, rgba(218, 218, 218, 0.00) 0.01%, rgba(0, 0, 0, 0.10) 51.5%, rgba(217, 217, 217, 0.00) 100%, rgba(0, 0, 0, 0.00) 100%);
+}
+button {
+    cursor: pointer;
+}
+
+.spin-button {
+    background-color: #fff;
+    width: 23.6rem;
+    height: 5.2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 20px;
+    outline: none;
+    border-style: none;
+    margin-bottom: 1.8rem;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reroll-button {
+    background-color: transparent;
+    outline: none;
+    height: 5.2rem;
+    width: 5.2rem;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    margin: 0;
+}
+
+.seconds-input {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.60);
+    width: 11.3rem;
+    height: 5.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
