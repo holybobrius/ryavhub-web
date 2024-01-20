@@ -15,6 +15,15 @@ export default defineConfig({
             src: path.resolve(__dirname, 'src'),
         }
     },
+    server: {
+        proxy: {
+            "/api": {
+                target: "https://ryav.lol",
+                changeOrigin: true,
+                secure: false,
+            },
+        },
+    },
     plugins: [
         react({
             // Use React plugin in all *.jsx and *.tsx files
