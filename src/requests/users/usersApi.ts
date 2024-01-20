@@ -4,7 +4,7 @@ import { Users } from "../../types/types";
 export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.ryav.lol/v2/",
+    baseUrl: "/api/v4/",
     credentials: "same-origin",
   }),
   endpoints: (builder) => ({

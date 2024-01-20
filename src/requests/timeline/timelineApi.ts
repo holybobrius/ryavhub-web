@@ -4,7 +4,7 @@ import { Account, Timeline } from "../../types/types";
 export const timelineApi = createApi({
   reducerPath: "timelineApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.ryav.lol/v2/",
+    baseUrl: "/api/v4/",
     credentials: "same-origin",
   }),
   endpoints: (builder) => ({

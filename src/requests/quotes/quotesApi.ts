@@ -4,7 +4,7 @@ import { Account, Quotes, Timeline } from "../../types/types";
 export const quotesApi = createApi({
   reducerPath: "quotesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.ryav.lol/v2/",
+    baseUrl: "/api/v4/",
     credentials: "same-origin",
   }),
   endpoints: (builder) => ({

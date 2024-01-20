@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./NewQuoteModal.css";
 import { useForm } from "react-hook-form";
 import { Quotes } from "../../types/types";
-import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
+import Cross from "../../assets/icons/cross.svg?react";
 import { useUsers } from "../../requests/users/useUsers";
 import { useQuotes } from "../../requests/quotes/useQuotes";
 type Props = {

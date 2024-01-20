@@ -4,7 +4,7 @@ import { Gamesaves, Users } from "../../types/types";
 export const gamesavesApi = createApi({
   reducerPath: "gamesavesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.ryav.lol/v2/",
+    baseUrl: "/api/v4/",
     credentials: "same-origin",
   }),
   endpoints: (builder) => ({
