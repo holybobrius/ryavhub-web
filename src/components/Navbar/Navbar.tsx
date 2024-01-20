@@ -14,7 +14,7 @@ const Navbar: FC = () => {
 
   const reduxStore = useSelector<RootState>((state) => state.googleUser);
 
-  if (reduxStore === null && window.location.hostname !== 'localhost') {
+  if (reduxStore === null) {
     return null;
   }
 

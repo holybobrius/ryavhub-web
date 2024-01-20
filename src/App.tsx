@@ -26,23 +26,23 @@ const App: FC = () => {
               <GuardedRoute
                 exact
                 path="/"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={isAuthorized}
                 render={(props) => <Home {...props} />}
               />
               <GuardedRoute
                 path="/quotes"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={isAuthorized}
                 render={(props) => <QuotesPage {...props} />}
               />
               <GuardedRoute
                 path="/gamesaves"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={isAuthorized}
                 render={(props) => <GameSaves {...props} />}
               />
 
               <GuardedRoute
                 path="/timeline"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={isAuthorized}
                 render={(props) => <TimelinePage {...props} />}
               />
               <Route path="/unauth" component={LockedHome} />
