@@ -12,8 +12,8 @@ import "./App.css";
 import "./queries.css";
 import "./assets/fonts/basisgrotesquepro/style.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import {CringePg} from "./views/CringePG/CringePg";
-import {CringePgAdmin} from "./views/CringePGAdmin/CringePgAdmin";
+import { CringePg } from "./views/CringePG/CringePg";
+import { CringePgAdmin } from "./views/CringePGAdmin/CringePgAdmin";
 
 const App: FC = () => {
   const isAuthorized = useIsAuthorized();
@@ -28,34 +28,46 @@ const App: FC = () => {
               <GuardedRoute
                 exact
                 path="/"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
                 render={(props) => <Home {...props} />}
               />
               <GuardedRoute
                 path="/quotes"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
                 render={(props) => <QuotesPage {...props} />}
               />
               <GuardedRoute
                 path="/gamesaves"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
                 render={(props) => <GameSaves {...props} />}
               />
 
               <GuardedRoute
                 path="/timeline"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
                 render={(props) => <TimelinePage {...props} />}
               />
               <GuardedRoute
                 path="/cringepg"
-                auth={window.location.hostname === 'localhost' ? true : isAuthorized}
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
                 render={(props) => <CringePg {...props} />}
               />
               <GuardedRoute
-                  path="/cringepg-admin"
-                  auth={window.location.hostname === 'localhost' ? true : isAuthorized}
-                  render={(props) => <CringePgAdmin />}
+                path="/cringepg-admin"
+                auth={
+                  window.location.hostname === "localhost" ? true : isAuthorized
+                }
+                render={(props) => <CringePgAdmin />}
               />
               <Route path="/unauth" component={LockedHome} />
             </Switch>
