@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import "./BottomNav.css";
-import { ReactComponent as ArrowUp } from "../../assets/icons/arrowup.svg";
-import { ReactComponent as Plus } from "../../assets/icons/plus.svg";
+import ArrowUp from "../../assets/icons/arrowup.svg?react";
+import Plus from "../../assets/icons/plus.svg?react";
 
 type Props = {
   changeVisibility: any;

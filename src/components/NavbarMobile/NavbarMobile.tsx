@@ -1,10 +1,10 @@
 import { FC } from "react";
 import "./NavbarMobile.css";
 import { Link } from "react-router-dom";
-import { ReactComponent as QuotesIcon } from "../../assets/icons/quotes.svg";
-import { ReactComponent as TimelineIcon } from "../../assets/icons/timeline.svg";
-import { ReactComponent as SavesIcon } from "../../assets/icons/saves.svg";
-import { ReactComponent as LogoutIcon } from "../../assets/icons/logout.svg";
+import QuotesIcon from "../../assets/icons/quotes.svg?react";
+import TimelineIcon from "../../assets/icons/timeline.svg?react";
+import SavesIcon from "../../assets/icons/saves.svg?react";
+import LogoutIcon  from "../../assets/icons/logout.svg?react";
 import LoginButton from "../LoginButton/LoginButton";
 
 type Props = {

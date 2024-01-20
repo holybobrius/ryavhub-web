@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import "./NewTimelineItemModal.css";
 import { TagList } from "../TagList/TagList";
 import { Timeline, Users } from "../../types/types";
-import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
 import { useTimeline } from "../../requests/timeline/useTimeline";
 import { useUsers } from "../../requests/users/useUsers";
+import Cross from "../../assets/icons/cross.svg?react";
 
 type Props = {
   visible: boolean;

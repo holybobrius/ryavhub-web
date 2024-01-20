@@ -3,8 +3,8 @@ import Quote from "../../components/Quote/Quote";
 import NewQuoteModal from "../../components/NewQuoteModal/NewQuoteModal";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import { ReactComponent as Wheel } from "../../assets/images/wheel2.svg";
 import { useQuotes } from "../../requests/quotes/useQuotes";
+import Wheel from "../../assets/images/wheel2.svg?react";
 
 const QuotesPage: FC = () => {
   const { quotes, refetchQuotes } = useQuotes();

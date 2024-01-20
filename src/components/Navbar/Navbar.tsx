@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import LoginButton from "../LoginButton/LoginButton";
 import { useSelector } from "react-redux";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
-import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 import { useUser } from "../../requests/user/useUser";
+import Arrow from "../../assets/icons/arrow.svg?react";
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
