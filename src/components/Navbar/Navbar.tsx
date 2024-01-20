@@ -5,7 +5,7 @@ import LoginButton from "../LoginButton/LoginButton";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
-import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
+import Arrow from "../../assets/icons/arrow.svg?react";
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
