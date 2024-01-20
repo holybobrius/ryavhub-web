@@ -5,7 +5,7 @@ import { TagList } from "../TagList/TagList";
 import { usersRequest } from "../../requests/users";
 import { Timeline, Users } from "../../types/types";
 import { postTimelineRequest } from "../../requests/timeline";
-import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
+import Cross from "../../assets/icons/cross.svg?react";
 
 type Props = {
   visible: boolean;

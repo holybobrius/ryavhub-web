@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { usersRequest } from "../../requests/users";
 import { Users, Quotes } from "../../types/types";
 import { postQuotesRequest } from "../../requests/quotes";
-import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
+import Cross from "../../assets/icons/cross.svg?react";
 type Props = {
   visible: boolean;
   changeVisibility: () => void;

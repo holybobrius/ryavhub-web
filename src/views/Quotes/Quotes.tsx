@@ -5,7 +5,7 @@ import { quotesRequest } from "../../requests/quotes";
 import { Quotes } from "../../types/types";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import { ReactComponent as Wheel } from "../../assets/images/wheel2.svg";
+import Wheel from "../../assets/images/wheel2.svg?react";
 
 const QuotesPage: FC = () => {
   const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
