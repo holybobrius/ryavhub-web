@@ -5,5 +5,5 @@ export const useQuotes = () => {
 
   const [sendQuote] = useSendQuotesMutation();
 
-  return { quotes: quotes?.payload ?? [], sendQuote, refetchQuotes };
+  return { quotes: quotes?.payload, sendQuote, refetchQuotes };
 };

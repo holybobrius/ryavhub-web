@@ -13,12 +13,16 @@ const QuotesPage: FC = () => {
     setIsVisible(!isVisible);
   };
 
+  if(!quotes) {
+      return null
+  }
+
   return (
     <section className="quotes-page" id="quotesContainer">
       <BottomNav changeVisibility={changeVisibility} />
       <Wheel className="quotes-wheel" />
       <div className="quotes-container">
-        {quotes.map((quote) => (
+        {[...quotes].reverse().map((quote) => (
           <Quote
             key={quote.id}
             quote={quote.quote}
