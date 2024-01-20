@@ -1,30 +1,18 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import "../../App.css";
 import "./TimelinePage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import NewTimelineItemModal from "../../components/NewTimelineItemModal/NewTimelineItemModal";
 import Timeline from "../../components/Timeline/Timeline";
-import { timelineRequest } from "../../requests/timeline";
-import { Timeline as TimelineType } from "../../types/types";
+import { useTimeline } from "../../requests/timeline/useTimeline";
 
 const TimelinePage: FC = () => {
-  const [timelineItems, setTimelineItems] = useState<TimelineType.Timeline[]>(
-    []
-  );
+  const { timelineItems, refetchTimelineItems } = useTimeline();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const changeVisibility = () => {
     setIsVisible(!isVisible);
   };
-
-  const fetchTimeline = () => {
-    timelineRequest().then(({ payload }) =>
-      setTimelineItems(payload.reverse())
-    );
-  };
-  useEffect(() => {
-    fetchTimeline();
-  }, []);
 
   return (
     <section className="section-timeline">
@@ -35,7 +23,7 @@ const TimelinePage: FC = () => {
       <NewTimelineItemModal
         visible={isVisible}
         changeVisibility={changeVisibility}
-        fetchTimeline={fetchTimeline}
+        fetchTimeline={refetchTimelineItems}
       />
     </section>
   );

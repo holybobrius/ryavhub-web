@@ -1,10 +1,10 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import "./NewQuoteModal.css";
 import { useForm } from "react-hook-form";
-import { usersRequest } from "../../requests/users";
-import { Users, Quotes } from "../../types/types";
-import { postQuotesRequest } from "../../requests/quotes";
+import { Quotes } from "../../types/types";
 import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
+import { useUsers } from "../../requests/users/useUsers";
+import { useQuotes } from "../../requests/quotes/useQuotes";
 type Props = {
   visible: boolean;
   changeVisibility: () => void;
@@ -15,13 +15,11 @@ const NewQuoteModal: FC<Props> = ({
   changeVisibility,
   fetchQuotes,
 }) => {
-  const [users, setUsers] = useState<Users.User[]>([]);
-  useEffect(() => {
-    usersRequest().then(({ payload }) => setUsers(payload));
-  }, []);
+  const users = useUsers();
+  const { sendQuote } = useQuotes();
   const { register, handleSubmit } = useForm<Quotes.QuotePost>();
   const handleInnerFormSubmit = (data: Quotes.QuotePost) => {
-    return postQuotesRequest({...data, quote_by: Number(data.quote_by)})
+    return sendQuote({ ...data, quote_by: Number(data.quote_by) })
       .then(() => fetchQuotes())
       .then(() => changeVisibility());
   };

@@ -3,18 +3,17 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import LoginButton from "../LoginButton/LoginButton";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
+import { useUser } from "../../requests/user/useUser";
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
   const handleNavbarOpened = useCallback(() => setNavbarOpened(true), []);
   const handleNavbarClose = useCallback(() => setNavbarOpened(false), []);
+  const user = useUser();
 
-  const reduxStore = useSelector<RootState>((state) => state.googleUser);
-
-  if (reduxStore === null && window.location.hostname !== 'localhost') {
+  if (!user && window.location.hostname !== "localhost") {
     return null;
   }
 
