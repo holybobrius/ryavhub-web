@@ -7,7 +7,7 @@ const Home: FC = () => {
   const [randomQuote, setRandomQuote] = useState<string>("Место для истории");
 
   const handleClick = () => {
-    setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote);
+    setRandomQuote(quotes ? quotes[Math.floor(Math.random() * quotes.length)].quote : 'Место для истории');
   };
 
   return (

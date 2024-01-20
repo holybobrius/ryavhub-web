@@ -1,0 +1,27 @@
+.user-container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.username {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+.logout-button {
+    background-color: transparent;
+    outline: none;
+    padding: 4px 15px;
+    border: 1px solid #fff;
+    display: flex;
+    border-radius: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.logout-button:hover {
+    opacity: 1;
+}

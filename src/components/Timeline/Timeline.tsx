@@ -9,7 +9,6 @@ type Props = {
 
 const Timeline: FC<Props> = ({ items }) => {
   if (!items) return null;
-  console.log(items)
   return (
     <div className="timeline-container">
       {items.map((i: TimelineType.Timeline) => (

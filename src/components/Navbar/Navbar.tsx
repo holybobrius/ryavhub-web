@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import { useUser } from "../../requests/user/useUser";
 import Arrow from "../../assets/icons/arrow.svg?react";
+import Logo from '../../assets/icons/logo.svg?react'
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
@@ -13,29 +14,25 @@ const Navbar: FC = () => {
   const handleNavbarClose = useCallback(() => setNavbarOpened(false), []);
   const user = useUser();
 
-  if (!user && window.location.hostname !== "localhost") {
+  if (!user) {
     return null;
   }
 
   return (
     <nav>
       <Link to="/">
-        <div className="logo" />
+        <Logo />
       </Link>
       <div className="navbar-buttons">
-        <div className="separator" />
-        <Link className="router-link nav-link" to="/quotes">
-          цитаты
+        <Link className='router-link nav-link' to="/quotes">
+          Цитаты
         </Link>
-        <div className="separator" />
-        <Link className="router-link nav-link" to="/timeline">
-          таймлайн
+        <Link className='router-link nav-link' to="/timeline">
+          Таймлайн
         </Link>
-        <div className="separator" />
-        <Link className="router-link nav-link" to="/gamesaves">
-          сейвы
+        <Link className='router-link nav-link' to="/gamesaves">
+          Сейвы
         </Link>
-        <div className="separator" />
       </div>
       <div className="nav-desktop-login-container">
         <LoginButton />
