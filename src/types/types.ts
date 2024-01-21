@@ -17,10 +17,17 @@ export namespace Account {
   // GET /v2/account/auth
   export type AuthGetRequestQuery = Generic.AuthQuery;
   export type AuthGetRequestBody = never;
-  export type AuthGetResponseSuccess = Generic.Success;
+  export type AuthGetResponseSuccess = Generic.Success<User>;
   export type AuthGetResponseError = Generic.Error;
   export type AuthGetResponse = AuthGetResponseSuccess | AuthGetResponseError;
 }
+
+export type User = {
+  id: number,
+  name: string,
+  gauntlet: boolean,
+}
+
 export namespace Gamesaves {
   export type Gamesave = {
     id: number;

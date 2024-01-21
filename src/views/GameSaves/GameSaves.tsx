@@ -1,19 +1,14 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import SaveCard from "../../components/SaveCard/SaveCard";
 import NavButtons from "../../components/NavButton/NavButtons";
-import { gamesavesRequest } from "../../requests/gamesaves";
-import { Gamesaves } from "../../types/types";
 import "./GameSaves.css";
+import { useGamesaves } from "../../requests/gamesaves/useGamesaves";
 
 const GameSaves: FC = () => {
-  const [saves, setSaves] = useState<Gamesaves.Gamesave[]>([]);
-  useEffect(() => {
-    gamesavesRequest().then(({ payload }) => setSaves(payload.reverse()));
-  }, []);
-
+  const gamesaves = useGamesaves();
   return (
     <section className="section-saves">
-      {saves.map((save) => (
+      {gamesaves.map((save) => (
         <SaveCard
           key={save.id}
           title={save.name}
@@ -22,11 +17,11 @@ const GameSaves: FC = () => {
           images={save.imgs}
           size={save.size}
           link={save.download_link}
-          total={saves.length}
-          index={saves.indexOf(save)}
+          total={gamesaves.length}
+          index={gamesaves.indexOf(save)}
         />
       ))}
-      <NavButtons total={saves.length} />
+      <NavButtons total={gamesaves.length} />
     </section>
   );
 };

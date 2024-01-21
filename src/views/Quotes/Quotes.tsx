@@ -1,33 +1,28 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import Quote from "../../components/Quote/Quote";
 import NewQuoteModal from "../../components/NewQuoteModal/NewQuoteModal";
-import { quotesRequest } from "../../requests/quotes";
-import { Quotes } from "../../types/types";
 import "./Quotes.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import { ReactComponent as Wheel } from "../../assets/images/wheel2.svg";
+import { useQuotes } from "../../requests/quotes/useQuotes";
+import Wheel from "../../assets/images/wheel2.svg?react";
 
 const QuotesPage: FC = () => {
-  const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
+  const { quotes, refetchQuotes } = useQuotes();
   const [isVisible, setIsVisible] = useState(false);
   const changeVisibility = () => {
     setIsVisible(!isVisible);
   };
 
-  const fetchQuotes = () => {
-    quotesRequest().then(({ payload }) => setQuotes(payload.reverse()));
-  };
-
-  useEffect(() => {
-    fetchQuotes();
-  }, []);
+  if(!quotes) {
+      return null
+  }
 
   return (
     <section className="quotes-page" id="quotesContainer">
       <BottomNav changeVisibility={changeVisibility} />
       <Wheel className="quotes-wheel" />
       <div className="quotes-container">
-        {quotes.map((quote) => (
+        {[...quotes].reverse().map((quote) => (
           <Quote
             key={quote.id}
             quote={quote.quote}
@@ -40,7 +35,7 @@ const QuotesPage: FC = () => {
       <NewQuoteModal
         visible={isVisible}
         changeVisibility={changeVisibility}
-        fetchQuotes={fetchQuotes}
+        fetchQuotes={refetchQuotes}
       />
     </section>
   );

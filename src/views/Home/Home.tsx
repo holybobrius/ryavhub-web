@@ -1,17 +1,13 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import "./Home.css";
-import { quotesRequest } from "../../requests/quotes";
-import { Quotes } from "../../types/types";
+import { useQuotes } from "../../requests/quotes/useQuotes";
 
 const Home: FC = () => {
-  const [quotes, setQuotes] = useState<Quotes.Quote[]>([]);
+  const { quotes } = useQuotes();
   const [randomQuote, setRandomQuote] = useState<string>("Место для истории");
-  useEffect(() => {
-    quotesRequest().then(({ payload }) => setQuotes(payload));
-  }, []);
 
   const handleClick = () => {
-    setRandomQuote(quotes[Math.floor(Math.random() * quotes.length)].quote);
+    setRandomQuote(quotes ? quotes[Math.floor(Math.random() * quotes.length)].quote : 'Место для истории');
   };
 
   return (
@@ -32,21 +28,6 @@ const Home: FC = () => {
         </div>
       </div>
     </section>
-
-    // <Styled.HomeContainer style={{ backgroundImage: `url(${backgroundImg})` }}>
-    //   <Styled.ImgHalf>
-    //     <Styled.MemeCard src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"></Styled.MemeCard>
-    //   </Styled.ImgHalf>
-    //   <Styled.Half>
-    //     <Styled.InfoWrapper>
-    //       <Styled.InfoTitle>РявХаб</Styled.InfoTitle>
-    //       <Styled.InfoText>{randomQuote}</Styled.InfoText>
-    //       <Styled.GenerateButton onClick={handleClick}>
-    //         Сгенерировать цитату
-    //       </Styled.GenerateButton>
-    //     </Styled.InfoWrapper>
-    //   </Styled.Half>
-    // </Styled.HomeContainer>
   );
 };
 export default Home;

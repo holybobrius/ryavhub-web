@@ -1,48 +1,15 @@
-import { FC, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { googleLogout, GoogleLogin, CredentialResponse } from '@react-oauth/google'
-import { RootState } from "../../store";
-import { useHistory } from "react-router-dom";
-import { GOOGLE_LOGIN, GOOGLE_LOGOUT } from "../../store/types";
-import { accountRequest } from "../../requests/account";
+import { FC } from "react";
 import "./LoginButton.css";
+import { useUser } from "../../requests/user/useUser";
+import {UserContainer} from "../UserContainer/UserContainer";
 
 const LoginButton: FC = () => {
-   const user = useSelector((s: RootState) => s.googleUser);
-   const dispatch = useDispatch();
-   const history = useHistory();
+  const user = useUser();
 
-   const onSuccess = useCallback((data: CredentialResponse) => {
-      if (!data.credential) return alert("offline)");
-
-      return accountRequest(data.credential)
-         .then(() => dispatch({ type: GOOGLE_LOGIN, payload: data }))
-         .then(() => history.push("/"))
-         .catch((e) => {
-            alert("Smth gone wrong (see console)");
-            console.log(e);
-         });
-   }, []);
-
-   const onError = useCallback(() => {
-      alert("Smth gone wrong (see console)");
-   }, []);
-
-   const onLogout = useCallback(() => {
-      dispatch({ type: GOOGLE_LOGOUT })
-      googleLogout();
-   }, []);
-
-   return user ? (
-      <button className="login-btn--nav" onClick={onLogout}>
-          Logout
-      </button>
-   ) : (
-      <GoogleLogin 
-         onSuccess={onSuccess}
-         onError={onError}
-         theme="filled_black"
-      />
-   )
+  return user ? (
+    <UserContainer user={user} />
+  ) : (
+    <button className="login-btn--nav">Login</button>
+  );
 };
 export default LoginButton;

@@ -1,11 +1,11 @@
-import { FC, useState, useEffect, useCallback } from "react";
+import { FC, useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import "./NewTimelineItemModal.css";
 import { TagList } from "../TagList/TagList";
-import { usersRequest } from "../../requests/users";
 import { Timeline, Users } from "../../types/types";
-import { postTimelineRequest } from "../../requests/timeline";
-import { ReactComponent as Cross } from "../../assets/icons/cross.svg";
+import { useTimeline } from "../../requests/timeline/useTimeline";
+import { useUsers } from "../../requests/users/useUsers";
+import Cross from "../../assets/icons/cross.svg?react";
 
 type Props = {
   visible: boolean;
@@ -14,14 +14,12 @@ type Props = {
 };
 
 const NewTimelineItemModal: FC<Props> = (props) => {
-  const [users, setUsers] = useState<Users.User[]>([]);
+  const users = useUsers();
+  const { sendTimelineItem } = useTimeline();
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
-  useEffect(() => {
-    usersRequest().then(({ payload }) => setUsers(payload));
-  }, []);
   const { register, handleSubmit } = useForm<Timeline.TimelinePost>();
   const handleInnerFormSubmit = (data: Timeline.TimelinePost) => {
-    return postTimelineRequest({ ...data, participants: selectedUsers })
+    return sendTimelineItem({ ...data, participants: selectedUsers })
       .then(() => props.fetchTimeline())
       .then(() => props.changeVisibility());
   };

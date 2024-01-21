@@ -1,6 +1,6 @@
 import "./SaveCard.css";
 import { FC } from "react";
-import { ReactComponent as DownloadIcon } from "../../assets/icons/download-icon.svg";
+import DownloadIcon from "../../assets/icons/download-icon.svg?react";
 
 type Props = {
   title: string;

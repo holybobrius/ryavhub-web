@@ -11,7 +11,7 @@ const Timeline: FC<Props> = ({ items }) => {
   if (!items) return null;
   return (
     <div className="timeline-container">
-      {items.reverse().map((i: TimelineType.Timeline) => (
+      {items.map((i: TimelineType.Timeline) => (
         <TimelineItem
           date={i.date}
           place={i.location}

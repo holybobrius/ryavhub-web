@@ -24,6 +24,10 @@ nav {
   color: #fff;
 }
 
+.nav-link-active {
+  color: #fff;
+}
+
 .separator {
   border-left: 1px solid #fff;
 }
