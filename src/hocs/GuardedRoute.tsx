@@ -6,9 +6,11 @@ type Props = {
   auth: boolean;
 } & RouteProps;
 
-export const GuardedRoute: FC<Props> = ({ render, auth, ...rest }) => (
+export const GuardedRoute: FC<Props> = ({ render, auth, ...rest }) => {
+  console.log(auth)
+  return (
   <Route
     {...rest}
     render={(props) => (auth ? render(props) : <Redirect to="/unauth" />)}
   />
-);
+)};

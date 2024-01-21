@@ -12,9 +12,9 @@ const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
   const handleNavbarOpened = useCallback(() => setNavbarOpened(true), []);
   const handleNavbarClose = useCallback(() => setNavbarOpened(false), []);
-  const user = useUser();
+  const {user, isLogged } = useUser();
 
-  if (!user) {
+  if (!isLogged) {
     return null;
   }
 
