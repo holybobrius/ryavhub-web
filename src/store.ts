@@ -4,6 +4,7 @@ import { usersApi } from "./requests/users/usersApi";
 import { quotesApi } from "./requests/quotes/quotesApi";
 import { timelineApi } from "./requests/timeline/timelineApi";
 import { gamesavesApi } from "./requests/gamesaves/gamesavesApi";
+import { cringepgApi } from "./requests/cringepg/cringepgApi";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     [quotesApi.reducerPath]: quotesApi.reducer,
     [timelineApi.reducerPath]: timelineApi.reducer,
     [gamesavesApi.reducerPath]: gamesavesApi.reducer,
+    [cringepgApi.reducerPath]: cringepgApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -20,6 +22,7 @@ export const store = configureStore({
       usersApi.middleware,
       quotesApi.middleware,
       timelineApi.middleware,
-      gamesavesApi.middleware
+      gamesavesApi.middleware,
+      cringepgApi.middleware
     ),
 });

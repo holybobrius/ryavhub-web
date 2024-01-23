@@ -1,113 +1,229 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*height: 400px;*/
-    overflow: hidden;
-    margin: 5rem auto;
-    width: 100vw;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*height: 400px;*/
+  overflow: hidden;
+  margin: 5rem auto;
+  margin-top: 6.8rem;
+  width: 100vw;
+  flex-direction: column;
 }
+
 .game-list-container {
-    height: 25rem;
-    width: 100vw;
-    font-family: 'Basis Grotesque Pro', sans-serif;
-    font-weight: 300; /* Начертание Light */
-    font-size: 1.875rem; /* Размер шрифта 1.875rem */
-    overflow: hidden;
+  height: 25rem;
+  width: 100vw;
+  font-family: "Basis Grotesque Pro", sans-serif;
+  font-weight: 300; /* Начертание Light */
+  font-size: 1.875rem; /* Размер шрифта 1.875rem */
+  overflow: hidden;
 }
 .game-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 5s ease-out;
-    white-space: nowrap; /* Отключаем перенос текста */
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 5s ease-out;
+  white-space: nowrap; /* Отключаем перенос текста */
+  width: 100%;
 }
 .game {
-    flex: 0 0 8rem;
-    height: 8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Basis Grotesque Pro', sans-serif;
-    font-weight: 300; /* Начертание Light */
-    font-size: 3rem; /* Размер шрифта 1.875rem */
-    cursor: pointer;
-    opacity: 0.7;
-    color: #454545;
-    transition: transform 0.3s ease-out, font-size 1s, opacity 1s, color 0.3s;
-    width: 100%;
-    overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
+  flex: 0 0 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Basis Grotesque Pro", sans-serif;
+  font-weight: 300; /* Начертание Light */
+  font-size: 3rem; /* Размер шрифта 1.875rem */
+  cursor: pointer;
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.25);
+  transition: transform 0.3s ease-out, font-size 1s, opacity 1s, color 0.3s;
+  width: 100%;
+  overflow: hidden; /* Скрываем содержимое, выходящее за пределы блока */
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
-
 
 .game.winner {
-    transform: scale(0.7);
-    color: white;
-    opacity: 1;
-    width: 100%;
-    font-weight: 400; /* Начертание Regular */
-    font-size: 7.5rem; /* Размер шрифта 4.688rem */
-    transition: transform 0.3s ease-out, color 0.3s, opacity 0.3s, font-size 0.3s;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.10) 0%, rgba(218, 218, 218, 0.00) 0.01%, rgba(0, 0, 0, 0.10) 51.5%, rgba(217, 217, 217, 0.00) 100%, rgba(0, 0, 0, 0.00) 100%);
+  transform: scale(0.7);
+  color: white;
+  opacity: 1;
+  width: 100%;
+  font-weight: 500; /* Начертание Regular */
+  font-size: 7.5rem; /* Размер шрифта 4.688rem */
+  transition: transform 0.3s ease-out, color 0.3s, opacity 0.3s, font-size 0.3s;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(218, 218, 218, 0) 0.01%,
+    rgba(0, 0, 0, 0.1) 51.5%,
+    rgba(217, 217, 217, 0) 100%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .spin-button {
-    background-color: #fff;
-    width: 23.6rem;
-    height: 5.2rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 20px;
-    outline: none;
-    border-style: none;
-    margin-bottom: 1.8rem;
+  background-color: #fff;
+  width: 23.6rem;
+  height: 5.2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 20px;
+  outline: none;
+  border-style: none;
+  margin-bottom: 1.4rem;
+}
+
+.input-container {
+  display: flex;
+  gap: 1rem;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  padding-left: 1.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-label {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input-container input {
+  width: 5.2rem;
+  height: 5.2rem;
+  background-color: transparent;
+  border: none;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.wheel-info-container {
+  display: flex;
+  gap: 16.7rem;
+  margin-top: 20.9rem;
+  align-items: center;
+}
+
+.wheel-info-container-active {
+  margin-top: 6.4rem;
+  align-items: flex-start;
+}
+
+.htlb-button {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #fff;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  height: 5.4rem;
+  padding: 0 2.4rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.buttons-container-row {
+  display: flex;
+  gap: 1.3rem;
+  width: 100%;
+  align-items: center;
+  height: 5.4rem;
+}
+
+.wheel-rules-container {
+  background-color: #0d0d11;
+  width: 43.6rem;
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.spin-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheel-rules-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.3rem;
+}
+
+.wheel-rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  list-style: none;
+}
+
+.wheel-rules-list-item {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 2.6rem;
 }
 
 .buttons-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-direction: column;
+  width: 34rem;
+}
+
+.hltb-button-container {
+  height: 5.4rem;
+  width: 100%;
+  text-decoration: none;
+}
+
+a:visited,
+a:active {
+  text-decoration: none;
 }
 
 .reroll-button {
-    background-color: transparent;
-    outline: none;
-    height: 5.2rem;
-    width: 5.2rem;
-    border-radius: 20px;
-    border: 1px solid #fff;
-    margin: 0;
+  background-color: transparent;
+  outline: none;
+  height: 5.2rem;
+  width: 5.2rem;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  margin: 0;
 }
 
 .seconds-input {
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.60);
-    width: 11.3rem;
-    height: 5.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 16px;
-    border: 1px solid #fff;
-    border-radius: 20px;
-    outline: none;
-    -webkit-appearance: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  width: 11.3rem;
+  height: 5.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  outline: none;
+  -webkit-appearance: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }

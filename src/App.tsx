@@ -41,7 +41,6 @@ const App: FC = () => {
                 auth={!!user}
                 render={(props) => <GameSaves {...props} />}
               />
-
               <GuardedRoute
                 path="/timeline"
                 auth={!!user}

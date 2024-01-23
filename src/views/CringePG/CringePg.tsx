@@ -1,40 +1,22 @@
-import {FC, useEffect, useState} from "react";
-import './CringePG.css'
-import {games} from "./constants/games";
-import {GameWheel} from "../../components/GameWheel/GameWheel";
+import { FC, useEffect, useState } from "react";
+import "./CringePG.css";
+import { games } from "./constants/games";
+import { GameWheel } from "../../components/GameWheel/GameWheel";
+import { useCringePG } from "../../requests/cringepg/useCringePG";
+import { CringePG } from "../../types/types";
 
 export const CringePg: FC = () => {
-    const [allGames, setAllGames] = useState(games)
+  const { allGames } = useCringePG();
 
-    function shuffle(array: string[]) {
-        let currentIndex = array.length,  randomIndex;
+  function shuffle(array: CringePG.GauntletGame[]) {
+    array.sort((a, b) => 0.5 - Math.random());
 
-        // While there remain elements to shuffle.
-        while (currentIndex > 0) {
+    return array;
+  }
 
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-        }
-
-        return array;
-    }
-
-    const randomizeGame = () => {
-        setAllGames(shuffle([...games]))
-    }
-
-    useEffect(() => {
-        randomizeGame()
-    }, []);
-
-    return(
-        <section className='cringe-pg'>
-                <GameWheel games={allGames} />
-        </section>
-    )
-}
+  return (
+    <section className="cringe-pg">
+      <GameWheel games={shuffle([...allGames])} />
+    </section>
+  );
+};

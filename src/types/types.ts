@@ -23,10 +23,10 @@ export namespace Account {
 }
 
 export type User = {
-  id: number,
-  name: string,
-  gauntlet: boolean,
-}
+  id: number;
+  name: string;
+  gauntlet: boolean;
+};
 
 export namespace Gamesaves {
   export type Gamesave = {
@@ -46,6 +46,46 @@ export namespace Gamesaves {
     | IndexGetResponseSuccess
     | IndexGetResponseError;
 }
+
+export namespace CringePG {
+  export enum GameStatus {
+    "New",
+    "Completed",
+    "Dropped",
+    "Coop",
+    "Rerolled",
+    "Waitlisted",
+  }
+
+  export type GauntletPlayer = {
+    id: number;
+    name: string;
+  };
+
+  export type GauntletGame = {
+    id: number;
+    name: string;
+    owners: GauntletPlayer[];
+    completed_by: GauntletPlayer[];
+  };
+
+  export type ClaimedGaunletGame = {
+    game_id: number;
+    user_id: number;
+    status: GameStatus;
+    comment: string;
+  };
+
+  // GET /v4/quotes
+  export type IndexGetRequestQuery = Generic.AuthQuery;
+  export type IndexGetRequestBody = never;
+  export type IndexGetResponseSuccess = Generic.Success<GauntletGame[]>;
+  export type IndexGetResponseError = Generic.Error;
+  export type IndexGetResponse =
+    | IndexGetResponseSuccess
+    | IndexGetResponseError;
+}
+
 export namespace Quotes {
   export type Quote = {
     id: number;
@@ -59,6 +99,7 @@ export namespace Quotes {
     quote_by: number;
     date: string;
   };
+
   // GET /v2/quotes
   export type IndexGetRequestQuery = Generic.AuthQuery;
   export type IndexGetRequestBody = never;
@@ -135,6 +176,7 @@ export namespace Users {
   export type User = {
     id: number;
     name: string;
+    gauntlet: boolean;
     created_utc: Date;
   };
   // GET /v2/users

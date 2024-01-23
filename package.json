@@ -7,7 +7,7 @@
     "@react-oauth/google": "^0.5.1",
     "@reduxjs/toolkit": "^2.0.1",
     "@types/styled-components": "^5.1.9",
-    "antd": "^5.13.1",
+    "antd": "^5.13.2",
     "axios": "^0.21.1",
     "dayjs": "^1.11.10",
     "react": "^17.0.2",
