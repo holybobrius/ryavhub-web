@@ -181,7 +181,7 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
               </div>
             </div>
           )}
-          <div className="game-owners-info">
+          {selectedGame && !spinning && <div className="game-owners-info">
             <div className="game-owners-divider" />
             <div className="game-owners-info-block">
               <h4 className="game-owners-info-block-header">Игра из библиотеки:</h4>
@@ -197,7 +197,7 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
               </div>
             </div>
             <div className="game-owners-divider" />
-          </div>
+          </div>}
         </div>
         <div className="wheel-rules-container">
           <h3 className="wheel-rules-heading">Наказание</h3>
