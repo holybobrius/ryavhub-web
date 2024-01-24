@@ -26,9 +26,8 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
 
         if (gamesList) {
           gamesList.style.transition = `transform ${spinDuration}s ease-out`;
-          gamesList.style.transform = `translateY(-${
-            targetGame.offsetTop - targetGame.clientHeight
-          }px)`;
+          gamesList.style.transform = `translateY(-${targetGame.offsetTop - targetGame.clientHeight
+            }px)`;
 
           setTimeout(() => {
             if (gamesList) {
@@ -64,9 +63,8 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
 
     if (gamesList) {
       gamesList.style.transition = `transform ${spinDuration}s ease-out`;
-      gamesList.style.transform = `translateY(-${
-        targetGame.offsetTop - targetGame.clientHeight
-      }px)`;
+      gamesList.style.transform = `translateY(-${targetGame.offsetTop - targetGame.clientHeight
+        }px)`;
 
       setTimeout(() => {
         if (gamesList) {
@@ -92,9 +90,8 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
             {games.map((game, index) => (
               <div
                 key={index}
-                className={`game ${index === 1 ? "winner" : ""} ${
-                  selectedGame === game ? "winner" : ""
-                }`}
+                className={`game ${index === 1 ? "winner" : ""} ${selectedGame === game ? "winner" : ""
+                  }`}
               >
                 {game.name}
               </div>
@@ -103,9 +100,8 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
         </div>
       </div>
       <div
-        className={`wheel-info-container ${
-          showWheel ? "wheel-info-container-active" : ""
-        }`}
+        className={`wheel-info-container ${showWheel ? "wheel-info-container-active" : ""
+          }`}
       >
         <div className="wheel-rules-container">
           <h3 className="wheel-rules-heading">Причины тех. реролла:</h3>
@@ -185,6 +181,23 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
               </div>
             </div>
           )}
+          <div className="game-owners-info">
+            <div className="game-owners-divider" />
+            <div className="game-owners-info-block">
+              <h4 className="game-owners-info-block-header">Игра из библиотеки:</h4>
+              <div className="game-owners-info-block-items-container">
+                {selectedGame?.owners.map(n => <div className='game-owners-info-block-item'>{n.name}</div>)}
+              </div>
+            </div>
+            <div className="game-owners-divider" />
+            <div className="game-owners-info-block">
+              <h4 className="game-owners-info-block-header">Игру прошел:</h4>
+              <div className="game-owners-info-block-items-container">
+                {selectedGame?.completed_by.map(n => <div className='game-owners-info-block-item'>{n.name}</div>)}
+              </div>
+            </div>
+            <div className="game-owners-divider" />
+          </div>
         </div>
         <div className="wheel-rules-container">
           <h3 className="wheel-rules-heading">Наказание</h3>
