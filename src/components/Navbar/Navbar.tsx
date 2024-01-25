@@ -36,6 +36,9 @@ const Navbar: FC = () => {
         {/* <Link className="router-link nav-link" to="/cringepg">
           КринжПГ
         </Link> */}
+        <Link className="router-link nav-link" to="/cringepg-admin">
+          Админка
+        </Link>
       </div>
       <div className="nav-desktop-login-container">
         <LoginButton />
