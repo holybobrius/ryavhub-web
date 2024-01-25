@@ -49,12 +49,12 @@ export namespace Gamesaves {
 
 export namespace CringePG {
   export enum GameStatus {
-    "New",
-    "Completed",
-    "Dropped",
-    "Coop",
-    "Rerolled",
-    "Waitlisted",
+    "new",
+    "completed",
+    "dropped",
+    "coop",
+    "rerolled",
+    "waitlisted",
   }
 
   export type GauntletPlayer = {
@@ -62,24 +62,53 @@ export namespace CringePG {
     name: string;
   };
 
+  export type GauntletClaimInfo = {
+    user: GauntletPlayer;
+    id: number;
+    comment: string;
+    status: GameStatus;
+  };
+
   export type GauntletGame = {
     id: number;
     name: string;
     owners: GauntletPlayer[];
-    completed_by: GauntletPlayer[];
+    claims: GauntletClaimInfo[];
+  };
+
+  export type GauntletGameShortened = {
+    id: number;
+    name: string;
+  };
+
+  export type GauntletNewGame = {
+    name: string;
+    owners: number[];
+  };
+
+  export type GauntletClaim = {
+    id: number;
+    status: GameStatus;
+    comment: string;
+    game: GauntletGameShortened;
+    user: GauntletPlayer;
   };
 
   export type ClaimedGaunletGame = {
     game_id: number;
     user_id: number;
-    status: GameStatus;
+    status: GameStatus | string;
     comment: string;
   };
 
   // GET /v4/quotes
   export type IndexGetRequestQuery = Generic.AuthQuery;
-  export type IndexGetRequestBody = never;
+  export type IndexPostRequestBody = ClaimedGaunletGame;
+  export type IndexPostResponseSuccess = Generic.Success<GauntletClaim>;
   export type IndexGetResponseSuccess = Generic.Success<GauntletGame[]>;
+  export type IndexPostGameRequestBody = GauntletNewGame;
+  export type IndexPostGameResponseSuccess = Generic.Success<GauntletGame>;
+  export type IndexGetClaimsResponseSuccess = Generic.Success<GauntletClaim[]>;
   export type IndexGetResponseError = Generic.Error;
   export type IndexGetResponse =
     | IndexGetResponseSuccess

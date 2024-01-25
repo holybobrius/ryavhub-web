@@ -1,0 +1,24 @@
+.gauntlet-card {
+  background-color: #17171d;
+  border-radius: 20px;
+  max-height: 43.6rem;
+  overflow: hidden;
+  padding: 2rem;
+  width: 43.6rem;
+}
+
+.gauntlet-card-heading {
+  font-size: 5rem;
+  font-weight: 900;
+  overflow-y: hidden;
+}
+
+.gauntlet-card-games-list {
+}
+
+.gauntlet-card-games-list-item {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.6);
+}

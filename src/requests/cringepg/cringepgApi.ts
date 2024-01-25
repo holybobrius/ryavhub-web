@@ -8,20 +8,42 @@ export const cringepgApi = createApi({
     credentials: "same-origin",
   }),
   endpoints: (builder) => ({
-    addClaimedGame: builder.query<
-      CringePG.ClaimedGaunletGame,
-      CringePG.ClaimedGaunletGame
+    getAllGames: builder.query<CringePG.IndexGetResponseSuccess, void>({
+      query: () => "/all",
+    }),
+    getGamesForWheel: builder.query<CringePG.IndexGetResponseSuccess, void>({
+      query: () => "/",
+    }),
+    getAllClaims: builder.query<CringePG.IndexGetClaimsResponseSuccess, void>({
+      query: () => "/claimed/all",
+    }),
+    addNewClaim: builder.mutation<
+      CringePG.IndexPostResponseSuccess,
+      CringePG.IndexPostRequestBody
     >({
-      query: (game) => ({
-        url: "/claimed",
+      query: (payload) => ({
+        url: "claimed",
         method: "POST",
-        body: game,
+        body: payload,
       }),
     }),
-    getAllGames: builder.query<CringePG.IndexGetResponseSuccess, void>({
-      query: () => "/",
+    addNewGame: builder.mutation<
+      CringePG.IndexPostGameResponseSuccess,
+      CringePG.IndexPostGameRequestBody
+    >({
+      query: (payload) => ({
+        url: "/",
+        method: "POST",
+        body: payload,
+      }),
     }),
   }),
 });
 
-export const { useAddClaimedGameQuery, useGetAllGamesQuery } = cringepgApi;
+export const {
+  useAddNewClaimMutation,
+  useGetAllGamesQuery,
+  useGetGamesForWheelQuery,
+  useGetAllClaimsQuery,
+  useAddNewGameMutation,
+} = cringepgApi;

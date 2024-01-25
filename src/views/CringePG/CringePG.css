@@ -10,6 +10,7 @@
   min-height: 100%;
   z-index: 999;
   background-image: url("../../assets/images/cringepg-background.png");
+  background-size: cover;
 }
 
 .game-primary {
