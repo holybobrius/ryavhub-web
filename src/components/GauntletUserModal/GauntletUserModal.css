@@ -29,6 +29,8 @@
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
   font-size: 2rem;
+  transition: 300ms ease;
+  cursor: pointer;
 }
 
 .gauntlet-modal-games-list-item-text.index {
@@ -102,4 +104,12 @@
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.gauntlet-modal-games-list-item-text:hover {
+  color: #fff;
+}
+
+.gauntlet-modal-games-list-item-text.index:hover {
+  color: rgba(255, 255, 255, 0.6);
 }

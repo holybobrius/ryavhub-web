@@ -9,7 +9,7 @@
   overflow-x: hidden;
   min-height: 100%;
   z-index: 999;
-  background-image: url("../../assets/images/cringpg-background-3.jpg");
+  background-image: url("../../assets/images/cringepg-background.webp");
   background-size: cover;
 }
 
@@ -33,4 +33,17 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.button-icon {
+  stroke: rgba(255, 255, 255, 0.6);
+  transition: 300ms ease;
+}
+
+.button-icon.comment {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.button-icon:hover {
+  stroke: rgb(255, 255, 255);
 }

@@ -5,6 +5,7 @@ import { GameWheel } from "../../components/GameWheel/GameWheel";
 import { useCringePG } from "../../requests/cringepg/useCringePG";
 import { CringePG } from "../../types/types";
 import { GamesList } from "../../components/GamesList/GamesList";
+import BottomNav from "../../components/BottomNav/BottomNav";
 import {
   useGetAllClaimsQuery,
   useGetGamesForWheelQuery,
@@ -25,6 +26,7 @@ export const CringePg: FC = () => {
         <GameWheel games={shuffle([...(gamesForWheelRes?.payload ?? [])])} />
       </div>
       <GamesList />
+      <BottomNav />
     </section>
   );
 };

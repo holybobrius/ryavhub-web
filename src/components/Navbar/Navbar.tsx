@@ -20,24 +20,26 @@ const Navbar: FC = () => {
 
   return (
     <nav>
+      {/* @ts-expect-error */}
       <Link to="/">
         <Logo />
       </Link>
       <div className="navbar-buttons">
+        {/* @ts-expect-error */}
         <Link className="router-link nav-link" to="/quotes">
           Цитаты
         </Link>
+        {/* @ts-expect-error */}
         <Link className="router-link nav-link" to="/timeline">
           Таймлайн
         </Link>
+        {/* @ts-expect-error */}
         <Link className="router-link nav-link" to="/gamesaves">
           Сейвы
         </Link>
+        {/* @ts-expect-error */}
         <Link className="router-link nav-link" to="/cringepg">
           КринжПГ
-        </Link>
-        <Link className="router-link nav-link" to="/cringepg-admin">
-          Админка
         </Link>
       </div>
       <div className="nav-desktop-login-container">

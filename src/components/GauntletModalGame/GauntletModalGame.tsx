@@ -143,7 +143,7 @@ export const GauntletModalGame: FC<Props> = ({ claim, index }) => {
               className="gauntlet-send-comment-button"
               onClick={() => handleCommentUpdate(claim.id)}
             >
-              <SencComment />
+              <SencComment className="button-icon comment" />
             </button>
           )}
         </div>

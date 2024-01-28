@@ -266,15 +266,77 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
         <div className="wheel-rules-container">
           <h3 className="wheel-rules-heading">Наказание</h3>
           <ol className="wheel-rules-list">
-            <li className="wheel-rules-list-item">1. The binding of Isaac</li>
-            <li className="wheel-rules-list-item">2. Desert Bus</li>
-            <li className="wheel-rules-list-item">3. Ultimate Custom Night</li>
-            <li className="wheel-rules-list-item">4. Classic Minecraft</li>
-            <li className="wheel-rules-list-item">5. Аватария</li>
-            <li className="wheel-rules-list-item">6. IWBTB</li>
-            <li className="wheel-rules-list-item">7. PepeL</li>
             <li className="wheel-rules-list-item">
-              8. The Elder Scrolls: Arena
+              <a
+                href="https://www.crazygames.ru/igra/the-binding-of-isaac-demo"
+                target="_blank"
+                rel="noreferrer"
+              >
+                1. The Binding of Isaac
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://store.steampowered.com/app/638110/Desert_Bus_VR/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                2. Desert Bus
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://store.steampowered.com/app/871720/Ultimate_Custom_Night/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                3. Ultimate Custom Night
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://classic.minecraft.net/?join=NkY8bGLdiasFWikU"
+                target="_blank"
+                rel="noreferrer"
+              >
+                4. Classic Minecraft
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://vk.com/avatariya"
+                target="_blank"
+                rel="noreferrer"
+              >
+                5. Avataria
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://disk.yandex.ru/d/tNYZKgYc2oamfQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                6. IWBTB
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://drive.google.com/open?id=1n2F0SWt5U_uZAnlPuX6SRhPXTsEyrm_p"
+                target="_blank"
+                rel="noreferrer"
+              >
+                7. PepeL
+              </a>
+            </li>
+            <li className="wheel-rules-list-item">
+              <a
+                href="https://howlongtobeat.com/game/9862"
+                target="_blank"
+                rel="noreferrer"
+              >
+                8. The Elder Scrolls: Arena
+              </a>
             </li>
           </ol>
         </div>

@@ -118,7 +118,7 @@ button {
 }
 
 .wheel-info-container-active {
-  margin-top: 6.4rem;
+  margin-top: 0.4rem;
   align-items: flex-start;
 }
 
@@ -235,9 +235,6 @@ input::-webkit-inner-spin-button {
   gap: 1.6rem;
 }
 
-.game-owners-info-block {
-}
-
 .game-owners-info-block-header {
   font-size: 1.6rem;
   font-weight: 300;
@@ -279,4 +276,11 @@ input::-webkit-inner-spin-button {
 
 .no-gauntlet-user-message-text {
   font-size: 2.8rem;
+}
+
+.wheel-rules-list-item a:visited,
+.wheel-rules-list-item a:active,
+.wheel-rules-list-item a:hover,
+.wheel-rules-list-item a:link {
+  color: rgba(255, 255, 255, 0.6);
 }

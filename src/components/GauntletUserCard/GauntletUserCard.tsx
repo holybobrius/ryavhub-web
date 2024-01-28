@@ -27,7 +27,7 @@ export const GauntletUserCard: FC<Props> = ({ user, claims }) => {
       <div className="gauntlet-card-heading-container">
         <h2 className="gauntlet-card-heading">{user.name}</h2>
         <button className="gauntlet-card-open-button" onClick={open}>
-          <OpenGauntletCard />
+          <OpenGauntletCard className="button-icon" />
         </button>
       </div>
       <div className="games-count-container">
