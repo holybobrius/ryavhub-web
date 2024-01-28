@@ -29,6 +29,9 @@ const App: FC = () => {
                 contentBg: "#17171D",
                 fontFamily: "Basis Grotesque Pro",
               },
+              Checkbox: {
+                colorText: "#fff",
+              },
             },
           }}
         >
