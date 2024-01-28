@@ -1,0 +1,105 @@
+.gauntlet-modal-user-name {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.gauntlet-modal-heading {
+  margin-bottom: 3rem;
+}
+
+.gauntlet-modal-games-count-container {
+  display: flex;
+  gap: 2.7rem;
+  align-items: center;
+}
+
+.gauntlet-modal-games-count-item {
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.gauntlet-modal-games-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.gauntlet-modal-games-list-item-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.gauntlet-modal-games-list-item-text.index {
+  width: 4.6rem;
+}
+
+.gauntlet-modal-games-list-item-name-container {
+  display: flex;
+  align-items: center;
+  gap: 3.4rem;
+  width: 100%;
+}
+
+.gauntlet-modal-games-list-item {
+  display: flex;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  flex-direction: column;
+  width: 100%;
+}
+
+.gauntlet-modal-game-status-container {
+  width: 16.6rem;
+}
+
+.gauntlet-modal-games-list-item-game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.comment-textarea {
+  width: 100%;
+  height: 4.5rem;
+  background-color: #202027;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.6rem;
+  border-radius: 20px;
+}
+
+.comment-textarea:hover,
+.comment-textarea:active,
+.comment-textarea:focus {
+  background-color: #202027;
+  border: none;
+  outline: none;
+}
+
+.comment-container {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-left: 3.2rem;
+}
+
+.gauntlet-delete-game-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: fit-content;
+  margin-top: 2.8rem;
+}
+
+.gauntlet-send-comment-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

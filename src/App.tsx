@@ -14,6 +14,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { CringePg } from "./views/CringePG/CringePg";
 import { CringePgAdmin } from "./views/CringePGAdmin/CringePgAdmin";
 import { useUser } from "./requests/user/useUser";
+import { ConfigProvider } from "antd";
 
 const App: FC = () => {
   const user = useUser();
@@ -21,45 +22,56 @@ const App: FC = () => {
   return (
     <GoogleOAuthProvider clientId="68682133883-jnc71s26jtmqdq98klupgeienssmpbr2.apps.googleusercontent.com">
       <Router>
-        <div className="app">
-          <main>
-            <Navbar />
-            <Switch>
-              <GuardedRoute
-                exact
-                path="/"
-                auth={!!user}
-                render={(props) => <Home {...props} />}
-              />
-              <GuardedRoute
-                path="/quotes"
-                auth={!!user}
-                render={(props) => <QuotesPage {...props} />}
-              />
-              <GuardedRoute
-                path="/gamesaves"
-                auth={!!user}
-                render={(props) => <GameSaves {...props} />}
-              />
-              <GuardedRoute
-                path="/timeline"
-                auth={!!user}
-                render={(props) => <TimelinePage {...props} />}
-              />
-              <GuardedRoute
-                path="/cringepg"
-                auth={!!user}
-                render={(props) => <CringePg {...props} />}
-              />
-              <GuardedRoute
-                path="/cringepg-admin"
-                auth={!!user}
-                render={(props) => <CringePgAdmin {...props} />}
-              />
-              <Route path="/unauth" component={LockedHome} />
-            </Switch>
-          </main>
-        </div>
+        <ConfigProvider
+          theme={{
+            components: {
+              Modal: {
+                contentBg: "#17171D",
+                fontFamily: "Basis Grotesque Pro",
+              },
+            },
+          }}
+        >
+          <div className="app">
+            <main>
+              <Navbar />
+              <Switch>
+                <GuardedRoute
+                  exact
+                  path="/"
+                  auth={!!user}
+                  render={(props) => <Home {...props} />}
+                />
+                <GuardedRoute
+                  path="/quotes"
+                  auth={!!user}
+                  render={(props) => <QuotesPage {...props} />}
+                />
+                <GuardedRoute
+                  path="/gamesaves"
+                  auth={!!user}
+                  render={(props) => <GameSaves {...props} />}
+                />
+                <GuardedRoute
+                  path="/timeline"
+                  auth={!!user}
+                  render={(props) => <TimelinePage {...props} />}
+                />
+                <GuardedRoute
+                  path="/cringepg"
+                  auth={!!user}
+                  render={(props) => <CringePg {...props} />}
+                />
+                <GuardedRoute
+                  path="/cringepg-admin"
+                  auth={!!user}
+                  render={(props) => <CringePgAdmin {...props} />}
+                />
+                <Route path="/unauth" component={LockedHome} />
+              </Switch>
+            </main>
+          </div>
+        </ConfigProvider>
       </Router>
     </GoogleOAuthProvider>
   );

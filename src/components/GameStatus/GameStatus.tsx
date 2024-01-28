@@ -10,7 +10,7 @@ const gameStatusMap = {
   [CringePG.GameStatus.completed]: "пройдена",
   [CringePG.GameStatus.dropped]: "дроп",
   [CringePG.GameStatus.rerolled]: "тех.реролл",
-  [CringePG.GameStatus.coop]: "ко-оп",
+  [CringePG.GameStatus.coop]: "кооп",
   [CringePG.GameStatus.waitlisted]: "очередь",
 };
 

@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { CringePG, Users } from "../../types/types";
 import "./GauntletUserCard.css";
 import { GameStatus } from "../GameStatus/GameStatus";
 import OpenGauntletCard from "../../assets/icons/OpenGauntletCard.svg?react";
+import { Modal } from "antd";
+import { GauntletUserModal } from "../GauntletUserModal/GauntletUserModal";
 
 interface Props {
   user: Users.User;
@@ -10,11 +12,21 @@ interface Props {
 }
 
 export const GauntletUserCard: FC<Props> = ({ user, claims }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const open = () => {
+    setIsOpen(true);
+  };
+
+  const close = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="gauntlet-card">
       <div className="gauntlet-card-heading-container">
         <h2 className="gauntlet-card-heading">{user.name}</h2>
-        <button className="gauntlet-card-open-button">
+        <button className="gauntlet-card-open-button" onClick={open}>
           <OpenGauntletCard />
         </button>
       </div>
@@ -41,6 +53,16 @@ export const GauntletUserCard: FC<Props> = ({ user, claims }) => {
         ))}
       </div>
       <div className="gradient-container"></div>
+      <Modal
+        open={isOpen}
+        onCancel={close}
+        width={1004}
+        footer={null}
+        closeIcon={null}
+        style={{ right: "218px" }}
+      >
+        <GauntletUserModal claims={claims} user={user} />
+      </Modal>
     </div>
   );
 };
