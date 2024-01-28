@@ -267,3 +267,16 @@ input::-webkit-inner-spin-button {
   height: 128px;
   background-color: #fff;
 }
+
+.no-gauntlet-user-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rem;
+  gap: 1.6rem;
+}
+
+.no-gauntlet-user-message-text {
+  font-size: 2.8rem;
+}

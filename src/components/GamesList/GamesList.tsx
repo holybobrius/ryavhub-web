@@ -3,13 +3,11 @@ import { CringePG } from "../../types/types";
 import { useUsers } from "../../requests/users/useUsers";
 import { GauntletUserCard } from "../GauntletUserCard/GauntletUserCard";
 import "./GamesList.css";
+import { useCringePG } from "../../requests/cringepg/useCringePG";
 
-interface Props {
-  claims: CringePG.GauntletClaim[];
-}
-
-export const GamesList: FC<Props> = ({ claims }) => {
+export const GamesList: FC = () => {
   const users = useUsers();
+  const { allClaims: claims } = useCringePG();
 
   console.log(
     users.filter((user) => user.gauntlet),

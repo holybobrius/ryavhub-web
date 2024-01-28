@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { CringePG } from "../../types/types";
 import { GameStatus } from "../GameStatus/GameStatus";
 import TextArea from "antd/es/input/TextArea";
@@ -7,6 +7,7 @@ import { useUser } from "../../requests/user/useUser";
 import Delete from "../../assets/icons/Delete.svg?react";
 import SencComment from "../../assets/icons/SendComment.svg?react";
 import { Dropdown, MenuProps } from "antd";
+import { useCringePG } from "../../requests/cringepg/useCringePG";
 
 interface Props {
   claim: CringePG.GauntletClaim;
@@ -15,38 +16,80 @@ interface Props {
 
 export const GauntletModalGame: FC<Props> = ({ claim, index }) => {
   const [commentVisible, setCommentVisible] = useState(false);
+  const [updatedClaim, setUpdatedClaim] = useState(claim);
+  const { updateStatus, updateComment } = useCringePG();
   const user = useUser();
 
   const checkIfCurrentUser = (userId: number) => {
     return user?.id === userId;
   };
 
+  const handleStatusUpdate = async (
+    id: number,
+    status: string | CringePG.GameStatus
+  ) => {
+    await updateStatus(id, status);
+    setUpdatedClaim({ ...claim, status });
+  };
+
+  const handleCommentUpdate = (id: number) => {
+    updateComment(id, updatedClaim.comment);
+  };
+
   const items: MenuProps["items"] = [
     {
-      label: <GameStatus status={"new"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "new")}>
+          <GameStatus status={"new"} />
+        </div>
+      ),
       key: "new",
     },
     {
-      label: <GameStatus status={"completed"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "completed")}>
+          <GameStatus status={"completed"} />
+        </div>
+      ),
       key: "completed",
     },
     {
-      label: <GameStatus status={"dropped"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "dropped")}>
+          <GameStatus status={"dropped"} />
+        </div>
+      ),
       key: "dropped",
     },
     {
-      label: <GameStatus status={"rerolled"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "rerolled")}>
+          <GameStatus status={"rerolled"} />
+        </div>
+      ),
       key: "rerolled",
     },
     {
-      label: <GameStatus status={"coop"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "coop")}>
+          <GameStatus status={"coop"} />
+        </div>
+      ),
       key: "coop",
     },
     {
-      label: <GameStatus status={"waitlisted"} />,
+      label: (
+        <div onClick={() => handleStatusUpdate(claim.id, "waitlisted")}>
+          <GameStatus status={"waitlisted"} />
+        </div>
+      ),
       key: "waitlisted",
     },
   ];
+
+  const handleCommentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setUpdatedClaim({ ...claim, comment: e.target.value });
+  };
 
   return (
     <div style={{ display: "flex", gap: "1.2rem" }}>
@@ -61,7 +104,7 @@ export const GauntletModalGame: FC<Props> = ({ claim, index }) => {
             </p>
             <p className="gauntlet-modal-games-list-item-text">
               {claim.game.name}
-              {!!claim.comment && (
+              {!!updatedClaim.comment && (
                 <div style={{ display: "inline", marginLeft: "8px" }}>
                   <CommentIcon />
                 </div>
@@ -69,19 +112,19 @@ export const GauntletModalGame: FC<Props> = ({ claim, index }) => {
             </p>
           </div>
           <div className="gauntlet-modal-game-status-container">
-            {checkIfCurrentUser(claim.user.id) ? (
+            {checkIfCurrentUser(updatedClaim.user.id) ? (
               <Dropdown
                 menu={{ items }}
                 trigger={["click"]}
                 placement="bottomRight"
               >
                 <div className="gauntlet-modal-game-status-container">
-                  <GameStatus status={claim.status} />
+                  <GameStatus status={updatedClaim.status} />
                 </div>
               </Dropdown>
             ) : (
               <div className="gauntlet-modal-game-status-container">
-                <GameStatus status={claim.status} />
+                <GameStatus status={updatedClaim.status} />
               </div>
             )}
           </div>
@@ -91,21 +134,20 @@ export const GauntletModalGame: FC<Props> = ({ claim, index }) => {
             className="comment-textarea"
             autoSize
             placeholder="Прошёл игру? Мнение!"
-            value={claim.comment}
-            disabled={!checkIfCurrentUser(claim.user.id)}
+            value={updatedClaim.comment}
+            disabled={!checkIfCurrentUser(updatedClaim.user.id)}
+            onChange={handleCommentChange}
           />
-          {checkIfCurrentUser(claim.user.id) && (
-            <button className="gauntlet-send-comment-button">
+          {checkIfCurrentUser(updatedClaim.user.id) && (
+            <button
+              className="gauntlet-send-comment-button"
+              onClick={() => handleCommentUpdate(claim.id)}
+            >
               <SencComment />
             </button>
           )}
         </div>
       </div>
-      {checkIfCurrentUser(claim.user.id) && (
-        <button className="gauntlet-delete-game-button">
-          <Delete />
-        </button>
-      )}
     </div>
   );
 };

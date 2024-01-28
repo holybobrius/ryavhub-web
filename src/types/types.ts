@@ -109,6 +109,21 @@ export namespace CringePG {
   export type IndexPostGameRequestBody = GauntletNewGame;
   export type IndexPostGameResponseSuccess = Generic.Success<GauntletGame>;
   export type IndexGetClaimsResponseSuccess = Generic.Success<GauntletClaim[]>;
+  export type IndexPostClaimGameRequestBody = { id: number };
+  export type IndexPostClaimGameResponseSuccess =
+    Generic.Success<GauntletClaim>;
+  export type IndexPatchClaimCommentRequestBody = {
+    comment: string;
+    id: number;
+  };
+  export type IndexPatchClaimStatusRequestBody = {
+    status: GameStatus | string;
+    id: number;
+  };
+  export type IndexPatchClaimsCommentResponseSuccess =
+    Generic.Success<GauntletClaim>;
+  export type IndexPatchClaimsStatusResponseSuccess =
+    Generic.Success<GauntletClaim>;
   export type IndexGetResponseError = Generic.Error;
   export type IndexGetResponse =
     | IndexGetResponseSuccess

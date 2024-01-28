@@ -3,6 +3,8 @@ import Drop from "../../assets/icons/Drop.svg?react";
 import TechReroll from "../../assets/icons/TechReroll.svg?react";
 import "./GameWheel.css";
 import { CringePG } from "../../types/types";
+import { useCringePG } from "../../requests/cringepg/useCringePG";
+import { useUser } from "../../requests/user/useUser";
 
 interface Props {
   games: CringePG.GauntletGame[];
@@ -19,6 +21,8 @@ const statusesMap = {
 
 export const GameWheel: React.FC<Props> = ({ games }) => {
   const gameListRef = useRef<HTMLDivElement>(null);
+  const user = useUser();
+  const { claimGame, updateStatus, allClaims } = useCringePG();
   const [spinning, setSpinning] = useState(false);
   const [selectedGame, setSelectedGame] =
     useState<CringePG.GauntletGame | null>(null);
@@ -46,6 +50,7 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
               setSpinning(false);
 
               setSelectedGame(games[randomIndex]);
+              claimGame(games[randomIndex].id);
             }
           }, spinDuration * 1000);
         }
@@ -84,6 +89,7 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
           setSpinning(false);
 
           setSelectedGame(games[randomIndex]);
+          // claimGame(games[randomIndex].id);
         }
       }, spinDuration * 1000);
     }
@@ -92,6 +98,27 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
   const handleSpinDurationChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSpinDuration(parseInt(e.target.value, 10));
   };
+
+  const handleStatusButtonClick = (status: string) => {
+    const claim = allClaims.find(
+      // @ts-expect-error
+      (n) => n.game.id === selectedGame.id && n.user.id === user.id
+    );
+    // @ts-expect-error
+    updateStatus(claim.id, status);
+  };
+
+  if (!user?.gauntlet)
+    return (
+      <div className="no-gauntlet-user-message-container">
+        <h1 className="no-gauntlet-user-message-heading">
+          Ты не участвуешь в КринжПГ. Попуск.
+        </h1>
+        <p className="no-gauntlet-user-message-text">
+          Но ты можешь посмотреть результаты других ниже.
+        </p>
+      </div>
+    );
 
   return (
     <>
@@ -173,7 +200,10 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
                 </a>
                 <div className="input-container">
                   <p className="input-label">Дроп</p>
-                  <button className="reroll-button">
+                  <button
+                    className="reroll-button"
+                    onClick={() => handleStatusButtonClick("dropped")}
+                  >
                     <Drop />
                   </button>
                 </div>
@@ -181,13 +211,19 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
               <div className="buttons-container-row">
                 <div className="input-container" style={{ width: "100%" }}>
                   <p className="input-label">Тех. рерол</p>
-                  <button className="reroll-button">
+                  <button
+                    className="reroll-button"
+                    onClick={() => handleStatusButtonClick("rerolled")}
+                  >
                     <TechReroll />
                   </button>
                 </div>
                 <div className="input-container" style={{ width: "100%" }}>
                   <p className="input-label">Очередь</p>
-                  <button className="reroll-button">
+                  <button
+                    className="reroll-button"
+                    onClick={() => handleStatusButtonClick("waitlisted")}
+                  >
                     <TechReroll />
                   </button>
                 </div>

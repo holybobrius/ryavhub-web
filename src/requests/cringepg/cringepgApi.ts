@@ -37,6 +37,36 @@ export const cringepgApi = createApi({
         body: payload,
       }),
     }),
+    updateClaimStatus: builder.mutation<
+      CringePG.IndexPatchClaimsStatusResponseSuccess,
+      CringePG.IndexPatchClaimStatusRequestBody
+    >({
+      query: ({ id, status }) => ({
+        url: `claimed/${id}/status`,
+        method: "PATCH",
+        body: { status },
+      }),
+    }),
+    updateClaimComment: builder.mutation<
+      CringePG.IndexPatchClaimsCommentResponseSuccess,
+      CringePG.IndexPatchClaimCommentRequestBody
+    >({
+      query: ({ id, comment }) => ({
+        url: `claimed/${id}/comment`,
+        method: "PATCH",
+        body: { comment },
+      }),
+    }),
+    claimGame: builder.mutation<
+      CringePG.IndexPostClaimGameResponseSuccess,
+      CringePG.IndexPostClaimGameRequestBody
+    >({
+      query: ({ id }) => ({
+        url: "claim",
+        method: "POST",
+        body: { id },
+      }),
+    }),
   }),
 });
 
@@ -46,4 +76,7 @@ export const {
   useGetGamesForWheelQuery,
   useGetAllClaimsQuery,
   useAddNewGameMutation,
+  useUpdateClaimCommentMutation,
+  useUpdateClaimStatusMutation,
+  useClaimGameMutation,
 } = cringepgApi;
