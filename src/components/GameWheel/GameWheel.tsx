@@ -9,12 +9,12 @@ interface Props {
 }
 
 const statusesMap = {
-  [CringePG.GameStatus.new]: "В процессе",
-  [CringePG.GameStatus.completed]: "Пройдена",
-  [CringePG.GameStatus.dropped]: "Дроп",
-  [CringePG.GameStatus.rerolled]: "Тех. реролл",
-  [CringePG.GameStatus.coop]: "Ко-оп",
-  [CringePG.GameStatus.waitlisted]: "В очереди",
+  [CringePG.GameStatus.new]: "текущая",
+  [CringePG.GameStatus.completed]: "пройдена",
+  [CringePG.GameStatus.dropped]: "дроп",
+  [CringePG.GameStatus.rerolled]: "тех.реролл",
+  [CringePG.GameStatus.coop]: "ко-оп",
+  [CringePG.GameStatus.waitlisted]: "очередь",
 };
 
 export const GameWheel: React.FC<Props> = ({ games }) => {
@@ -215,7 +215,10 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
                 <div className="game-owners-info-block-items-container">
                   {selectedGame?.claims.map((n) => (
                     <div className="game-owners-info-block-item">
-                      {`${n.user.name} (${statusesMap[n.status]})`}
+                      {`${n.user.name} (${
+                        // @ts-expect-error
+                        statusesMap[CringePG.GameStatus[n.status]]
+                      })`}
                     </div>
                   ))}
                 </div>

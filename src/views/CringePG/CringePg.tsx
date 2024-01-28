@@ -18,8 +18,10 @@ export const CringePg: FC = () => {
 
   return (
     <section className="cringe-pg">
-      <GameWheel games={shuffle([...gamesForWheel])} />
-       <GamesList claims={allClaims} />
+      <div className="game-wheel-section">
+        <GameWheel games={shuffle([...gamesForWheel])} />
+      </div>
+      <GamesList claims={allClaims} />
     </section>
   );
 };

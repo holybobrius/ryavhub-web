@@ -27,3 +27,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.game-wheel-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

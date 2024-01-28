@@ -88,7 +88,7 @@ export namespace CringePG {
 
   export type GauntletClaim = {
     id: number;
-    status: GameStatus;
+    status: GameStatus | string;
     comment: string;
     game: GauntletGameShortened;
     user: GauntletPlayer;

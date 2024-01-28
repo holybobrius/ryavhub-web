@@ -1,10 +1,11 @@
 .gauntlet-card {
   background-color: #17171d;
   border-radius: 20px;
-  max-height: 43.6rem;
+  max-height: 46.7rem;
   overflow: hidden;
   padding: 2rem;
   width: 43.6rem;
+  position: relative;
 }
 
 .gauntlet-card-heading {
@@ -15,7 +16,8 @@
 
 .gauntlet-card-games-list-item {
   display: flex;
-  gap: 3rem;
+  gap: 1.6rem;
+  align-items: center;
 }
 
 .gauntlet-card-games-list-item-name {
@@ -23,10 +25,25 @@
   font-weight: 400;
   line-height: 3rem;
   color: rgba(255, 255, 255, 0.6);
-  width: 21rem;
+  width: 21.6rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-right: 6px;
+}
+
+.gauntlet-card-heading-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.gauntlet-card-open-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .gauntlet-card-games-list-item-index {
@@ -34,13 +51,13 @@
   font-weight: 400;
   line-height: 3rem;
   color: rgba(255, 255, 255, 0.6);
-  min-width: 3.2rem;
+  min-width: 3.4rem;
 }
 
 .games-count-container {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .games-count-item {
@@ -50,5 +67,24 @@
 }
 
 .gauntlet-card-games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
 
+.game-status-wrapper {
+  width: 10.8rem;
+}
+
+.gradient-container {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 23, 29, 0) 5.87%,
+    #17171d 83.53%
+  );
+  height: 14.2rem;
+  width: 100%;
+  left: 0;
 }
