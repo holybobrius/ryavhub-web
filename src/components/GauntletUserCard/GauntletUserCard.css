@@ -13,12 +13,42 @@
   overflow-y: hidden;
 }
 
-.gauntlet-card-games-list {
+.gauntlet-card-games-list-item {
+  display: flex;
+  gap: 3rem;
 }
 
-.gauntlet-card-games-list-item {
+.gauntlet-card-games-list-item-name {
   font-size: 2rem;
   font-weight: 400;
   line-height: 3rem;
   color: rgba(255, 255, 255, 0.6);
+  width: 21rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gauntlet-card-games-list-item-index {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.6);
+  min-width: 3.2rem;
+}
+
+.games-count-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.games-count-item {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.gauntlet-card-games-list {
+
 }

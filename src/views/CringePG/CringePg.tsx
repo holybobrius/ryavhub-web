@@ -19,7 +19,7 @@ export const CringePg: FC = () => {
   return (
     <section className="cringe-pg">
       <GameWheel games={shuffle([...gamesForWheel])} />
-      {/* <GamesList claims={allClaims} /> */}
+       <GamesList claims={allClaims} />
     </section>
   );
 };
