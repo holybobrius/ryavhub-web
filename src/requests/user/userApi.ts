@@ -9,7 +9,19 @@ export const userApi = createApi({
   }),
   endpoints: (builder) => ({
     getUser: builder.query<Account.AuthGetResponseSuccess, void>({
-      query: () => "/auth",
+      // @ts-ignore
+      async queryFn(name, api, extraOptions, baseQuery) {
+        const result = await baseQuery({
+          url: "/auth",
+          method: "GET",
+        });
+
+        if (result.error) {
+          return { data: null };
+        }
+
+        return { data: result.data };
+      },
     }),
   }),
 });
