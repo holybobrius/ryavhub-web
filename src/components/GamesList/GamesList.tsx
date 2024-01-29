@@ -9,11 +9,6 @@ export const GamesList: FC = () => {
   const users = useUsers();
   const { allClaims: claims } = useCringePG();
 
-  console.log(
-    users.filter((user) => user.gauntlet),
-    claims
-  );
-
   return (
     <div className="games-list-container">
       {users

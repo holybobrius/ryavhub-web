@@ -35,7 +35,6 @@ export const GameWheel: React.FC<Props> = ({ games }) => {
         const gamesList = gameListRef.current;
         const randomIndex = Math.floor(Math.random() * games.length);
         const targetGame = gamesList?.children[randomIndex] as HTMLElement;
-        console.log("Selected Game:", games[randomIndex]);
 
         if (gamesList) {
           gamesList.style.transition = `transform ${spinDuration}s ease-out`;

@@ -60,7 +60,7 @@ export const CringePgAdmin = () => {
 
   const handleSendClaim = () => {
     addNewClaim(claim);
-    setClaim(initialClaimState);
+    // setClaim(initialClaimState);
   };
 
   const handleSendGame = () => {
@@ -140,7 +140,6 @@ export const CringePgAdmin = () => {
             <label>Статус</label>
             <Select
               options={statusOptions}
-              defaultValue="new"
               style={{ width: 180 }}
               onChange={handleClaimGameStatusChange}
             />
