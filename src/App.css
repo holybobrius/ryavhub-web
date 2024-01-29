@@ -49,9 +49,8 @@ main {
   margin: 0 !important;
 }
 
-:where(.css-dev-only-do-not-override-rbzhi9).ant-dropdown .ant-dropdown-menu,
-:where(.css-dev-only-do-not-override-rbzhi9).ant-dropdown-menu-submenu
-  .ant-dropdown-menu {
+.ant-dropdown .ant-dropdown-menu,
+.ant-dropdown-menu-submenu .ant-dropdown-menu {
   background-color: #202027;
   padding: 1.3rem 2.6rem;
   font-family: "Basis Grotesque Pro";
@@ -59,27 +58,21 @@ main {
   margin-top: 11px;
 }
 
-:where(.css-dev-only-do-not-override-rbzhi9).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item {
+.ant-dropdown-menu .ant-dropdown-menu-item {
   width: 14rem;
   padding: 0.7rem 0;
 }
 
-:where(
-    .css-dev-only-do-not-override-rbzhi9
-  ).ant-input-outlined.ant-input-disabled,
-:where(.css-dev-only-do-not-override-rbzhi9).ant-input-outlined[disabled] {
-  background-color: #202027;
-  color: rgba(255, 255, 255, 0.6);
-  opacity: 1;
-}
-
-textarea:where(.css-dev-only-do-not-override-rbzhi9)::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+.comment-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .ant-modal-wrap {
   backdrop-filter: blur(2px);
   background-color: rgba(10, 10, 10, 0.6);
+}
+
+.comment-textarea {
+  color: rgba(255, 255, 255, 0.6) !important;
+  background-color: #202027 !important;
 }
