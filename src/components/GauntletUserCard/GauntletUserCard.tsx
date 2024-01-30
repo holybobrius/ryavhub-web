@@ -43,7 +43,7 @@ export const GauntletUserCard: FC<Props> = ({ user, claims }) => {
         {claims.map((n, index) => (
           <div className="gauntlet-card-games-list-item">
             <p className="gauntlet-card-games-list-item-index">{`${
-              claims.length - index + 1
+              claims.length - index
             }.`}</p>
             <p className="gauntlet-card-games-list-item-name">{n.game.name}</p>
             <div className="game-status-wrapper">
