@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Select } from "antd";
+import { Button, Checkbox, Input, Select, message } from "antd";
 import "./CringePgAdmin.css";
 import { ChangeEvent, useState } from "react";
 import { CringePG } from "../../types/types";
@@ -9,6 +9,7 @@ import { useCringePG } from "../../requests/cringepg/useCringePG";
 const { TextArea } = Input;
 
 export const CringePgAdmin = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const users = useUsers();
   const user = useUser();
   const { addNewClaim, addNewGame } = useCringePG();
@@ -56,16 +57,43 @@ export const CringePgAdmin = () => {
     setClaim({ ...claim, comment: event.target.value });
   };
 
-  const { allGames } = useCringePG();
-
-  const handleSendClaim = () => {
-    addNewClaim(claim);
-    // setClaim(initialClaimState);
+  const saveMessage = () => {
+    messageApi.success("Сохранено");
   };
 
-  const handleSendGame = () => {
-    addNewGame(game);
-    setGame(initialGameState);
+  const saveGameMessage = () => {
+    messageApi.success(
+      "Сохранено. Обнови страницу перед тем как крутить колесо"
+    );
+  };
+
+  const errorMessage = (status: number) => {
+    messageApi.error(`Жаль, но случился ${status}`);
+  };
+
+  const { allGames } = useCringePG();
+
+  const handleSendClaim = async () => {
+    const res = await addNewClaim(claim);
+    // setClaim(initialClaimState);
+    // @ts-ignore
+    if (res.error) {
+      // @ts-ignore
+      errorMessage(res.error.status);
+    } else {
+      saveMessage();
+    }
+  };
+
+  const handleSendGame = async () => {
+    const res = await addNewGame(game);
+    // @ts-ignore
+    if (res.error) {
+      // @ts-ignore
+      errorMessage(res.error.status);
+    } else {
+      saveGameMessage();
+    }
   };
 
   const usersItems = users
@@ -109,6 +137,7 @@ export const CringePgAdmin = () => {
 
   return (
     <section className="cringe-pg">
+      {contextHolder}
       <div className={"admin-forms-container"}>
         <h4>Добавить claim</h4>
         <Select

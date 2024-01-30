@@ -23,12 +23,15 @@ export const useCringePG = () => {
   const [updateClaimStatus] = useUpdateClaimStatusMutation();
   const [sendGameClaim] = useClaimGameMutation();
 
-  const addNewClaim = (claim: CringePG.ClaimedGaunletGame) => {
-    addClaim(claim);
+  const addNewClaim = async (claim: CringePG.ClaimedGaunletGame) => {
+    const res = await addClaim(claim);
+    refetchClaims();
+    return res;
   };
 
-  const addNewGame = (claim: CringePG.GauntletNewGame) => {
-    addGame(claim);
+  const addNewGame = async (claim: CringePG.GauntletNewGame) => {
+    const res = await addGame(claim);
+    return res;
   };
 
   const updateComment = async (id: number, comment: string) => {
