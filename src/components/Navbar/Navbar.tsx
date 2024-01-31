@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import { useUser } from "../../requests/user/useUser";
 import Arrow from "../../assets/icons/arrow.svg?react";
-import Logo from '../../assets/icons/logo.svg?react'
+import Logo from "../../assets/icons/logo.svg?react";
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
@@ -20,18 +20,26 @@ const Navbar: FC = () => {
 
   return (
     <nav>
+      {/* @ts-expect-error */}
       <Link to="/">
         <Logo />
       </Link>
       <div className="navbar-buttons">
-        <Link className='router-link nav-link' to="/quotes">
+        {/* @ts-expect-error */}
+        <Link className="router-link nav-link" to="/quotes">
           Цитаты
         </Link>
-        <Link className='router-link nav-link' to="/timeline">
+        {/* @ts-expect-error */}
+        <Link className="router-link nav-link" to="/timeline">
           Таймлайн
         </Link>
-        <Link className='router-link nav-link' to="/gamesaves">
+        {/* @ts-expect-error */}
+        <Link className="router-link nav-link" to="/gamesaves">
           Сейвы
+        </Link>
+        {/* @ts-expect-error */}
+        <Link className="router-link nav-link" to="/cringepg">
+          КринжПГ
         </Link>
       </div>
       <div className="nav-desktop-login-container">

@@ -1,0 +1,49 @@
+.cringe-pg {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+  color: #fff;
+  font-size: 4rem;
+  overflow-x: hidden;
+  min-height: 100%;
+  z-index: 999;
+  background-image: url("../../assets/images/cringepg-background.webp");
+  background-size: cover;
+}
+
+.game-primary {
+  font-size: 3.6rem;
+}
+
+.game-secondary {
+  font-size: 3.2rem;
+  color: #616161;
+}
+
+.games-roll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-wheel-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button-icon {
+  stroke: rgba(255, 255, 255, 0.6);
+  transition: 300ms ease;
+}
+
+.button-icon.comment {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.button-icon:hover {
+  stroke: rgb(255, 255, 255);
+}

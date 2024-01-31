@@ -1,0 +1,6 @@
+.games-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 6.6rem;
+  row-gap: 3.3rem;
+}

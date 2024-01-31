@@ -23,10 +23,10 @@ export namespace Account {
 }
 
 export type User = {
-  id: number,
-  name: string,
-  gauntlet: boolean,
-}
+  id: number;
+  name: string;
+  gauntlet: boolean;
+};
 
 export namespace Gamesaves {
   export type Gamesave = {
@@ -46,6 +46,90 @@ export namespace Gamesaves {
     | IndexGetResponseSuccess
     | IndexGetResponseError;
 }
+
+export namespace CringePG {
+  export enum GameStatus {
+    "new",
+    "completed",
+    "dropped",
+    "coop",
+    "rerolled",
+    "waitlisted",
+  }
+
+  export type GauntletPlayer = {
+    id: number;
+    name: string;
+  };
+
+  export type GauntletClaimInfo = {
+    user: GauntletPlayer;
+    id: number;
+    comment: string;
+    status: GameStatus;
+  };
+
+  export type GauntletGame = {
+    id: number;
+    name: string;
+    owners: GauntletPlayer[];
+    claims: GauntletClaimInfo[];
+  };
+
+  export type GauntletGameShortened = {
+    id: number;
+    name: string;
+  };
+
+  export type GauntletNewGame = {
+    name: string;
+    owners: number[];
+  };
+
+  export type GauntletClaim = {
+    id: number;
+    status: GameStatus | string;
+    comment: string;
+    game: GauntletGameShortened;
+    user: GauntletPlayer;
+  };
+
+  export type ClaimedGaunletGame = {
+    game_id: number;
+    user_id: number;
+    status: GameStatus | string;
+    comment: string;
+  };
+
+  // GET /v4/quotes
+  export type IndexGetRequestQuery = Generic.AuthQuery;
+  export type IndexPostRequestBody = ClaimedGaunletGame;
+  export type IndexPostResponseSuccess = Generic.Success<GauntletClaim>;
+  export type IndexGetResponseSuccess = Generic.Success<GauntletGame[]>;
+  export type IndexPostGameRequestBody = GauntletNewGame;
+  export type IndexPostGameResponseSuccess = Generic.Success<GauntletGame>;
+  export type IndexGetClaimsResponseSuccess = Generic.Success<GauntletClaim[]>;
+  export type IndexPostClaimGameRequestBody = { id: number };
+  export type IndexPostClaimGameResponseSuccess =
+    Generic.Success<GauntletClaim>;
+  export type IndexPatchClaimCommentRequestBody = {
+    comment: string;
+    id: number;
+  };
+  export type IndexPatchClaimStatusRequestBody = {
+    status: GameStatus | string;
+    id: number;
+  };
+  export type IndexPatchClaimsCommentResponseSuccess =
+    Generic.Success<GauntletClaim>;
+  export type IndexPatchClaimsStatusResponseSuccess =
+    Generic.Success<GauntletClaim>;
+  export type IndexGetResponseError = Generic.Error;
+  export type IndexGetResponse =
+    | IndexGetResponseSuccess
+    | IndexGetResponseError;
+}
+
 export namespace Quotes {
   export type Quote = {
     id: number;
@@ -59,6 +143,7 @@ export namespace Quotes {
     quote_by: number;
     date: string;
   };
+
   // GET /v2/quotes
   export type IndexGetRequestQuery = Generic.AuthQuery;
   export type IndexGetRequestBody = never;
@@ -135,6 +220,7 @@ export namespace Users {
   export type User = {
     id: number;
     name: string;
+    gauntlet: boolean;
     created_utc: Date;
   };
   // GET /v2/users

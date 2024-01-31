@@ -36,3 +36,12 @@
   left: 3vw;
   top: 80vh;
 }
+
+.cringepg-admin-button {
+  fill: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.cringepg-admin-button:hover {
+  fill: #fff;
+}

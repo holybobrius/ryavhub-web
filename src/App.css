@@ -48,3 +48,31 @@ main {
 .css-mb4vrd-TimelineContentDetailsWrapper {
   margin: 0 !important;
 }
+
+.ant-dropdown .ant-dropdown-menu,
+.ant-dropdown-menu-submenu .ant-dropdown-menu {
+  background-color: #202027;
+  padding: 1.3rem 2.6rem;
+  font-family: "Basis Grotesque Pro";
+  border-radius: 20px;
+  margin-top: 11px;
+}
+
+.ant-dropdown-menu .ant-dropdown-menu-item {
+  width: 14rem;
+  padding: 0.7rem 0;
+}
+
+.comment-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.ant-modal-wrap {
+  backdrop-filter: blur(2px);
+  background-color: rgba(10, 10, 10, 0.6);
+}
+
+.comment-textarea {
+  color: rgba(255, 255, 255, 0.6) !important;
+  background-color: #202027 !important;
+}

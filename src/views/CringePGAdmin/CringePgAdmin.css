@@ -1,0 +1,44 @@
+.admin-forms-container {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 10rem;
+}
+
+.admin-input {
+  width: 400px;
+}
+
+.checkboxes-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.inputs-container-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.inputs-container-item label {
+  font-size: 1.4rem;
+}
+
+.inputs-container {
+  display: flex;
+  gap: 40px;
+}
+
+:where(.css-dev-only-do-not-override-1qhpsh8).ant-checkbox + span {
+  color: #fff;
+}
+
+.users-checkboxes {
+  width: 40rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
