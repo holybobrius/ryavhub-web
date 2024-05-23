@@ -2,11 +2,11 @@ import { FC, useState, useCallback } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import LoginButton from "../LoginButton/LoginButton";
-import { useSelector } from "react-redux";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import { useUser } from "../../requests/user/useUser";
 import Arrow from "../../assets/icons/arrow.svg?react";
 import Logo from "../../assets/icons/logo.svg?react";
+import { NavbarStyled } from './Navbar.styles';
 
 const Navbar: FC = () => {
   const [navbarOpened, setNavbarOpened] = useState(false);
@@ -19,7 +19,7 @@ const Navbar: FC = () => {
   }
 
   return (
-    <nav>
+    <NavbarStyled>
       {/* @ts-expect-error */}
       <Link to="/">
         <Logo />
@@ -49,7 +49,7 @@ const Navbar: FC = () => {
         <Arrow />
       </button>
       {navbarOpened && <NavbarMobile onClose={handleNavbarClose} />}
-    </nav>
+    </NavbarStyled>
   );
 };
 export default Navbar;

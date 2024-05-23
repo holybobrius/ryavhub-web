@@ -1,15 +1,5 @@
 nav {
-  height: 4.6rem;
-  padding: 0 24rem;
-  background-color: #0d0d11;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Basis Grotesque Pro", sans-serif;
-  z-index: 999;
-  position: fixed;
-  width: 100%;
+
 }
 
 .nav-link {

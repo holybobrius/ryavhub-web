@@ -1,6 +1,24 @@
 import "./SaveCard.css";
-import { FC } from "react";
+import { FC, useState } from "react";
 import DownloadIcon from "../../assets/icons/download-icon.svg?react";
+import { Carousel, Image } from "antd";
+import {
+  CarouselContainer,
+  DownloadButton,
+  GameSaveInfoContainer,
+  GameSaveInfoItem,
+  GameSaveInfoTextContainer,
+  ImagesContainer,
+  SaveCardContainer,
+  SaveCardContentContainer,
+  SaveCardTextContainer,
+  SaveCardTextInfoContainer,
+  SaveCardTextInfoDivider,
+  SaveCardTextInfoItem,
+  SaveCardTextInfoLabel,
+  SaveCardTextInfoValue,
+  SaveCardTitle,
+} from "./SaveCard.styles";
 
 type Props = {
   title: string;
@@ -13,6 +31,15 @@ type Props = {
   index: number;
 };
 
+const contentStyle: React.CSSProperties = {
+  margin: 0,
+  height: "160px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "#364d79",
+};
+
 const SaveCard: FC<Props> = ({
   title,
   description,
@@ -23,58 +50,55 @@ const SaveCard: FC<Props> = ({
   total,
   index,
 }) => {
+  const [currImage, setCurrImage] = useState(2);
+  const onClick = () => setCurrImage(currImage + 1);
   return (
     <div
-      className={`save-card ${index % 2 !== 0 ? "inverted" : ""}`}
-      id={`card${index}`}
+      style={{
+        width: "100vw",
+        position: "relative",
+        overflowX: "hidden",
+        zIndex: "-999",
+      }}
     >
-      {index % 2 === 0 ? "" : ""}
-      <div className="text-box">
-        <p className="save-title">{title}</p>
-        <div className="info-box">
-          <div className="separator" />
-          <div className="info-item">
-            <span>Год</span>
-            <p>{description}</p>
-          </div>
-          <div className="separator" />
-          <div className="info-item">
-            <span>Версия</span>
-            <p>1.16</p>
-          </div>
-          <div className="separator" />
-          <div className="info-item">
-            <span>Размер</span>
-            <p>{size}</p>
-          </div>
-          <div className="separator" />
-        </div>
-        <a
-          href={link}
-          className={link ? "download-btn" : "download-btn-blocked"}
-        >
-          {link ? "Скачать" : "Нельзя скачать("}
-          {link && <DownloadIcon />}
-        </a>
-      </div>
-      <div className={`imgs-box`}>
-        <img className="primary-img save-img" src={images[0]} alt={imageAlt} />
-        <img
-          className="secondary-img save-img"
-          src={images[1]}
-          alt={imageAlt}
-        />
-        <img
-          className="secondary-img save-img"
-          src={images[2]}
-          alt={imageAlt}
-        />
-        <img
-          className="secondary-img save-img"
-          src={images[3]}
-          alt={imageAlt}
-        />
-      </div>
+      <ImagesContainer currIndex={currImage} imagesCount={images.length}>
+        {images.map((n) => (
+          <Image
+            key={n}
+            style={{
+              border: "none",
+              height: "100vh",
+              width: "100vw",
+              zIndex: "-999",
+            }}
+            src={n}
+          />
+        ))}
+      </ImagesContainer>
+      <SaveCardContainer url={images[currImage]}>
+        <SaveCardContentContainer>
+          <SaveCardTitle>{title}</SaveCardTitle>
+          <GameSaveInfoContainer>
+            <GameSaveInfoTextContainer>
+              <GameSaveInfoItem>
+                <SaveCardTextInfoValue>Год окончания</SaveCardTextInfoValue>
+                <SaveCardTextInfoLabel>{description}</SaveCardTextInfoLabel>
+              </GameSaveInfoItem>
+              <SaveCardTextInfoDivider />
+              <GameSaveInfoItem>
+                <SaveCardTextInfoValue>Версия сейва</SaveCardTextInfoValue>
+                <SaveCardTextInfoLabel>1.16</SaveCardTextInfoLabel>
+              </GameSaveInfoItem>
+              <SaveCardTextInfoDivider />
+              <GameSaveInfoItem>
+                <SaveCardTextInfoValue>Размер файла</SaveCardTextInfoValue>
+                <SaveCardTextInfoLabel>{size}</SaveCardTextInfoLabel>
+              </GameSaveInfoItem>
+            </GameSaveInfoTextContainer>
+            <DownloadButton onClick={onClick}>Скачать</DownloadButton>
+          </GameSaveInfoContainer>
+        </SaveCardContentContainer>
+      </SaveCardContainer>
     </div>
   );
 };

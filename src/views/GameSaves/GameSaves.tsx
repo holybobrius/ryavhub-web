@@ -3,12 +3,14 @@ import SaveCard from "../../components/SaveCard/SaveCard";
 import NavButtons from "../../components/NavButton/NavButtons";
 import "./GameSaves.css";
 import { useGamesaves } from "../../requests/gamesaves/useGamesaves";
+import { SavesSection } from "./GameSaves.styles";
+import { Page } from "../../components/Page/Page.styles";
 
 const GameSaves: FC = () => {
   const gamesaves = useGamesaves();
   return (
-    <section className="section-saves">
-      {gamesaves.map((save) => (
+    <SavesSection>
+      {[...gamesaves].map((save) => (
         <SaveCard
           key={save.id}
           title={save.name}
@@ -22,7 +24,7 @@ const GameSaves: FC = () => {
         />
       ))}
       <NavButtons total={gamesaves.length} />
-    </section>
+    </SavesSection>
   );
 };
 export default GameSaves;
