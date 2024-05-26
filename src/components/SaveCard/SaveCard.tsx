@@ -18,8 +18,11 @@ import {
   SaveCardTextInfoLabel,
   SaveCardTextInfoValue,
   SaveCardTitle,
+  SliderButton,
+  SliderButtonsContainer,
   TitleBackground,
 } from "./SaveCard.styles";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 type Props = {
   title: string;
@@ -59,6 +62,9 @@ const SaveCard: FC<Props> = ({
       setCurrImage(currImage + 1);
     }
   };
+
+  const nextImage = () => {};
+
   return (
     <div
       id={`card${index}`}
@@ -106,6 +112,28 @@ const SaveCard: FC<Props> = ({
             <a href={link} target={"_blank"} rel={"noreferrer"}>
               <DownloadButton>Скачать</DownloadButton>
             </a>
+            <ProgressBar
+              isLabelVisible={false}
+              transitionDuration="300ms"
+              completed={((currImage + 1) / images.length) * 100}
+              height={"2px"}
+              bgColor="#fff"
+              baseBgColor="rgba(255, 255, 255, 0.4)"
+            />
+            <SliderButtonsContainer>
+              <SliderButton
+                $disabled={currImage <= 0}
+                onClick={() => setCurrImage(currImage - 1)}
+              >
+                {"<"}
+              </SliderButton>
+              <SliderButton
+                $disabled={currImage === images.length - 1}
+                onClick={() => setCurrImage(currImage + 1)}
+              >
+                {">"}
+              </SliderButton>
+            </SliderButtonsContainer>
           </GameSaveInfoContainer>
         </SaveCardContentContainer>
       </SaveCardContainer>

@@ -33,7 +33,7 @@ export const ImagesContainer = styled.div<{
 export const SaveCardContentContainer = styled(Page)`
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding-bottom: 9rem;
+  padding-bottom: 13rem;
   width: 100%;
   align-items: end;
   position: relative;
@@ -61,11 +61,43 @@ export const GameSaveInfoContainer = styled.div`
   flex-direction: column;
   height: fit-content;
   z-index: 999;
+  width: 29.2rem;
+  justify-self: end;
 `;
 
 export const GameSaveInfoTextContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const SliderButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1.3rem;
+`;
+
+export const SliderButton = styled.button<{ $disabled?: boolean }>`
+  height: 3.4rem;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: 300ms ease;
+  cursor: ${(props) => (props.$disabled ? "unset" : "pointer")};
+
+  &:hover {
+    color: ${(props) =>
+      props.$disabled ? "rgba(255, 255, 255, 0.6)" : "#fff"};
+    border: ${(props) =>
+      props.$disabled
+        ? "1px solid rgba(255, 255, 255, 0.6)"
+        : "1px solid #fff"};
+  }
 `;
 
 export const GameSaveInfoItem = styled.div`
@@ -86,6 +118,8 @@ export const SaveCardTitle = styled.h2`
   margin: 0;
   font-weight: 900;
   align-self: end;
+  height: fit-content;
+  line-height: 15.2rem;
   z-index: 99;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   @media (max-width: 1440px) {
