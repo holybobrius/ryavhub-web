@@ -22,9 +22,11 @@ const QuotesNavPanel: FC<Props> = (props) => {
   return (
     <div className="bottom-nav-container">
       {/* @ts-expect-error */}
-      <Link to="/cringepg-admin">
-        <CringePGAdminButton className="cringepg-admin-button" />
-      </Link>
+      {window.location.pathname === "/cringepg" && (
+        <Link to="/cringepg-admin">
+          <CringePGAdminButton className="cringepg-admin-button" />
+        </Link>
+      )}
       <button className="bottom-nav-btn" onClick={scrollToTop}>
         <ArrowUp />
       </button>

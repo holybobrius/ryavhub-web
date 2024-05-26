@@ -11,9 +11,12 @@ const slideIn = keyframes`
 `;
 
 export const SaveCardContainer = styled.div<{ url: string }>`
-  height: 100vh;
   display: flex;
   align-items: flex-end;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 
 export const ImagesContainer = styled.div<{
@@ -22,10 +25,9 @@ export const ImagesContainer = styled.div<{
 }>`
   translate: calc(-${(props) => props.currIndex} * 100vw);
   display: flex;
-  position: absolute;
   overflow-x: hidden;
   width: calc(${(props) => props.imagesCount} * 100vw);
-  z-index: -999;
+  transition: 300ms ease;
 `;
 
 export const SaveCardContentContainer = styled(Page)`
@@ -34,6 +36,20 @@ export const SaveCardContentContainer = styled(Page)`
   padding-bottom: 9rem;
   width: 100%;
   align-items: end;
+  position: relative;
+`;
+
+export const TitleBackground = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 1380px;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  width: 100vw;
+  height: 35rem;
+
+  filter: blur(57.25px);
 `;
 
 export const GameSaveInfoContainer = styled.div`
@@ -70,6 +86,7 @@ export const SaveCardTitle = styled.h2`
   margin: 0;
   font-weight: 900;
   align-self: end;
+  z-index: 99;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   @media (max-width: 1440px) {
     font-size: 12rem;
@@ -100,13 +117,12 @@ export const SaveCardTextInfoDivider = styled.div`
 export const SaveCardTextInfoLabel = styled.span`
   color: rgba(255, 255, 255, 0.6);
   font-size: 1.6rem;
-  font-style: italic;
   font-weight: 400;
 `;
 
 export const SaveCardTextInfoValue = styled.p`
-  font-size: 2rem;
-  font-weight: 300;
+  font-size: 1.6rem;
+  font-weight: 400;
 `;
 
 export const DownloadButton = styled.button`
@@ -115,6 +131,7 @@ export const DownloadButton = styled.button`
   outline: none;
   width: 100%;
   justify-content: center;
+  text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.6);
   font-size: 2rem;

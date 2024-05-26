@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 42%;
+  justify-content: center;
   right: 3%;
+  height: 100vh;
   gap: 15px;
+  padding-top: 2.1rem;
   transition: ease 200ms;
 }
 

@@ -18,6 +18,7 @@ import {
   SaveCardTextInfoLabel,
   SaveCardTextInfoValue,
   SaveCardTitle,
+  TitleBackground,
 } from "./SaveCard.styles";
 
 type Props = {
@@ -50,26 +51,32 @@ const SaveCard: FC<Props> = ({
   total,
   index,
 }) => {
-  const [currImage, setCurrImage] = useState(2);
-  const onClick = () => setCurrImage(currImage + 1);
+  const [currImage, setCurrImage] = useState(0);
+  const onClick = () => {
+    if (currImage === images.length - 1) {
+      setCurrImage(0);
+    } else {
+      setCurrImage(currImage + 1);
+    }
+  };
   return (
     <div
+      id={`card${index}`}
       style={{
         width: "100vw",
         position: "relative",
         overflowX: "hidden",
-        zIndex: "-999",
       }}
     >
       <ImagesContainer currIndex={currImage} imagesCount={images.length}>
         {images.map((n) => (
           <Image
             key={n}
+            preview={false}
             style={{
               border: "none",
               height: "100vh",
               width: "100vw",
-              zIndex: "-999",
             }}
             src={n}
           />
@@ -77,6 +84,7 @@ const SaveCard: FC<Props> = ({
       </ImagesContainer>
       <SaveCardContainer url={images[currImage]}>
         <SaveCardContentContainer>
+          <TitleBackground />
           <SaveCardTitle>{title}</SaveCardTitle>
           <GameSaveInfoContainer>
             <GameSaveInfoTextContainer>
@@ -95,7 +103,9 @@ const SaveCard: FC<Props> = ({
                 <SaveCardTextInfoLabel>{size}</SaveCardTextInfoLabel>
               </GameSaveInfoItem>
             </GameSaveInfoTextContainer>
-            <DownloadButton onClick={onClick}>Скачать</DownloadButton>
+            <a href={link} target={"_blank"} rel={"noreferrer"}>
+              <DownloadButton>Скачать</DownloadButton>
+            </a>
           </GameSaveInfoContainer>
         </SaveCardContentContainer>
       </SaveCardContainer>
